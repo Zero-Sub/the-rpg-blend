@@ -21,17 +21,10 @@ With practical code examples and guidance, this blog post helps you write cleane
 ---
 
 ## 📁 Repository Structure
-rpg-blend-examples/
-├── examples/
-│ ├── main-example.rpgle # Traditional MAIN procedure program
-│ └── nomain-module.rpgle # Modular NOMAIN subprocedure (exported)
-│
-├── tests/
-│ └── greet-tests.rpgle # Optional: Unit tests or test harness
-│
-└── docs/
-└── To-Main-or-Not-to-Main.md # Blog content in Markdown
-
+the-rgp-blend
+├── README.md
+├── qrpglesrc/
+│ ├── Examples
 
 ---
 
