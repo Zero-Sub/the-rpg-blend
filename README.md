@@ -1,37 +1,49 @@
 # The RPG Blend – Modern RPG Examples
 
-Welcome to the official code repository for *The RPG Blend*, a blog series exploring modern development practices on the IBM i using RPG. Whether you're a seasoned RPG veteran or new to the platform, this is where old-school logic meets clean, modular, testable code design.
+Real Code. Real Coffee. No Nonsense.
+
+Welcome to The RPG Blend, a no-fluff series designed to introduce modern IBM i and RPG development in a practical, beginner-friendly way.
+
+Each post pairs code and coffee to give you just enough to learn something real and useful—without overwhelm or theory-heavy fluff.
 
 ---
 
-## ✨ Article Highlight
+✳️ Featured Article
+Getting Started with RPG (and Coffee)
+Learn how to:
 
-### [To MAIN or Not to MAIN, That is the Question: Writing Modern RPG on IBM i]([https://www.linkedin.com/pulse/main-question-writing-modern-rpg-ibm-i-george/](https://www.linkedin.com/pulse/main-question-writing-modern-rpg-ibm-i-george-vaneaton-arkze/?trackingId=BqZwH%2FKNR1%2BOKk2BnIB9zQ%3D%3D))
-By George
+Sign up for a free IBM i account on PUB400
 
-In this article, we explore a quiet but important decision every RPG developer faces: should your program use the `MAIN` keyword or go with `NOMAIN`? This decision impacts:
+Understand IBM i libraries, source files, and key system commands
 
-- Maintainability  
-- Modularity  
-- Testability  
-- Future modernization  
+Create and compile your first RPG program
 
-With practical code examples and guidance, this blog post helps you write cleaner, future-ready RPG.
+Set up Visual Studio Code for modern RPGLE development
 
----
+Run programs directly from your desktop or green screen
 
-## 📁 Repository Structure
-the-rgp-blend
-├── README.md
-├── qrpglesrc/
-│ ├── Examples
+📁 Code Samples
+All code referenced in the articles is available in this repository:
 
----
+bash
+Copy
+Edit
+/qrpglesrc
+├── hello.rpgle        # First RPG program using SEU
+├── hello2.rpgle       # Modern version using VS Code and free-form syntax
+More code samples will be added as new articles are released.
+
+🔗 Resources
+PUB400 Sign-up
+
+VS Code
+
+Code for IBM i Extension
 
 ## 🔗 Read the Full Article
 
-- **LinkedIn**: [linkedin.com/in/george][(https://www.linkedin.com/pulse/main-question-writing-modern-rpg-ibm-i-george-vaneaton-arkze/?trackingId=22fC3pyRf%2Bx2SNcn1t5lZw%3D%3D)
-- **Blogger**: [rpgblend.blogspot.com]((https://therpgroast.blogspot.com/2025/05/to-main-or-not-to-main-that-is-question.html)
+- **LinkedIn**: [[linkedin.com/in/george][(https://www.linkedin.com/pulse/main-question-writing-modern-rpg-ibm-i-george-vaneaton-arkze/?trackingId=22fC3pyRf%2Bx2SNcn1t5lZw%3D%3D)](https://www.linkedin.com/pulse/getting-started-rpg-coffee-george-vaneaton-mw1de/?trackingId=%2B1xRUgX6RXmVEMg3LB6RMg%3D%3D)
+- **Blogger**:[ [rpgblend.blogspot.com]((https://therpgroast.blogspot.com/2025/05/to-main-or-not-to-main-that-is-question.html)](https://therpgblend.blogspot.com/2025/06/getting-started-with-rpg-and-coffee.html)
 
 ---
 
