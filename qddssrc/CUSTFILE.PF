@@ -1,0 +1,9 @@
+     A          R CUSTRECORD
+     A            CUSID         10A
+     A            CUSNAME       30A
+     A            CUSPHONE      15A
+     A            CUSCITY       20A
+     A            CUSSTATE       2A
+     A            CUSJOIN         L
+
+     A          K CUSID         
