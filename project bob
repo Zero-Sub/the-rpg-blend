@@ -1,0 +1,233 @@
+Project Bob, VS Code, and the Future of IBM i Development: What Managers Should Prepare For
+
+Author: George VanEaton
+Project: The RPG Blend
+Topic: IBM i Modernization, AI-Assisted Development, VS Code Adoption
+
+Overview
+
+Project Bob represents a major shift in how IBM i developers will work over the next decade. It extends the VS Code experience with IBM’s new AI-powered development assistant, offering capabilities that go far beyond syntax highlighting or extensions. Bob is a full IBM i–aware IDE with reasoning, planning, modernization support, and coding standards enforcement.
+
+For managers, this shift is not just about adopting a tool. It affects training, workflows, responsibility boundaries, quality standards, and team culture.
+
+This document outlines what leaders need to prepare for.
+
+Why Project Bob Changes Everything
+1. An RPG-Focused AI Development Environment
+
+Bob is a VS Code fork built specifically for IBM i and RPG. It understands the language, data structures, dependencies, and legacy patterns that traditional AI tools misinterpret.
+
+Bob is able to:
+
+Parse fixed-format RPG and produce structured summaries
+
+Suggest refactoring paths that match your team’s standards
+
+Generate documentation, diagrams, and architectural models
+
+Perform impact analysis on schema and program changes
+
+Convert code to free-form using step-by-step reasoning
+
+Ask clarifying questions before acting
+
+This eliminates many barriers that previously slowed modernization efforts.
+
+2. Coding Standards Become Enforceable
+
+With Bob Rules, teams can define their own standards inside a project folder (.bob/). Bob then generates or modifies code to match those rules automatically.
+
+Examples include:
+
+Naming conventions
+
+Free-form RPG requirements
+
+SQL standards and join structure
+
+Error handling patterns
+
+Service program structure
+
+Unit testing templates
+
+This lets managers scale consistency across teams without manual review.
+
+3. AI Support Reduces Cognitive Load
+
+Bob acts as a reasoning engine that decomposes tasks into subtasks. Complex work becomes manageable:
+
+Converting legacy modules
+
+Detecting unused procedures
+
+Reviewing SQL for performance problems
+
+Tracing the business workflow inside a monolithic program
+
+Creating ER diagrams from DDS or SQL DDL
+
+Generating README documentation
+
+This helps new developers learn faster and experienced developers spend less time on repetitive tasks.
+
+What Managers Should Prepare For
+1. A Cultural Shift in How Developers Work
+
+Developers will move from tool-driven coding to context-driven coding. Instead of memorizing legacy structures, they will rely on the IDE to surface relationships, dependencies, and explanations.
+
+Managers must prepare for:
+
+Developers asking the IDE before asking a senior engineer
+
+Faster onboarding of junior RPG developers
+
+A shift from tribal knowledge to documented knowledge
+
+Reduced resistance to modernization once Bob shows the path
+
+2. New Workflows
+
+Several long-standing workflows will change:
+
+Old Workflow	New Workflow with Bob
+SEU/green screen editing	Full VS Code development
+Tribal knowledge debugging	AI-generated explanations
+Manual code reviews	Bob-assisted reviews with standards
+Manual documentation	AI-generated documentation and diagrams
+Fixed-format maintenance	Free-form RPG with auto-conversion
+Trial-and-error refactoring	Planned, agentic modernization steps
+
+Managers must align their processes with these changes.
+
+3. Training and Re-Skilling
+
+A successful transition requires time and structured practice, not pressure.
+
+Recommended steps:
+
+Dedicate weekly training slots for VS Code and Bob
+
+Build small modernization tasks into regular work
+
+Train developers to create effective prompts
+
+Encourage them to track before/after productivity
+
+Mentor teams through early resistance
+
+Skills to emphasize:
+
+Free-form RPG
+
+SQL and database-first design
+
+Service program architecture
+
+Git and GitHub workflows
+
+IDE-based debugging
+
+Unit testing with RPGUnit
+
+4. Preparing for the AI-Augmented Role
+
+Developers will spend less time on:
+
+Syntax
+
+Repetitive queries
+
+DDS conversions
+
+Documentation
+
+File analysis
+
+Basic refactoring
+
+They will spend more time on:
+
+Architecture
+
+Business rules
+
+Validation
+
+Integration patterns
+
+Reviewing AI output
+
+Teaching the AI their project context
+
+The role shifts from “code generator” to “code designer.”
+
+What Workflows Disappear
+
+SEU and PDM as primary editors
+
+Massive comment blocks documenting every field
+
+Hand-built impact analysis
+
+Manual DDS-to-DDL transformations
+
+Large monolithic code rewrites without guidance
+
+Guessing about side effects of file changes
+
+Reading code line-by-line to understand a workflow
+
+Documentation gaps between teams
+
+Bob replaces all of these with structured automation.
+
+What New Habits Developers Must Adopt
+
+Writing clear prompts
+
+Attaching context files to Bob
+
+Following Bob Rules consistently
+
+Using Git branches professionally
+
+Running Bob Code Reviews before merging
+
+Letting the IDE handle exploration rather than memorizing
+
+Using generated documentation to explain changes
+
+Bob rewards clarity and penalizes vague instructions.
+
+How to Prepare Now (Before GA Release)
+
+Move development to VS Code today.
+Even without Bob, teams need time to practice in the new environment.
+
+Start building coding standards.
+These standards will eventually become your Bob Rules.
+
+Convert small programs to free-form.
+Build muscle memory before AI enters the loop.
+
+Document databases and modules.
+Bob will use this context for better accuracy.
+
+Train teams on Git and GitHub.
+Bob integrates deeply with MCP-based Git workflows.
+
+Prepare your culture for AI-assisted development.
+Make it clear:
+AI does not replace RPG developers.
+It accelerates them.
+
+Pick a small modernization pilot.
+Use it as the test bed once Bob becomes available.
+
+Final Thoughts
+
+Project Bob represents one of the biggest steps forward in IBM i development in decades. The shops that prepare early—training teams, documenting systems, defining coding standards, and building comfort with VS Code—will move faster with higher quality and far less risk.
+
+Modernization is no longer a rewrite.
+It is a guided evolution supported by AI and built into the daily workflow.
