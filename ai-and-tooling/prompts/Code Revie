@@ -1,0 +1,423 @@
+# my Code Compliance Review Prompt
+
+## Purpose
+This prompt provides comprehensive guidelines for reviewing my IBM i code against enterprise standards. Use this for AI-assisted code reviews or manual review checklists.
+
+## Instructions for Reviewer
+
+Review the attached code against my development standards documented in:
+- `.bob/rules/my standards.md` (core standards)
+- `.bob/rules/my-standards-enhanced.md` (patterns & examples)
+- `.bob/rules/price-transparency-dev-rules.md` (if applicable to project)
+- `.bob/rules/rules.md` (IBM i enterprise standards)
+
+---
+
+## Review Template
+
+### 📄 **File Information**
+- **Filename**: [NAME]
+- **Type**: [Program/Service Program/CL/SQL]
+- **Module**: [PA/UT/FN/FRM/MU/OI/etc.]
+- **Purpose**: [Brief description from header]
+- **Author**: [From header]
+- **Last Modified**: [Date]
+
+---
+
+### ✅ **Compliant Areas**
+[List what follows standards correctly with specific examples]
+
+Example:
+- ✅ Uses 100% free-format RPG
+- ✅ Proper MONITOR/ON-ERROR exception handling in lines 45-60
+- ✅ SQLCODE checked after every SQL statement
+- ✅ Comprehensive header documentation
+
+---
+
+### ⚠️ **Standards Violations**
+
+#### **🔴 Critical Issues** (System Failures, Security, Data Corruption)
+
+Check for:
+- [ ] Fixed-format RPG used (must be 100% free-format)
+- [ ] EXSR/BEGSR used (must use MONITOR/ON-ERROR)
+- [ ] WHENEVER clause used in SQL (strictly prohibited)
+- [ ] Direct system date/time retrieval (must use TO0P09FN())
+- [ ] Missing SQLCODE/SQLSTATE checks after SQL statements
+- [ ] SQL injection vulnerabilities (unvalidated input in dynamic SQL)
+- [ ] PHI/sensitive data in logs or error messages
+- [ ] Missing PATNO+CYCLE join (Price Transparency specific)
+- [ ] Hardcoded credentials, passwords, or tokens
+- [ ] Hardcoded library names (use *LIBL)
+- [ ] Missing denial/zero payment filters (Price Transparency)
+- [ ] Using service_date instead of processed_date (Price Transparency)
+
+[List actual violations found with line numbers]
+
+---
+
+#### **🟡 Major Issues** (Standards Violations, Maintainability)
+
+Check for:
+- [ ] Missing MAIN/NOMAIN specification on CTL-OPT
+- [ ] Procedures not exported in NOMAIN programs (missing EXPORT keyword)
+- [ ] Numbered indicators used (must use named indicators)
+- [ ] Legacy op-codes instead of BIFs (%TRIM vs TRIML, %SCAN vs SCAN, etc.)
+- [ ] Row-by-row cursor processing instead of set-based SQL
+- [ ] Missing commitment control for multi-file updates
+- [ ] Incomplete error handling (missing ON-ERROR blocks)
+- [ ] Resources not cleaned up in error paths (cursors, files)
+- [ ] Missing modification markers in columns 1-5
+- [ ] No logging to UTSP_LOG or equivalent
+- [ ] Missing CPT secondary/tertiary field checks (Price Transparency)
+- [ ] Missing modifier column handling (Price Transparency)
+- [ ] Interpolated percentiles instead of discrete (Price Transparency)
+- [ ] GOTO statements (use structured programming)
+- [ ] MOVE/MOVEL instead of %CHAR()/%DEC()
+- [ ] CALL/PLIST instead of prototyped calls
+
+[List actual violations found with line numbers]
+
+---
+
+#### **🟢 Minor Issues** (Style, Consistency, Documentation)
+
+Check for:
+- [ ] Incomplete header comments (missing purpose, parameters, dependencies)
+- [ ] Missing procedure documentation (DCL-PROC comments)
+- [ ] Inconsistent naming conventions
+- [ ] Magic numbers/strings (should use DCL-C constants)
+- [ ] Comments explain "what" instead of "why"
+- [ ] Insufficient inline documentation for complex logic
+- [ ] Inconsistent indentation or formatting
+- [ ] Overly long procedures (>200 lines)
+- [ ] Unclear variable names (single letters, abbreviations)
+- [ ] Missing PIF number in change log
+
+[List actual violations found with line numbers]
+
+---
+
+### 🔍 **Detailed Findings**
+
+#### Finding 1: [Descriptive Title]
+**Severity**: 🔴 Critical / 🟡 Major / 🟢 Minor  
+**Location**: Line X-Y or Procedure Z  
+**Issue**: [Specific description of the problem]  
+**Standard Violated**: [Reference to specific rule in standards docs]  
+**Impact**: [Why this matters - functionality, security, maintainability]  
+
+**Current Code**:
+```rpg
+// filepath: [path/to/file.rpgle]
+// Lines X-Y
+[problematic code snippet]
+```
+
+**Recommended Fix**:
+```rpg
+// filepath: [path/to/file.rpgle]
+// Lines X-Y
+[corrected code with inline comments explaining changes]
+```
+
+**Explanation**: [Why this fix is correct and how it follows standards]
+
+---
+
+[Repeat Finding template for each issue found]
+
+---
+
+### 📊 **Compliance Checklist**
+
+#### RPG Standards (MANDATORY)
+- [ ] 100% free-format RPG (no C-spec, D-spec, F-spec fixed format)
+- [ ] MAIN or NOMAIN specified on CTL-OPT
+- [ ] EXPORT keyword on all procedures in NOMAIN programs
+- [ ] MONITOR/ON-ERROR/ENDMON for exception handling (no EXSR/BEGSR)
+- [ ] Modern BIFs used (%TRIM, %SCAN, %SUBST, %REPLACE, %CHAR, %DEC)
+- [ ] Named indicators only (no numbered indicators like *IN01)
+- [ ] QUALIFIED data structures
+- [ ] CONST keyword on input parameters
+- [ ] LIKEDS, LIKE, EXTNAME used appropriately
+- [ ] Proper declaration order (DCL-PR, DCL-PI, DCL-C, DCL-DS, DCL-S)
+
+#### SQL Standards (MANDATORY)
+- [ ] SQLCODE/SQLSTATE checked immediately after every SQL statement
+- [ ] No WHENEVER clause (strictly prohibited)
+- [ ] Set-based operations preferred over row-by-row cursors
+- [ ] Cursors properly declared, opened, fetched, and closed
+- [ ] Explicit COMMIT or ROLLBACK on all code paths
+- [ ] No SELECT * (specific columns listed)
+- [ ] Prepared statements for dynamic SQL
+- [ ] SQL isolated into procedures (one procedure per SQL action)
+- [ ] Cursor names prefixed with program name
+- [ ] Handles NOT FOUND (SQLCODE 100) explicitly
+
+#### IBM i Platform (MANDATORY)
+- [ ] No hardcoded library names (use *LIBL or qualified references)
+- [ ] Proper authority validation before operations
+- [ ] Commitment control used for multi-file transactions
+- [ ] Timezone-adjusted timestamps (TO0P09FN() function)
+- [ ] Resource cleanup in all code paths (including errors)
+- [ ] Appropriate activation group settings (DFTACTGRP(*NO))
+- [ ] File overrides scoped and cleaned up
+- [ ] Message queue handling for errors
+- [ ] No assumptions about job type (interactive vs batch)
+
+#### Documentation (MANDATORY)
+- [ ] Comprehensive header comments (program purpose, author, date)
+- [ ] Parameters documented in header
+- [ ] Dependencies listed in header
+- [ ] Change log with PIF numbers
+- [ ] Modification markers in columns 1-5 for all changes
+- [ ] Procedure documentation (DCL-PROC comments)
+- [ ] Complex logic explained with inline comments
+- [ ] Comments explain "why" not "what"
+
+#### Security & Logging (MANDATORY)
+- [ ] No hardcoded credentials or sensitive data
+- [ ] Input validation for all user-provided data
+- [ ] Logging to UTSP_LOG or approved logging utility
+- [ ] No PHI or sensitive data in logs
+- [ ] Appropriate log levels (INFO, WARN, ERROR, FATAL)
+- [ ] Security-relevant events logged
+- [ ] Error messages don't expose system internals
+
+#### Performance (RECOMMENDED)
+- [ ] Batch processing where appropriate (not one-by-one)
+- [ ] Efficient SQL (appropriate indexes considered)
+- [ ] Minimal data transfer (only needed columns)
+- [ ] Proper commit frequency (every 1000 records)
+- [ ] Avoid unnecessary record locking
+- [ ] No SELECT * in production code
+
+#### Project-Specific (If Applicable)
+**Price Transparency Phase II:**
+- [ ] PATNO + CYCLE join used (both fields required)
+- [ ] Primary, Secondary, Tertiary CPT fields checked
+- [ ] Modifier column included in PT_MRF operations
+- [ ] Discrete (non-interpolated) percentile calculation
+- [ ] processed_date used for filtering (not service_date)
+- [ ] Denials and zero payments excluded
+- [ ] Non-destructive updates (no Phase I modifications)
+- [ ] Minimum payment count threshold enforced
+- [ ] Formula-specific program structure followed
+
+---
+
+### 📊 **Standards Compliance Score**: X%
+
+**Calculation Method**:
+- Start at 100%
+- Critical Issues: -10 points each
+- Major Issues: -5 points each  
+- Minor Issues: -2 points each
+- Minimum score: 0%
+
+**Score Breakdown**:
+- Critical Issues Found: X × -10 = -XX points
+- Major Issues Found: X × -5 = -XX points
+- Minor Issues Found: X × -2 = -XX points
+- **Final Score**: XX%
+
+**Rating Scale**:
+- **95-100%**: Excellent - Production ready, minor polish only
+- **85-94%**: Good - Minor fixes needed before production
+- **75-84%**: Acceptable - Address major issues, then promote
+- **65-74%**: Poor - Significant rework required
+- **Below 65%**: Unacceptable - Major standards violations, do not promote
+
+---
+
+### 📝 **Executive Summary**
+
+[2-3 paragraph assessment covering:]
+
+**Overall Assessment**: [Brief statement of code quality]
+
+**Critical Concerns**: [Most important issues that must be addressed]
+
+**Strengths**: [Positive aspects worth noting]
+
+**Recommended Actions**: [Next steps for developer]
+
+**Promotion Recommendation**: [Ready/Not Ready for production with reasoning]
+
+---
+
+### 🎯 **Priority Action Items**
+
+1. **[CRITICAL]** [Most critical fix - security, data corruption, system failure risk]
+2. **[HIGH]** [Second priority - major standards violation]
+3. **[MEDIUM]** [Third priority - maintainability or consistency issue]
+4. **[LOW]** [Fourth priority - style or documentation improvement]
+
+---
+
+### 📚 **Standards References**
+
+- **Core Standards**: `.bob/rules/my standards.md`
+- **Enhanced Examples**: `.bob/rules/my-standards-enhanced.md`
+- **IBM i Guidelines**: `.bob/rules/rules.md`
+- **Project Rules**: `.bob/rules/price-transparency-dev-rules.md` (if applicable)
+
+---
+
+### 💡 **Review Tips**
+
+**For AI Assistants:**
+1. Read all referenced standards documents before reviewing
+2. Check every line against the compliance checklist
+3. Provide specific line numbers for all findings
+4. Include working code examples for all recommendations
+5. Explain the "why" behind each violation
+6. Consider the business context and impact
+
+**For Human Reviewers:**
+1. Use this as a checklist, not a script
+2. Focus on critical and major issues first
+3. Consider the developer's experience level
+4. Provide constructive, actionable feedback
+5. Highlight what was done well
+6. Suggest learning resources for patterns
+
+---
+
+### 🔄 **Review Workflow**
+
+1. **Initial Scan**: Check file structure, headers, overall organization
+2. **Standards Check**: Go through compliance checklist systematically
+3. **Deep Dive**: Examine complex logic, error handling, SQL usage
+4. **Security Review**: Check for vulnerabilities, data exposure
+5. **Performance Review**: Look for optimization opportunities
+6. **Documentation Review**: Verify completeness and clarity
+7. **Score Calculation**: Tally violations and compute score
+8. **Summary**: Write executive summary and action items
+9. **Feedback**: Deliver review with specific, actionable recommendations
+
+---
+
+## Example Review Output
+
+### 📄 **File Information**
+- **Filename**: PA5P06A.rpgle
+- **Type**: Program (MAIN)
+- **Module**: PA (Patient Administration)
+- **Purpose**: Calculate percentiles for CPT/HCPCS billing codes
+- **Author**: Development Team
+- **Last Modified**: 2026-01-15
+
+### ✅ **Compliant Areas**
+- ✅ Uses 100% free-format RPG throughout
+- ✅ Proper MONITOR/ON-ERROR blocks in all procedures
+- ✅ SQLCODE checked after every SQL statement
+- ✅ Comprehensive header documentation with all required sections
+- ✅ Named indicators used consistently
+- ✅ Modern BIFs used (%TRIM, %SCAN, %SUBST)
+- ✅ Logging to UTSP_LOG at appropriate points
+
+### ⚠️ **Standards Violations**
+
+#### **🔴 Critical Issues**
+
+**1. Missing CYCLE in Join (Line 145)**
+- Joins table1 and billing using only id
+- Must include CYCLE field per PT standards
+- Risk: Incorrect payment matching across billing cycles
+
+**2. Only Checking Primary CPT Field (Line 167)**
+- Only checks CPTCDA field
+- Must check CPTCD2A and CPTCD3A as well
+- Risk: Missing valid payment matches
+
+#### **🟡 Major Issues**
+
+**1. Missing Modifier Column (Line 203)**
+- table update doesn't include modifier column
+- Required per Phase II schema changes
+- Impact: Data integrity issues
+
+**2. Interpolated Percentile Calculation (Line 234)**
+- Uses average of two values for percentiles
+- Must use discrete (non-interpolated) method
+- Impact: Incorrect CMS compliance
+
+### 🔍 **Detailed Findings**
+
+#### Finding 1: Missing CYCLE in Join
+**Severity**: 🔴 Critical  
+**Location**: Line 145  
+**Issue**: Join between table1 and table2 missing id field  
+**Standard Violated**: Rule #1 - ID + CYCLE Join  
+**Impact**: Will match payments to wrong billing cycles, producing incorrect percentiles
+
+**Current Code**:
+```rpg
+// filepath: enterprise-rpg/PABASE/qrpglesrc/PA5P06A.rpgle
+// Line 145
+EXEC SQL 
+  SELECT e.allowed_amount
+  FROM amounts e
+  INNER JOIN Charges a ON e.id = a.ID
+  WHERE a.code = :billingCode;
+```
+
+**Recommended Fix**:
+```rpg
+// filepath: enterprise-rpg/PABASE/qrpglesrc/PA5P06A.rpgle
+// Line 145
+EXEC SQL 
+  SELECT e.allowed_amount
+  FROM amounts e
+  INNER JOIN charges a 
+    ON e.id = a.id
+    AND e.cycle = a.cycle  -- REQUIRED: Match billing cycle
+  WHERE a.code = :billingCode;
+```
+
+**Explanation**: CYCLE is required because new claim numbers are generated per billing cycle. Without it, payments from different cycles will be incorrectly matched.
+
+---
+
+### 📊 **Standards Compliance Score**: 72%
+
+**Score Breakdown**:
+- Critical Issues Found: 2 × -10 = -20 points
+- Major Issues Found: 2 × -5 = -10 points
+- Minor Issues Found: 4 × -2 = -8 points
+- **Final Score**: 72%
+
+**Rating**: Acceptable - Address major issues before production
+
+---
+
+### 📝 **Executive Summary**
+
+**Overall Assessment**: The code demonstrates good understanding of modern RPG practices with proper free-format syntax, exception handling, and logging. However, critical PT requirements are not fully implemented.
+
+**Critical Concerns**: The missing CYCLE field in joins and incomplete CPT field checking will produce incorrect payment matching and percentile calculations. These must be fixed before production deployment as they directly impact CMS compliance.
+
+**Strengths**: Excellent code structure, comprehensive error handling, proper use of modern BIFs, and good documentation. The logging implementation is thorough and follows standards.
+
+**Recommended Actions**: Fix the two critical issues immediately, then address the major issues regarding modifier column and percentile calculation method. The minor documentation improvements can be addressed in a follow-up.
+
+**Promotion Recommendation**: Not Ready - Fix critical issues first, then re-review.
+
+---
+
+### 🎯 **Priority Action Items**
+
+1. **[CRITICAL]** Add CYCLE field to all EREDSVH/ACCUMCHG joins (Lines 145, 178, 201)
+2. **[CRITICAL]** Check all three CPT fields (CPTCDA, CPTCD2A, CPTCD3A) in WHERE clauses
+3. **[HIGH]** Include modifier column in PT_MRF UPDATE statement (Line 203)
+4. **[HIGH]** Replace interpolated percentile calculation with discrete method (Line 234)
+5. **[MEDIUM]** Add PIF number to modification markers (Lines 12, 45, 89)
+6. **[LOW]** Expand inline comments for complex percentile logic (Lines 220-240)
+
+---
+
+## End of Template
