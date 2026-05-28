@@ -26,6 +26,8 @@ Every direct table dependency increases operational fragility.
 
 Modernization becomes harder because every schema change becomes an organizational event.
 
+Teams eventually become afraid to change core structures because nobody fully understands the blast radius.
+
 ---
 
 ## The Problem
@@ -48,26 +50,48 @@ It breaks down when organizations need:
 - external vendors
 - operational agility
 - faster release cycles
+- parallel development teams
+
+The technical problem is rarely RPG itself.
+
+The problem is uncontrolled coupling between storage design and application behavior.
 
 ---
 
 ## The Operational Reality
 
-The real issue is not RPG.
+Most modernization discussions focus heavily on language modernization.
 
-The issue is uncontrolled coupling.
+Free-form RPG matters.
 
-Teams attempting modernization often discover:
+SQL matters.
 
-- hundreds of hidden dependencies
+Modern tooling matters.
+
+But operationally, the largest risks usually appear somewhere else:
+
+- hidden dependencies
 - duplicated business rules
-- fragile conversions
 - release coordination complexity
-- operational risk during deployment
+- conversion runtime failures
+- deployment uncertainty
+- integration fragility
 
-The result is fear-driven architecture.
+Organizations often discover that changing a single field requires coordination across:
 
-Changes slow down because nobody fully understands the blast radius.
+- RPG programs
+- reports
+- interfaces
+- stored procedures
+- downstream vendors
+- conversion jobs
+- operational support teams
+
+That is not a language problem.
+
+That is an architecture problem.
+
+Fear-driven architecture emerges when teams stop trusting their ability to safely change systems.
 
 ---
 
@@ -87,33 +111,86 @@ This creates architectural separation.
 
 Applications stop depending directly on storage design.
 
+The goal is not abstraction for its own sake.
+
+The goal is safer change.
+
 ---
 
-## Implementation Considerations
+## IBM i Specific Implementation Strategy
 
-### Views
+### Views as Stability Layers
 
-Views provide abstraction and compatibility.
+Views allow IBM i teams to modernize incrementally.
 
-They allow modernization teams to evolve physical storage without forcing immediate application rewrites.
+Existing applications can continue functioning while modernization work progresses behind controlled interfaces.
 
-### Stored Procedures
+This reduces organizational disruption and release risk.
 
-Stored procedures centralize operational behavior.
+### Stored Procedures as Operational APIs
 
-This reduces duplicated logic and improves governance.
+Stored procedures create centralized operational behavior.
 
-### Service Programs
+Instead of duplicating update logic across applications, organizations can standardize:
 
-Business logic belongs in reusable service boundaries.
+- validation
+- transactional behavior
+- auditing
+- integration rules
+- security boundaries
 
-Not duplicated across batch jobs, screens, APIs, and reports.
+This becomes increasingly important as APIs and external integrations expand.
 
-### Operational Discipline
+### Service Programs for Business Logic
 
-Architecture is only successful if deployment and release management are considered early.
+Business logic should not live independently in:
 
-Modernization without operational governance becomes technical debt with better marketing.
+- interactive programs
+- batch jobs
+- APIs
+- reports
+- conversion utilities
+
+Service programs create reusable business boundaries.
+
+That improves:
+
+- consistency
+- testing
+- maintainability
+- onboarding
+- modernization safety
+
+### Operational Governance
+
+Modernization is not only a development exercise.
+
+Operational governance matters:
+
+- release management
+- deployment sequencing
+- conversion runtime analysis
+- rollback planning
+- dependency tracking
+- observability
+
+Modernization without operational discipline becomes technical debt with better marketing.
+
+---
+
+## The Leadership Layer
+
+The most successful modernization initiatives usually share several characteristics:
+
+- architectural standards
+- operational discipline
+- leadership alignment
+- controlled interfaces
+- realistic migration planning
+
+The least successful initiatives usually attempt massive rewrites without reducing coupling first.
+
+Enterprise modernization succeeds when organizations improve their ability to change systems safely.
 
 ---
 
@@ -121,8 +198,10 @@ Modernization without operational governance becomes technical debt with better 
 
 IBM i modernization is not about abandoning RPG.
 
-It is about creating systems that are easier to change safely.
+It is about building systems that are easier to change safely.
 
 The organizations succeeding with modernization are usually not the ones rewriting everything.
 
-They are the ones reducing coupling, improving interfaces, and building operationally stable architecture.
+They are the ones reducing coupling, improving interfaces, strengthening operational discipline, and building stable architectural boundaries.
+
+That is the real modernization advantage.
