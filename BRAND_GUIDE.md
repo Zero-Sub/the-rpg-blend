@@ -2,7 +2,11 @@
 
 ## Positioning
 
-The RPG Blend is an enterprise IBM i modernization and engineering leadership publication focused on practical modernization, RPG and SQL architecture, AI adoption, operational discipline, and leadership inside long-lived enterprise systems.
+The RPG Blend is an enterprise modernization and engineering leadership publication rooted in IBM i, RPG, SQL architecture, AI adoption, operational discipline, and long-lived system stewardship.
+
+The publication exists to help technical leaders, architects, senior developers, and modernization teams think more clearly about architecture, delivery discipline, AI adoption, and operational leadership inside complex enterprise systems.
+
+IBM i is the credibility base. Enterprise modernization leadership is the broader category.
 
 ## Brand Characteristics
 
@@ -15,6 +19,7 @@ The publication should feel:
 - Editorial
 - Enterprise-ready
 - Trustworthy
+- Operationally realistic
 - Modern without feeling trendy
 
 The publication should not feel:
@@ -26,19 +31,21 @@ The publication should not feel:
 - Cartoonish
 - Meme culture
 - Generic AI hype
+- Vendor marketing
+- Motivation without operational substance
 
 ## Content Pillars
 
-- IBM i modernization
-- RPG architecture
-- SQL engineering
-- Service programs
-- Operational modernization
-- AI adoption inside enterprise development
-- Engineering leadership
-- Team effectiveness
+- Enterprise modernization leadership
+- IBM i modernization and architecture
+- SQL-first engineering
+- Service boundaries and operational stability
+- AI adoption in enterprise development
+- Architecture governance
+- Technical debt as operational risk
+- Engineering leadership under pressure
 - Delivery discipline
-- Technical debt reduction
+- Long-lived system stewardship
 
 ## Voice
 
@@ -50,6 +57,8 @@ The publication should not feel:
 - Short paragraphs
 - Strong structure
 - Real operational examples
+- Architecture and leadership consequences before tool discussion
+- Practical modernization over abstract transformation language
 
 ## Visual Identity
 
@@ -66,4 +75,6 @@ Visual themes:
 - Architectural
 - Warm enterprise aesthetic
 - Coffee and engineering blend
-- IBM i modernization imagery
+- Operational modernization imagery
+- Executive engineering briefing style
+- Restrained, publication-quality visuals
