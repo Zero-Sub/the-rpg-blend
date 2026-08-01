@@ -34,6 +34,18 @@ Each lesson follows the Academy lesson standard and includes concepts, architect
 | 300 | IBM i Modernization | Modernize legacy applications incrementally and responsibly |
 | 400 | Technical Leadership | Lead standards, architecture, mentoring, and modernization strategy |
 
+## Academy Operating Standards
+
+Every module is governed by these standards:
+
+- [Lesson Standard](standards/LESSON_STANDARD.md)
+- [Lab Standard](standards/LAB_STANDARD.md)
+- [Assessment Standard](standards/ASSESSMENT_STANDARD.md)
+- [Code Standard](standards/CODE_STANDARD.md)
+- [Source Validation Standard](standards/SOURCE_VALIDATION_STANDARD.md)
+
+These files define the required structure, validation gates, safety expectations, source authority, and definition of done for Academy content.
+
 ## Repository Map
 
 ```text
@@ -42,6 +54,11 @@ academy/
 │   ├── ACADEMY_BLUEPRINT.md
 │   └── SOURCE_TO_CURRICULUM_MAP.md
 ├── standards/
+│   ├── LESSON_STANDARD.md
+│   ├── LAB_STANDARD.md
+│   ├── ASSESSMENT_STANDARD.md
+│   ├── CODE_STANDARD.md
+│   └── SOURCE_VALIDATION_STANDARD.md
 ├── curriculum/
 │   ├── level-000/
 │   ├── level-100/
@@ -58,6 +75,8 @@ academy/
 ## Current Milestone
 
 The first release is **Level 000, Module 0: Getting Started with RPG (and Coffee)**. It will serve as the pilot for the lesson, lab, workbook, assessment, and publishing model.
+
+The immediate next step is to evaluate Module 0 against all five operating standards, close its gaps, validate its code and setup instructions, and prepare the complete student and instructor package.
 
 ## Source Guidance
 
