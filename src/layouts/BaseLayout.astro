@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+const {
+  title = 'The RPG Blend',
+  description = 'Practical IBM i modernization, RPG engineering, AI adoption, and technical leadership.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/the-rpg-blend/">The RPG <span>Blend</span></a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#articles">Articles</a>
+          <a href="#academy">Academy</a>
+          <a href="#press">Press</a>
+          <a href="#about">About</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <div class="container">
+        <strong>The RPG Blend Press</strong>
+        <p>Real Code. Real Coffee. No Nonsense.</p>
+        <p>© {new Date().getFullYear()} George Van Eaton. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
