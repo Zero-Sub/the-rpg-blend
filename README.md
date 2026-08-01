@@ -10,6 +10,17 @@ This repository serves as the source of truth for The RPG Blend publication and 
 
 ---
 
+## Featured Work
+
+- [`/redbooks/README.md`](redbooks/README.md) — George VanEaton's IBM Redbooks contribution, focus areas, and future collaboration interests
+- [`Modernization Is Not a Rewrite`](articles/ibmi-modernization/modernization-is-not-a-rewrite.md) — Cornerstone article defining disciplined IBM i modernization
+- [`IBM i Modernization Readiness Checklist`](frameworks/ibmi-modernization-readiness-checklist.md) — Practical assessment across architecture, RPG, SQL, testing, AI, governance, and workforce capability
+- [`IBM i Modernization Discipline Framework`](frameworks/ibmi-modernization-discipline-framework.md) — Core modernization framework
+
+> George VanEaton is a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications* (MD260020). The work-in-progress designation will remain until IBM formally completes the publication.
+
+---
+
 ## The RPG Blend Academy
 
 The Academy is a five-level learning platform designed for associate RPG developers, developers transitioning from other languages, experienced RPG developers modernizing their skills, and technical mentors.
@@ -45,6 +56,7 @@ Start here:
 - `/articles` → Long-form articles and cornerstone essays
 - `/templates` → Reusable article, architecture, and leadership templates
 - `/frameworks` → Modernization, leadership, and architecture frameworks
+- `/redbooks` → IBM Redbooks contribution record and related collaboration positioning
 - `/distribution` → LinkedIn, Substack, and publishing support assets
 - `/assets` → Logos, diagrams, visuals, and publication media
 - `BRAND_GUIDE.md` → Brand positioning, voice, and visual identity
