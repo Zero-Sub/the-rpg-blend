@@ -6,6 +6,10 @@ The RPG Blend Academy is a structured learning platform for IBM i and RPG develo
 
 Prepare developers to understand, support, develop, and modernize real IBM i business applications using RPG, Db2 for i SQL, disciplined engineering practices, and responsible AI assistance.
 
+## Founder and Lead Instructor
+
+**George Van Eaton** is an IBM i engineering leader with more than 30 years of experience in RPG, Db2 for i, SQL, software architecture, modernization, and production support. He is the author of *The RPG Blend* and a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*.
+
 ## Primary Audiences
 
 - Associate RPG developers
@@ -35,6 +39,8 @@ Each lesson follows the Academy lesson standard and includes concepts, architect
 ```text
 academy/
 ├── blueprint/
+│   ├── ACADEMY_BLUEPRINT.md
+│   └── SOURCE_TO_CURRICULUM_MAP.md
 ├── standards/
 ├── curriculum/
 │   ├── level-000/
@@ -55,4 +61,8 @@ The first release is **Level 000, Module 0: Getting Started with RPG (and Coffee
 
 ## Source Guidance
 
-IBM manuals, Redbooks, and COMMON Boot Camp materials are research and verification sources. Their copyrighted content should not be copied into this repository unless redistribution rights are clear. Academy explanations and examples must be original, technically reviewed, and validated against current IBM i documentation.
+The [Source-to-Curriculum Map](blueprint/SOURCE_TO_CURRICULUM_MAP.md) defines the Academy's reference hierarchy, source ownership, lesson alignment, and revalidation rules.
+
+IBM manuals, Redbooks, and COMMON Boot Camp materials are research and verification sources. Their copyrighted content should not be copied into this repository unless redistribution rights are clear. Academy explanations and examples must be original, technically reviewed, compile-tested where applicable, and validated against current IBM i documentation.
+
+Several available IBM manuals are IBM i 7.1-era references. They remain valuable for stable language and database concepts, but current IBM documentation governs release-sensitive tooling, commands, syntax, support, and security guidance.
