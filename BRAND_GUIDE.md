@@ -1,60 +1,123 @@
-# The RPG Blend Brand Guide
+# The RPG Blend™ Brand Guide
+
+## Official Brand Identity
+
+**Master brand:** The RPG Blend™  
+**Descriptor:** IBM i engineering, modernization, and education
+
+The descriptor explains the scope of the brand. It is not part of the official name and should not replace **The RPG Blend™** in legal, editorial, or brand references.
+
+Approved primary lockup:
+
+```text
+The RPG Blend™
+IBM i engineering, modernization, and education
+```
+
+## Brand Architecture
+
+### The RPG Blend™
+
+The master brand and public identity for George VanEaton's body of work in IBM i engineering, modernization, architecture, leadership, publishing, and developer education.
+
+### The RPG Blend Publishing
+
+The publishing imprint for books, field guides, frameworks, reports, workbooks, and other formal publications.
+
+Approved imprint line:
+
+```text
+The RPG Blend Publishing
+An imprint of The RPG Blend
+```
+
+### The RPG Blend Academy
+
+The education division for structured IBM i, RPG, SQL, modernization, architecture, AI-assisted development, and engineering-leadership learning.
+
+### The RPG Blend Studio
+
+The internal content workspace used to plan, draft, organize, and orchestrate RPG Blend work. The Studio is not positioned as a separate public-facing company or brand.
 
 ## Positioning
 
-The RPG Blend is an enterprise modernization and engineering leadership publication rooted in IBM i, RPG, SQL architecture, AI adoption, operational discipline, and long-lived system stewardship.
+The RPG Blend is an IBM i engineering, modernization, and education brand rooted in RPG, SQL architecture, AI adoption, operational discipline, engineering leadership, and long-lived system stewardship.
 
-The publication exists to help technical leaders, architects, senior developers, and modernization teams think more clearly about architecture, delivery discipline, AI adoption, and operational leadership inside complex enterprise systems.
+It exists to help technical leaders, architects, developers, modernization teams, and learners improve complex enterprise systems without discarding the knowledge, reliability, and business value already embedded in them.
 
-IBM i is the credibility base. Enterprise modernization leadership is the broader category.
+IBM i is the credibility base. Responsible enterprise modernization and technical education are the broader categories.
+
+## Name Usage
+
+Use **The RPG Blend™** on the website, primary logo lockup, social profiles, major marketing materials, and first prominent reference in formal publications.
+
+Use **The RPG Blend** in normal body copy after the first prominent reference.
+
+The descriptor may appear on:
+
+- Website headers and footers
+- Logo lockups
+- Social profiles
+- Legal and registration materials
+- Book and guide covers
+- Marketing collateral
+- Speaker and author materials
+
+Do not treat the descriptor as part of the official name.
 
 ## Brand Characteristics
 
-The publication should feel:
+The brand should feel:
 
 - Experienced
 - Calm
 - Strategic
 - Technical
+- Educational
 - Editorial
 - Enterprise-ready
 - Trustworthy
 - Operationally realistic
 - Modern without feeling trendy
 
-The publication should not feel:
+The brand should not feel:
 
-- Playful coffee shop branding
+- Like a coffee company
+- Playful coffee-shop branding
 - Retro gaming
 - Cyberpunk
 - Startup neon
 - Cartoonish
-- Meme culture
+- Meme-driven
 - Generic AI hype
 - Vendor marketing
 - Motivation without operational substance
 
+Coffee language may remain as a restrained editorial motif, but it must never obscure the IBM i engineering, modernization, and education focus.
+
 ## Content Pillars
 
-- Enterprise modernization leadership
-- IBM i modernization and architecture
+- IBM i engineering and modernization
+- RPG architecture and craftsmanship
 - SQL-first engineering
 - Service boundaries and operational stability
-- AI adoption in enterprise development
+- AI-assisted enterprise development
 - Architecture governance
 - Technical debt as operational risk
 - Engineering leadership under pressure
 - Delivery discipline
 - Long-lived system stewardship
+- Structured developer education
 
 ## Voice
 
-- First-person experience driven
+- Experience-driven
 - Opinionated but practical
 - Executive-level clarity
+- Technically credible
+- Educational without being academic
 - No fluff
 - No hype
-- Short paragraphs
 - Strong structure
 - Real operational examples
 - Architecture and leadership consequences before tool discussion
@@ -74,7 +137,9 @@ Visual themes:
 - Editorial
 - Architectural
 - Warm enterprise aesthetic
-- Coffee and engineering blend
-- Operational modernization imagery
+- IBM i engineering and modernization imagery
+- Operational modernization
 - Executive engineering briefing style
 - Restrained, publication-quality visuals
+
+Coffee imagery should be secondary and symbolic rather than the dominant visual identity.
