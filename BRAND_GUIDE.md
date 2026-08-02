@@ -5,7 +5,7 @@
 **Master brand:** The RPG Blend™  
 **Descriptor:** IBM i engineering, modernization, and education
 
-The descriptor explains the scope of the brand. It is not part of the official name and should not replace **The RPG Blend™** in legal, editorial, or brand references.
+The descriptor explains the scope of the brand. It is not part of the official name.
 
 Approved primary lockup:
 
@@ -18,56 +18,68 @@ IBM i engineering, modernization, and education
 
 ### The RPG Blend™
 
-The master brand and public identity for George VanEaton's body of work in IBM i engineering, modernization, architecture, leadership, publishing, and developer education.
+The master brand and public identity for George VanEaton's work in IBM i engineering, modernization, architecture, AI-assisted development, technical leadership, publishing, and education.
 
 ### The RPG Blend Publishing
 
-The publishing division of The RPG Blend. It manages books, field guides, frameworks, reports, workbooks, editing, production, and distribution.
+The publishing division for books, technical guides, workbooks, reference materials, editing, production, and distribution.
 
-### The RPG Blend Press
-
-The book imprint used on books and formal publications produced by The RPG Blend Publishing.
-
-Approved copyright-page language:
+Approved book usage:
 
 ```text
-Published by The RPG Blend Press
-An imprint of The RPG Blend Publishing
+Published by The RPG Blend Publishing
+A division of The RPG Blend™
 ```
-
-Use **The RPG Blend Press** for book covers, title pages, copyright pages, colophons, ISBN and catalog metadata, and other places where a traditional publishing imprint is appropriate.
-
-Do not use The RPG Blend Press as the name of the broader publishing operation.
 
 ### The RPG Blend Academy
 
-The education division for structured IBM i, RPG, SQL, modernization, architecture, AI-assisted development, and engineering-leadership learning.
+The education division for courses, workshops, learning paths, technical demonstrations, and professional development.
+
+Always use the complete name **The RPG Blend Academy**.
 
 ### The RPG Blend Studio
 
-The internal content workspace used to plan, draft, organize, and orchestrate RPG Blend work. The Studio is not positioned as a separate public-facing company or brand.
+The internal writing, research, planning, and production workspace behind the brand. It is not positioned as a separate public company.
 
 ## Positioning
 
-The RPG Blend is an IBM i engineering, modernization, and education brand rooted in RPG, SQL architecture, AI adoption, operational discipline, engineering leadership, and long-lived system stewardship.
+The RPG Blend™ is an IBM i engineering, modernization, and education brand created by George VanEaton.
 
-It exists to help technical leaders, architects, developers, modernization teams, and learners improve complex enterprise systems without discarding the knowledge, reliability, and business value already embedded in them.
+It provides practical guidance for developers, architects, technical leaders, and organizations responsible for maintaining and modernizing long-lived IBM i applications.
 
-IBM i is the credibility base. Responsible enterprise modernization and technical education are the broader categories.
+The focus is responsible modernization: improving architecture, development practices, tooling, maintainability, and team capability while preserving the business knowledge, reliability, and operational value embedded in existing systems.
 
-## Name Usage
+## Required Name Usage
 
-Use **The RPG Blend™** on the website, primary logo lockup, social profiles, major marketing materials, and first prominent reference in formal publications.
+Always use:
 
-Use **The RPG Blend** in normal body copy after the first prominent reference.
+- The RPG Blend™
+- The RPG Blend Publishing
+- The RPG Blend Academy
+- The RPG Blend Studio
+- IBM i engineering, modernization, and education
 
-Use **The RPG Blend Publishing** when referring to the division responsible for publishing operations.
+Do not use:
 
-Use **The RPG Blend Press** only as the imprint associated with books and formal publications.
+- RPG Brand Publishing
+- RPG Brand Press
+- The RPG Academy
+- RPG Academy
+- RPG Blend Press
+- The RPG Blend Press
+- The RPG Brand
 
-Avoid **RPG Brand Press** and **RPG Brand Publishing**. Those names weaken the connection to The RPG Blend and sound more like marketing-service companies than a technical publishing operation.
+Use ™ with **The RPG Blend** where practical. Do not use ® unless the mark is federally registered.
 
-The descriptor may appear on:
+## Descriptor Usage
+
+The descriptor is:
+
+```text
+IBM i engineering, modernization, and education
+```
+
+It may appear beneath or beside the brand name when context is needed, including on:
 
 - Website headers and footers
 - Logo lockups
@@ -77,51 +89,67 @@ The descriptor may appear on:
 - Marketing collateral
 - Speaker and author materials
 
-Do not treat the descriptor as part of the official name.
+It must not be treated as part of the official brand name.
+
+## Standard Public Description
+
+The RPG Blend™ is an IBM i engineering, modernization, and education brand focused on practical software development, responsible modernization, architecture, AI-assisted engineering, and technical leadership.
+
+The brand includes The RPG Blend Publishing, The RPG Blend Academy, and The RPG Blend Studio.
+
+## Standard Author Identification
+
+```text
+George VanEaton
+IBM i Engineering Leader | Creator of The RPG Blend™ | IBM Redbooks Contributing Author
+```
+
+George is a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*. Retain the work-in-progress designation until IBM formally completes the publication.
+
+## Standard Article Categories
+
+- RPG Development
+- Db2 for i
+- IBM i Modernization
+- Software Architecture
+- AI-Assisted Development
+- Engineering Leadership
+- Developer Education
+- Production Support
+- The Manager’s Guide to Change
+
+## Website Legal Language
+
+```text
+The RPG Blend™ is an independent IBM i engineering, publishing, and education brand. It is not sponsored, endorsed, or published by IBM.
+
+IBM, IBM i, Db2, RPG, and related names may be trademarks of International Business Machines Corporation in the United States, other countries, or both.
+```
+
+## Book Copyright Guidance
+
+Use **The RPG Blend Publishing** as the publisher. Do not use a separate Press imprint.
+
+The copyright page should receive final attorney review before Book 1 is published.
 
 ## Brand Characteristics
 
-The brand should feel:
+The brand should feel experienced, calm, strategic, technical, educational, editorial, enterprise-ready, trustworthy, operationally realistic, and modern without feeling trendy.
 
-- Experienced
-- Calm
-- Strategic
-- Technical
-- Educational
-- Editorial
-- Enterprise-ready
-- Trustworthy
-- Operationally realistic
-- Modern without feeling trendy
-
-The brand should not feel:
-
-- Like a coffee company
-- Playful coffee-shop branding
-- Retro gaming
-- Cyberpunk
-- Startup neon
-- Cartoonish
-- Meme-driven
-- Generic AI hype
-- Vendor marketing
-- Motivation without operational substance
+The brand should not feel like a coffee company, marketing agency, retro-gaming brand, generic AI brand, or vendor campaign.
 
 Coffee language may remain as a restrained editorial motif, but it must never obscure the IBM i engineering, modernization, and education focus.
 
 ## Content Pillars
 
-- IBM i engineering and modernization
-- RPG architecture and craftsmanship
-- SQL-first engineering
-- Service boundaries and operational stability
-- AI-assisted enterprise development
-- Architecture governance
-- Technical debt as operational risk
-- Engineering leadership under pressure
-- Delivery discipline
-- Long-lived system stewardship
-- Structured developer education
+- Modern RPG and Db2 for i
+- IBM i application modernization
+- Software architecture and engineering standards
+- AI-assisted software development
+- Developer onboarding and mentorship
+- Technical leadership and developer growth
+- Production support and operational discipline
+- Responsible modernization of enterprise systems
 
 ## Voice
 
@@ -130,30 +158,7 @@ Coffee language may remain as a restrained editorial motif, but it must never ob
 - Executive-level clarity
 - Technically credible
 - Educational without being academic
-- No fluff
-- No hype
+- No fluff or hype
 - Strong structure
 - Real operational examples
-- Architecture and leadership consequences before tool discussion
 - Practical modernization over abstract transformation language
-
-## Visual Identity
-
-Primary colors:
-
-- Deep Green: #2F7A32
-- RPG Orange: #F28C28
-- Soft Cream: #F5E7C6
-- Black Coffee: #1E1E1E
-
-Visual themes:
-
-- Editorial
-- Architectural
-- Warm enterprise aesthetic
-- IBM i engineering and modernization imagery
-- Operational modernization
-- Executive engineering briefing style
-- Restrained, publication-quality visuals
-
-Coffee imagery should be secondary and symbolic rather than the dominant visual identity.
