@@ -22,14 +22,22 @@ The master brand and public identity for George VanEaton's body of work in IBM i
 
 ### The RPG Blend Publishing
 
-The publishing imprint for books, field guides, frameworks, reports, workbooks, and other formal publications.
+The publishing division of The RPG Blend. It manages books, field guides, frameworks, reports, workbooks, editing, production, and distribution.
 
-Approved imprint line:
+### The RPG Blend Press
+
+The book imprint used on books and formal publications produced by The RPG Blend Publishing.
+
+Approved copyright-page language:
 
 ```text
-The RPG Blend Publishing
-An imprint of The RPG Blend
+Published by The RPG Blend Press
+An imprint of The RPG Blend Publishing
 ```
+
+Use **The RPG Blend Press** for book covers, title pages, copyright pages, colophons, ISBN and catalog metadata, and other places where a traditional publishing imprint is appropriate.
+
+Do not use The RPG Blend Press as the name of the broader publishing operation.
 
 ### The RPG Blend Academy
 
@@ -52,6 +60,12 @@ IBM i is the credibility base. Responsible enterprise modernization and technica
 Use **The RPG Blend™** on the website, primary logo lockup, social profiles, major marketing materials, and first prominent reference in formal publications.
 
 Use **The RPG Blend** in normal body copy after the first prominent reference.
+
+Use **The RPG Blend Publishing** when referring to the division responsible for publishing operations.
+
+Use **The RPG Blend Press** only as the imprint associated with books and formal publications.
+
+Avoid **RPG Brand Press** and **RPG Brand Publishing**. Those names weaken the connection to The RPG Blend and sound more like marketing-service companies than a technical publishing operation.
 
 The descriptor may appear on:
 
