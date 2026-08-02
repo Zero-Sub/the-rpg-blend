@@ -6,7 +6,7 @@ Calm leadership in technical spaces.
 
 The RPG Blend is a professional body of work focused on IBM i modernization, RPG development, SQL architecture, operational discipline, AI adoption, engineering leadership, and structured developer education.
 
-This repository serves as the source of truth for The RPG Blend publication and The RPG Blend Academy.
+This repository is the canonical, version-controlled home for The RPG Blend publication, intellectual property, and The RPG Blend Academy.
 
 ---
 
@@ -69,16 +69,20 @@ Start here:
 
 ---
 
-## Publication Model
+## Operating Model
 
 ```text
-GitHub repo = source of truth
-GitHub Pages = public archive and library
-Substack = email distribution
-LinkedIn = visibility and discussion
+Google Drive = working desk, source documents, research, and collaboration
+The RPG Blend repository = canonical structured content and version history
+The RPG Blend site = public presentation layer
+Substack = long-form publication and email distribution
+LinkedIn = professional reach and discussion
+George OS / RPG Blend Studio = planning, workflow, status, and orchestration
 ```
 
-The goal is to build a durable body of work and a complete educational curriculum, not isolated social media posts.
+Content may begin in Google Drive or the Writer's Desk. Once it becomes an approved Blend asset—an article, framework, Academy lesson, guide, template, code example, brand asset, or website source—it belongs in this repository.
+
+The repository does not hold private leadership notes, employee or candidate information, personal health or family data, credentials, secrets, or George OS operational records.
 
 ---
 
