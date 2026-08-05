@@ -1,46 +1,51 @@
-# The RPG Blend: [Title]
+# [Article Title]
 
-## Today’s Coffee
+[Optional subtitle or one-sentence promise]
 
-[Coffee selection and why it fits the topic]
+## Opening
 
----
-
-## First Sip
-
-[Short narrative opening grounded in real engineering or leadership experience]
-
----
+[Reach the technical, operational, or leadership point quickly. A brief coffee reference or **First Sip** may be used when it genuinely strengthens the opening, but it is not required.]
 
 ## The Problem
 
-[Define the technical or leadership issue clearly]
+[Define the problem, decision, misconception, or risk clearly.]
 
----
+## Why It Matters
 
-## The Operational Reality
+[Explain the business, architectural, operational, developer, or leadership consequences.]
 
-[Discuss business, architecture, operational, or leadership implications]
+## What the System Is Really Doing
 
----
+[Provide the technical explanation, real example, code path, workflow, or evidence needed to understand the issue. Rename this heading to fit the article.]
 
-## The Modernization Path
+## The Practical Path Forward
 
-[Describe the practical modernization or operational strategy]
-
----
+[Describe the recommended strategy, sequence, or decision framework.]
 
 ## Implementation Considerations
 
-- Architecture
-- Delivery
-- Team adoption
-- Risk
-- Operational support
+Address only the considerations that materially affect the recommendation:
+
+- Architecture and data boundaries
+- Delivery and testing
+- Security and governance
+- Team adoption and training
+- Production support
 - Technical debt
+- Cost, risk, and trade-offs
+
+## Limits and Risks
+
+[State what the recommendation does not solve, where judgment is required, and what must be validated.]
+
+## Final Takeaway
+
+[Close with a concise conclusion that advances the argument. **Final Sip** may be used when the coffee motif has already been established.]
 
 ---
 
-## Final Sip
+### About The RPG Blend
 
-[Close with reflective but practical leadership insight]
+The RPG Blend™ provides practical guidance on IBM i engineering, RPG modernization, Db2 for i, software architecture, AI-assisted development, developer education, and technical leadership.
+
+Created by George VanEaton.

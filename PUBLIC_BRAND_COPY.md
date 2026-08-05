@@ -12,9 +12,12 @@ The descriptor is not part of the official name. Use ™ where practical. Do not
 ## Brand Structure
 
 - **Master brand:** The RPG Blend™
-- **Publishing division:** The RPG Blend Publishing
+- **Publishing imprint:** The RPG Blend Publishing — An imprint of The RPG Blend™
 - **Education division:** The RPG Blend Academy
 - **Internal workspace:** The RPG Blend Studio
+- **Current business structure:** Author-publishing and education brand operated by George VanEaton as a sole proprietor
+
+Do not state or imply that The RPG Blend, LLC currently exists.
 
 ---
 
@@ -28,7 +31,7 @@ Manager, Product Development | IBM i Engineering Leader | RPG Modernization | Cr
 
 I am an IBM i engineering leader, software architect, and technical writer with more than 30 years of experience in RPG development, Db2 for i, application modernization, and enterprise production systems.
 
-As Manager, Product Development at MEDHOST, I lead IBM i development teams, guide modernization initiatives, establish engineering standards, support AI adoption, and mentor developers toward clearer, safer, and more maintainable software.
+As Manager, Product Development, I lead IBM i development teams, guide modernization initiatives, establish engineering standards, support AI adoption, and mentor developers toward clearer, safer, and more maintainable software.
 
 I am also the creator of The RPG Blend™, an IBM i engineering, modernization, and education brand focused on practical software development, responsible modernization, architecture, AI-assisted engineering, and technical leadership.
 
@@ -229,11 +232,18 @@ The RPG Blend focuses on responsible modernization: improving architecture, deve
 
 ### The RPG Blend Publishing
 
-The RPG Blend Publishing produces practical books, technical guides, workbooks, and reference materials for IBM i developers, architects, and engineering leaders.
+The RPG Blend Publishing is the publishing imprint for practical books, technical guides, workbooks, and reference materials for IBM i developers, architects, and engineering leaders.
 
 Its publications focus on modern RPG, Db2 for i, software architecture, application modernization, AI-assisted development, production support, and technical leadership.
 
 Every publication is designed to provide practical guidance that can be applied in real enterprise environments.
+
+Approved imprint line:
+
+```text
+The RPG Blend Publishing
+An imprint of The RPG Blend™
+```
 
 ## Academy Page
 
@@ -251,7 +261,7 @@ Always use the complete name **The RPG Blend Academy**.
 
 George VanEaton is an IBM i engineering leader, software architect, and technical writer with more than 30 years of experience in RPG development, Db2 for i, application modernization, and enterprise production systems.
 
-As Manager, Product Development at MEDHOST, he leads IBM i development teams, guides modernization initiatives, establishes engineering standards, supports AI adoption, and mentors developers toward clearer, safer, and more maintainable software.
+He leads IBM i development teams, guides modernization initiatives, establishes engineering standards, supports AI adoption, and mentors developers toward clearer, safer, and more maintainable software.
 
 George is the creator of The RPG Blend™ and a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*.
 
@@ -290,7 +300,7 @@ The RPG Blend Publishing
 
 The RPG Blend Publishing produces practical books, technical guides, and reference materials for IBM i developers, architects, and engineering leaders.
 
-A division of The RPG Blend™  
+An imprint of The RPG Blend™  
 IBM i engineering, modernization, and education
 
 ## Copyright-Page Framework
@@ -302,7 +312,7 @@ All rights reserved.
 No part of this publication may be reproduced, distributed, stored, or transmitted in any form or by any means without prior written permission from the copyright owner, except for brief quotations used in reviews, commentary, or other uses permitted by law.
 
 Published by The RPG Blend Publishing  
-A division of The RPG Blend™
+An imprint of The RPG Blend™
 
 The RPG Blend™ is an IBM i engineering, modernization, and education brand.
 
@@ -336,15 +346,14 @@ The brand includes The RPG Blend Publishing, The RPG Blend Academy, and The RPG 
 
 George VanEaton is an IBM i engineering leader, software architect, and technical writer with more than 30 years of experience in RPG development, Db2 for i, application modernization, and enterprise production systems.
 
-As Manager, Product Development at MEDHOST, he leads IBM i development teams, guides modernization initiatives, establishes engineering standards, supports AI adoption, and mentors developers toward clearer, safer, and more maintainable software.
-
-George’s work focuses on helping teams improve long-lived applications without losing the business knowledge, stability, and operational value embedded within them.
+His work focuses on helping teams improve long-lived applications without losing the business knowledge, stability, and operational value embedded within them.
 
 He is the creator of The RPG Blend™ and a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*.
 
 ## Book Lines
 
 - Back-cover publisher line: **From The RPG Blend Publishing**
+- Imprint line: **The RPG Blend Publishing — An imprint of The RPG Blend™**
 - Back-cover brand line: **The RPG Blend™ — IBM i engineering, modernization, and education**
 - Series line: **A publication of The RPG Blend Publishing**
 - Website callout: **Visit The RPG Blend for articles, technical resources, book updates, and educational materials for IBM i professionals.**
@@ -360,15 +369,18 @@ Always use:
 - The RPG Blend Academy
 - The RPG Blend Studio
 - IBM i engineering, modernization, and education
+- An imprint of The RPG Blend™
 
 Do not use:
 
 - RPG Brand Publishing
 - RPG Brand Press
+- RPG Blend Books
 - The RPG Academy
 - RPG Academy
 - RPG Blend Press
 - The RPG Blend Press
 - The RPG Brand
+- A division of The RPG Blend
 
 The descriptor is not part of the official name. It should appear beneath or beside the name when context is needed.

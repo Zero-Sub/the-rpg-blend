@@ -1,0 +1,10 @@
+config:
+  default: false
+  MD009:
+    br_spaces: 2
+    strict: false
+  MD024:
+    siblings_only: true
+  MD032: true
+  MD040: true
+  MD047: true
