@@ -25,12 +25,28 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
 
-      - name: Lint Markdown
+      - name: Identify changed Markdown files
+        id: markdown-files
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          git diff --name-only "$BASE_SHA" "$GITHUB_SHA" -- '*.md' > /tmp/markdown-files.txt
+          {
+            echo 'files<<EOF'
+            cat /tmp/markdown-files.txt
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Lint changed Markdown
+        if: steps.markdown-files.outputs.files != ''
         uses: DavidAnson/markdownlint-cli2-action@v24.2.0
         with:
           config: .markdownlint-cli2.yaml
-          globs: "**/*.md"
+          globs: ${{ steps.markdown-files.outputs.files }}
 
   internal-links:
     name: Internal link validation
