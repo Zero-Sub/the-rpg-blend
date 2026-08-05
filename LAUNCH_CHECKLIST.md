@@ -24,7 +24,7 @@
 
 - [x] Markdown quality workflow added
 - [x] Internal-link validation added
-- [ ] Quality workflow confirmed passing on `main`
+- [x] Quality workflow confirmed passing on `main`
 - [ ] Required status checks enabled after the workflow is stable
 - [x] Security reporting guidance added
 - [x] Technical-correction issue template added
@@ -37,7 +37,7 @@
 - [x] `SQL Is the New IBM i Interface Layer` drafted
 - [x] `Modernization Fails Long Before the Tech Does` drafted
 - [x] IBM Bob, engineering-risk, refactoring, MVC, prompting, and developer-skills articles organized
-- [ ] Review article backlog and close completed or obsolete issues
+- [x] Review article backlog and close completed or obsolete issues
 - [ ] Establish publication status fields for canonical articles
 - [ ] Document LinkedIn and Substack adaptation workflow
 - [ ] Record final public links after publication
