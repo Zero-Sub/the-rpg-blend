@@ -66,6 +66,7 @@ Start here:
 - `SITE_STRATEGY.md` → Public site and channel strategy
 - `CONTENT_CALENDAR.md` → Initial content cadence
 - `LAUNCH_CHECKLIST.md` → Launch execution checklist
+- `COPYRIGHT_AND_REUSE.md` → Copyright, licensing, reuse, and trademark boundaries
 
 ---
 
@@ -83,6 +84,14 @@ George OS / RPG Blend Studio = planning, workflow, status, and orchestration
 Content may begin in Google Drive or the Writer's Desk. Once it becomes an approved Blend asset—an article, framework, Academy lesson, guide, template, code example, brand asset, or website source—it belongs in this repository.
 
 The repository does not hold private leadership notes, employee or candidate information, personal health or family data, credentials, secrets, or George OS operational records.
+
+---
+
+## Copyright and Reuse
+
+Copyright © 2026 George VanEaton. All rights reserved.
+
+This public repository is not broadly open-source licensed. Unless a file or directory contains a separate explicit license, reuse and redistribution are governed by [`COPYRIGHT_AND_REUSE.md`](COPYRIGHT_AND_REUSE.md).
 
 ---
 
