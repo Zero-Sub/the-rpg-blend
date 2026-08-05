@@ -1,0 +1,63 @@
+name: Markdown quality
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - ".github/workflows/markdown-quality.yml"
+      - ".markdownlint-cli2.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.md"
+      - ".github/workflows/markdown-quality.yml"
+      - ".markdownlint-cli2.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-lint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Identify changed Markdown files
+        id: markdown-files
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          git diff --name-only "$BASE_SHA" "$GITHUB_SHA" -- '*.md' > /tmp/markdown-files.txt
+          {
+            echo 'files<<EOF'
+            cat /tmp/markdown-files.txt
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Lint changed Markdown
+        if: steps.markdown-files.outputs.files != ''
+        uses: DavidAnson/markdownlint-cli2-action@v24.2.0
+        with:
+          config: .markdownlint-cli2.yaml
+          globs: ${{ steps.markdown-files.outputs.files }}
+
+  internal-links:
+    name: Internal link validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Check repository links
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: '--offline --no-progress --root-dir "$(pwd)" "./**/*.md"'
+          fail: true
+          failIfEmpty: false

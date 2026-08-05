@@ -22,14 +22,16 @@ The master brand and public identity for George VanEaton's work in IBM i enginee
 
 ### The RPG Blend Publishing
 
-The publishing division for books, technical guides, workbooks, reference materials, editing, production, and distribution.
+The publishing imprint for books, technical guides, workbooks, reference materials, editing, production, and distribution.
 
-Approved book usage:
+Approved imprint usage:
 
 ```text
 Published by The RPG Blend Publishing
-A division of The RPG Blend™
+An imprint of The RPG Blend™
 ```
+
+Do not describe The RPG Blend Publishing as a separate company or as a separate press.
 
 ### The RPG Blend Academy
 
@@ -40,6 +42,12 @@ Always use the complete name **The RPG Blend Academy**.
 ### The RPG Blend Studio
 
 The internal writing, research, planning, and production workspace behind the brand. It is not positioned as a separate public company.
+
+## Current Business Structure
+
+The RPG Blend currently operates as an author-publishing and education brand under George VanEaton as a sole proprietor.
+
+Do not state or imply that The RPG Blend, LLC currently exists. A future legal entity may be considered when financially and operationally justified.
 
 ## Positioning
 
@@ -58,11 +66,13 @@ Always use:
 - The RPG Blend Academy
 - The RPG Blend Studio
 - IBM i engineering, modernization, and education
+- An imprint of The RPG Blend™
 
 Do not use:
 
 - RPG Brand Publishing
 - RPG Brand Press
+- RPG Blend Books
 - The RPG Academy
 - RPG Academy
 - RPG Blend Press
@@ -128,9 +138,16 @@ IBM, IBM i, Db2, RPG, and related names may be trademarks of International Busin
 
 ## Book Copyright Guidance
 
-Use **The RPG Blend Publishing** as the publisher. Do not use a separate Press imprint.
+Use **The RPG Blend Publishing** as the publishing imprint.
 
-The copyright page should receive final attorney review before Book 1 is published.
+Approved publisher lines:
+
+```text
+Published by The RPG Blend Publishing
+An imprint of The RPG Blend™
+```
+
+Do not use a separate Press name. The copyright page should receive final attorney review before Book 1 is published.
 
 ## Brand Characteristics
 
@@ -162,3 +179,7 @@ Coffee language may remain as a restrained editorial motif, but it must never ob
 - Strong structure
 - Real operational examples
 - Practical modernization over abstract transformation language
+
+## Governance
+
+`BRAND_GUIDE.md` defines identity and naming rules. `PUBLIC_BRAND_COPY.md` contains approved reusable public copy. When the two documents conflict, update both in the same pull request before publishing new material.
