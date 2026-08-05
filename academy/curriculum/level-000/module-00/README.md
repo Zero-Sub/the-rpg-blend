@@ -3,67 +3,87 @@
 - **Level:** 000 — Orientation
 - **Estimated time:** 2–3 hours
 - **Prerequisites:** None
+- **Primary development environment:** Visual Studio Code with Code for IBM i
+- **Supplemental operational tool:** IBM i Access Client Solutions
 - **Student experience:** No prior RPG or IBM i knowledge required
 
-## Module Outcome
+## Module outcome
 
-By the end of Module 0, the student should be able to:
+Students complete a full VS Code-first IBM i development cycle: connect, browse native objects, create or locate source, edit fully free-form RPG, compile with `CRTBNDRPG`, review diagnostics, verify the resulting `*PGM`, and run it.
 
-- Explain what IBM i is and distinguish the operating system from the hardware platform
-- Explain what RPG is and how the language has evolved
-- Describe why IBM i continues to support critical business applications
-- Explain the relationship among AS/400, iSeries, System i, and IBM i
-- Recognize libraries, objects, source, programs, jobs, and database files as foundational IBM i concepts
-- Describe the roles of 5250, RDi, and VS Code in IBM i development
-- Explain the basic edit, compile, run, and debug lifecycle
-- Read a small fully free-form RPG program at a high level
-
-## Lesson Plan
+## Lesson plan
 
 | Lesson | Title | Estimated time |
 |---|---|---:|
-| 0.1 | Welcome to IBM i | 25 minutes |
-| 0.2 | What Is RPG? | 25 minutes |
-| 0.3 | AS/400, iSeries, System i, and IBM i | 20 minutes |
-| 0.4 | Understanding the Development Environment | 35 minutes |
-| 0.5 | Reading Your First RPG Program | 35 minutes |
-| Lab | Trace a Simple Program from Source to Output | 25 minutes |
-| Knowledge check | Module 0 Assessment | 15 minutes |
+| 0.1 | Welcome to The RPG Blend Academy | 10 minutes |
+| 0.2 | What Is IBM i? | 20 minutes |
+| 0.3 | AS/400, iSeries, System i, and IBM i | 15 minutes |
+| 0.4 | What Is RPG? | 20 minutes |
+| 0.5 | Libraries, Objects, Source Files, and Members | 25 minutes |
+| 0.6 | Your Development Tools | 15 minutes |
+| 0.7 | Connecting to IBM i | 20 minutes |
+| 0.8 | The RPG Development Cycle | 20 minutes |
+| 0.9 | Your First RPG Program | 30 minutes |
+| 0.10 | Review and Readiness | 15 minutes |
+| Lab and challenge | Build, diagnose, and extend `HELLO` | 35–45 minutes |
+| Assessment | Ten-question knowledge check | 15 minutes |
 
-## Module Deliverables
+## Source layout
 
 ```text
 module-00/
 ├── README.md
+├── MASTER_COURSE_PACKAGE.md
 ├── lessons/
-│   ├── 00-01-welcome-to-ibm-i.md
-│   ├── 00-02-what-is-rpg.md
-│   ├── 00-03-platform-naming-history.md
-│   ├── 00-04-development-environment.md
-│   └── 00-05-reading-first-rpg-program.md
+│   ├── 00-01-welcome-and-ibm-i.md
+│   ├── 00-04-rpg-and-ibmi-objects.md
+│   ├── 00-06-vscode-and-connection.md
+│   ├── 00-08-development-cycle-and-first-program.md
+│   └── 00-10-review-and-readiness.md
 ├── code/
 │   ├── rpg/
-│   ├── cl/
-│   └── sql/
+│   │   ├── HELLO.rpgle
+│   │   └── HELLO2-starter.rpgle
+│   └── cl/
+│       ├── setup-training-workspace.cl
+│       ├── compile-hello.cl
+│       └── run-hello.cl
 ├── lab/
+│   └── module-00-lab.md
 ├── assessment/
+│   └── module-00-assessment.md
+├── workbook/
+│   └── student-workbook.md
 ├── instructor-notes/
-└── assets/
+│   └── instructor-guide.md
+└── sources/
+    └── source-register.md
 ```
 
-## Pilot Definition of Done
+## Classroom standard
 
-- [ ] All five lessons complete
-- [ ] Technical review complete
-- [ ] Beginner review complete
-- [ ] Code compiled on the documented IBM i release
-- [ ] Lab and solution complete
-- [ ] Knowledge check and answer key complete
-- [ ] Student workbook produced
-- [ ] Instructor notes produced
-- [ ] Publication version prepared
-- [ ] Feedback captured and incorporated
+1. Connect to IBM i from VS Code with Code for IBM i.
+2. Browse libraries, source files, and members in Object Browser.
+3. Edit RPG source in the VS Code editor.
+4. Compile with a Code for IBM i action or the explicit IBM i command.
+5. Review compile diagnostics in the Problems panel and terminal.
+6. Run and verify the program from the IBM i terminal.
 
-## Source Notes
+ACS is not the primary coding environment for this module.
 
-The module may use IBM manuals, IBM Redbooks, and COMMON RPG Boot Camp material as research and verification sources. Academy writing, diagrams, examples, and exercises must be original unless explicit reuse permission is documented.
+## Curriculum status
+
+- [x] Complete lesson sequence added
+- [x] Guided lab added
+- [x] Independent challenge added
+- [x] Student workbook added
+- [x] Assessment and answer key added
+- [x] Instructor guide and rubric added
+- [x] VS Code-first workflow established
+- [x] RPG and IBM i command source added
+- [x] Technical source register added
+- [ ] Compile source on the target IBM i training release
+- [ ] Complete beginner pilot review
+- [ ] Capture sanitized screenshots and final diagrams
+- [ ] Incorporate pilot feedback
+- [ ] Publish generated PDF, slide, and video adaptations
