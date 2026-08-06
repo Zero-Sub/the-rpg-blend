@@ -1,0 +1,4 @@
+/* RPGBA-101 Module 0 run helper. Adjust library before use. */
+PGM
+  CALL PGM(RPGBA101/HELLO)
+ENDPGM
