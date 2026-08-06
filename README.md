@@ -23,17 +23,18 @@ This repository is the canonical, version-controlled home for The RPG Blend publ
 
 ## The RPG Blend Academy
 
-The Academy is a five-level learning platform designed for associate RPG developers, developers transitioning from other languages, experienced RPG developers modernizing their skills, and technical mentors.
+**The RPG Blend Academy is the education division of The RPG Blend.** It prepares new and transitioning developers to contribute safely and effectively to modern IBM i teams through practical, original training built around Visual Studio Code, Code for IBM i, Db2 for i, Git, GitHub workflows, IBM i Access Client Solutions where appropriate, and responsible use of IBM Bob.
 
 Start here:
 
+- [`RPGBA-101 Module 0 Pilot`](academy/releases/rpgba-101-module-0/README.md) — Learner-facing entry point for the first Academy course
 - [`/academy/README.md`](academy/README.md) — Academy mission, levels, and repository map
 - [`/academy/blueprint/ACADEMY_BLUEPRINT.md`](academy/blueprint/ACADEMY_BLUEPRINT.md) — Master blueprint
 - [`/academy/curriculum/CURRICULUM_MAP.md`](academy/curriculum/CURRICULUM_MAP.md) — Five-level learning progression
 - [`/academy/standards/LESSON_TEMPLATE.md`](academy/standards/LESSON_TEMPLATE.md) — Standard lesson structure
 - [`/academy/standards/CODE_STANDARDS.md`](academy/standards/CODE_STANDARDS.md) — RPG, SQL, database, and example standards
 - [`/academy/sample-application/README.md`](academy/sample-application/README.md) — BlendWorks Order Management sample application
-- [`/academy/curriculum/level-000/module-00/README.md`](academy/curriculum/level-000/module-00/README.md) — Module 0 pilot plan
+- [`/academy/curriculum/level-000/module-00/README.md`](academy/curriculum/level-000/module-00/README.md) — Module 0 source and development plan
 
 ---
 
@@ -52,7 +53,7 @@ Start here:
 
 ## Repository Structure
 
-- `/academy` → Curriculum, lessons, labs, assessments, standards, and instructor materials
+- `/academy` → Curriculum, lessons, labs, assessments, standards, instructor materials, and learner releases
 - `/articles` → Long-form articles and cornerstone essays
 - `/templates` → Reusable article, architecture, and leadership templates
 - `/frameworks` → Modernization, leadership, and architecture frameworks
