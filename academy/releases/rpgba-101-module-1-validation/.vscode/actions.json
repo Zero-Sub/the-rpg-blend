@@ -1,7 +1,7 @@
 [
   {
     "name": "RPGBA-101 Validate CRTBNDRPG",
-    "command": "CRTBNDRPG PGM(${buildlib|Build library|&CURLIB}/${objectname|Program object}) SRCSTMF('${sourcePath|Remote source path|&FULLPATH}') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTRLS(*CURRENT) TGTCCSID(*JOB)",
+    "command": "CRTBNDRPG PGM(${buildlib|Build library|&BUILDLIB}/${objectname|Program object}) SRCSTMF('${sourcePath|Source path|&FULLPATH}') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTRLS(*CURRENT) TGTCCSID(*JOB)",
     "environment": "ile",
     "deployFirst": true,
     "extensions": ["RPGLE"]
