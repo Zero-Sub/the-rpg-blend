@@ -2,11 +2,17 @@
 
 This repository supports The RPG Blend Academy Module 1 validation candidate.
 
+## Current validation status
+
+A second full static validation was completed on 2026-08-09. See `validation/static-audit-2026-08-09.md` and `validation/known-findings.md`.
+
+The branch contains corrected validation source for the issues found so far, but **Module 1 is not Final** until the code is compiled and run on PUB400 and all Critical/High findings are resolved.
+
 ## Standard public Academy lab environment
 
 For learners who do not have access to an employer or school IBM i partition, the Academy standard public lab environment is PUB400.
 
-Current PUB400 facts verified August 7, 2026:
+Current PUB400 facts verified for this validation build:
 
 - Host: `pub400.com`
 - IBM i release advertised by PUB400: IBM i 7.5
@@ -46,7 +52,7 @@ See `PUB400_SETUP.md` for the controlled learner setup.
 
 Each learner builds into their own assigned PUB400 library. Do not hard-code a shared Academy build library.
 
-The workspace-scoped Action in `.vscode/actions.json` uses the current Code for IBM i prompted-Action syntax and defaults the build library from `&BUILDLIB` and source path from `&FULLPATH`. The learner must inspect the resolved values before execution.
+The workspace-scoped Action in `.vscode/actions.json` uses Code for IBM i prompted-Action syntax and defaults the build library from `&BUILDLIB` and source path from `&FULLPATH`. The learner must inspect the resolved values before execution.
 
 Suggested validation object names:
 
@@ -59,6 +65,10 @@ Suggested validation object names:
 - `M1L6PROC`
 - `M1CAPST`
 - `M1CAPSOL`
+
+## Required live validation
+
+The live pass must compile and run all nine targets, exercise `*EVENTF` diagnostics, run the eight core capstone cases plus the shipping-boundary supplement, prove object locations, establish where DSPLY output appears in the learner workflow, and leave Git free of unexpected tracked changes.
 
 ## Source authority
 
