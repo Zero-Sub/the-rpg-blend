@@ -21,5 +21,6 @@ dcl-proc CalculateDiscount;
         rate   packed(5 : 4) const;
     end-pi;
 
-    return %dec(amount * rate : 11 : 2);
+    // The Academy business rule for this money example is half-adjust to cents.
+    return %dech(amount * rate : 11 : 2);
 end-proc;
