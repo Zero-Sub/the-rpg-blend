@@ -6,14 +6,14 @@ ctl-opt dftactgrp(*no)
 
 dcl-s customerName varchar(50) inz('Avery Jones');
 dcl-s orderAmount  packed(11 : 2) inz(750.00);
-dcl-s resultMessage varchar(200);
+dcl-s resultMessage varchar(52);
 
 // TODO: validate the amount.
 // TODO: determine discount rate.
 // TODO: calculate discount in a procedure.
 // TODO: classify shipping.
 // TODO: produce three installment messages with a bounded loop.
-// TODO: build and display the final result message.
+// TODO: display the final result as short, independently verifiable fields/messages.
 
 resultMessage = %trim(customerName)
               + ' | order: ' + %char(orderAmount);
