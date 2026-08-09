@@ -3,7 +3,7 @@ ctl-opt dftactgrp(*no) actgrp(*new) option(*srcstmt : *nodebugio);
 
 dcl-s orderAmount packed(11 : 2) inz(500.00);
 dcl-s discountRate packed(5 : 4) inz(0);
-dcl-s statusMessage varchar(80);
+dcl-s statusMessage varchar(52);
 
 if orderAmount <= 0;
     statusMessage = 'Order amount must be greater than zero';
@@ -19,5 +19,8 @@ else;
     discountRate = 0;
 endif;
 
-dsply (%trim(statusMessage) + ' | rate: ' + %char(discountRate));
+// Keep DSPLY messages short and independently verifiable.
+dsply statusMessage;
+dsply ('Rate: ' + %char(discountRate));
+
 *inlr = *on;
