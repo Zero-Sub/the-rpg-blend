@@ -3,101 +3,71 @@
 ## Metadata
 
 - **Estimated time:** 90 minutes
-- **Required sources:** `03_native_lookup.pgm.rpgle` plus Module 3 seed data
+- **Required sources:** `03_native_header_lookup.pgm.rpgle`, `03_native_line_scan.pgm.rpgle`
 - **Validation status:** source reviewed; runtime validation pending
 
 ## Learning Objectives
 
-The learner can:
+Use `CHAIN` for direct keyed lookup; test with `%FOUND(file)`; explain `SETLL`; use `READE` and `%EOF`; use a partial key deliberately; predict record counts before execution.
 
-1. Use `CHAIN` for a direct keyed lookup.
-2. Test the lookup with `%FOUND(file)`.
-3. Explain `SETLL` as positioning rather than record retrieval.
-4. Use `READE` to read records equal to a key and stop correctly.
-5. Explain the role of `%EOF` for read operations.
-6. Predict record counts before executing a keyed-read loop.
-
-## Direct Lookup with CHAIN
-
-A direct keyed lookup should begin with the key and expected outcome:
+## Direct Lookup
 
 ```rpgle
-orderId = 5001;
-chain orderId ORDHDR;
-
+chain lookupOrder OHDRR;
 if %found(ORDHDR);
-    // use externally described fields
+    // current header fields are valid for the found record
 else;
     // explicit not-found path
 endif;
 ```
 
-The important behavior is not the number of characters typed. The developer has made a claim: a record with this key either exists or does not. `%FOUND(ORDHDR)` provides file-specific status evidence for the relevant operation.
+The learner is making a one-record claim and must test the relevant file status before using returned data.
 
-## Positioned Reads with SETLL and READE
+## Positioned Equal-Key Reads
 
-For a keyed group, the pattern is different:
+`ORDER_LINES` has SQL primary key `(ORDER_ID, LINE_NO)`. Native `ORDLINE` therefore has a keyed order whose leading key is ORDER_ID. Module 3 uses ORDER_ID as a partial search key:
 
 ```rpgle
-setll orderId ORDLINE;
-reade orderId ORDLINE;
+setll (lookupOrder) OLINER;
+reade (lookupOrder) OLINER;
 
 dow not %eof(ORDLINE);
-    // process current line
-    reade orderId ORDLINE;
+    lineCount += 1;
+    reade (lookupOrder) OLINER;
 enddo;
 ```
 
-`SETLL` positions the file. `READE` retrieves records whose key equals the search argument. `%EOF` becomes the loop termination evidence after the read reaches the end/equal-key boundary.
+`SETLL` positions. `READE` retrieves the next record equal to the specified search argument. When no equal record can be returned, the EOF condition is set for the read. Runtime validation will confirm the external key metadata and result counts.
 
-During validation we will prove the exact record counts for each seeded order and ensure the loop cannot continue with stale field values after end-of-data.
+## Expected Static Seed Counts
 
-## Why File-Specific BIFs Matter
+- 5001 → 1 line
+- 5002 → 1 line
+- 5003 → 2 lines
+- missing order → 0
 
-In a program with more than one file, `%FOUND` or `%EOF` without a file parameter can invite ambiguity because another relevant operation may have set the global status. Module 3 examples prefer the file parameter when teaching database I/O.
+These are static expectations from `11_seed_orders.sql`, not runtime proof.
 
-## Relationship vs Access Path
+## File-Specific Status
 
-A key enables an access pattern. It does not by itself explain the business relationship. Before reading order lines by order ID, the learner should be able to say:
+Use `%FOUND(ORDHDR)` and `%EOF(ORDLINE)` in teaching examples so another file operation cannot silently make the learner reason about the wrong status.
 
-> ORDER_LINE belongs to ORDER_HEADER through ORDER_ID, and the order-line primary key begins with ORDER_ID.
+## Bob Activity
 
-That explanation comes from the data model, not from `READE` syntax.
-
-## Guided Lab
-
-Run lookup cases after compile validation:
-
-- existing order ID
-- missing order ID
-- order with one line
-- order with multiple lines
-
-For each case record:
-
-- key
-- expected found/not-found
-- expected line count
-- actual found status
-- actual line count
-- final `%EOF` state
-
-## Bob-Assisted Activity
-
-Ask Bob to trace the native-read flow and identify possible infinite-loop or stale-data mistakes. Require it to explain what operation changes `%FOUND` and what operations affect `%EOF`; verify those claims against current RPG documentation.
+Ask Bob to trace which operations set the status being tested and identify stale-record/infinite-loop risk. Validate the claims against current RPG documentation and actual execution.
 
 ## Independent Task
 
-Without Bob, change only the lookup key in a disposable copy of the example to test one missing order and one order with multiple lines. Predict both outcomes before execution.
+Test one missing header and one multi-line order in a disposable source copy. Predict before running.
 
 ## Common Mistakes
 
-- Treating `SETLL` as if it returned a record.
-- Checking `%FOUND` after a sequence where another operation has changed the status.
-- Forgetting to issue the next `READE` inside the loop.
-- Assuming every header has at least one line without checking model/rules.
-- Using a record value after end-of-data without proving it is current.
+- treating SETLL as a retrieval
+- forgetting the next READE
+- processing fields after end-of-data
+- assuming line existence merely because a header exists
+- adding DISTINCT/SQL thinking to a native key problem without understanding the access path
 
 ## Completion Criteria
 
-The learner can perform and explain a keyed single-record lookup and a keyed equal-record loop, including not-found/end-of-data behavior and expected record counts.
+Learner demonstrates found/not-found and equal-key loop behavior and explains partial-key/termination evidence.

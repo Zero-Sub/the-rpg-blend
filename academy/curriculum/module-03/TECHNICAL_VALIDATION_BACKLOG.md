@@ -2,163 +2,145 @@
 
 ## Files + Data Access
 
-**Status:** required before release  
-**Canonical branch:** `academy/module-3-files-data-access`  
+**Status:** content complete; source/static + runtime validation required before release  
 **Target:** PUB400 IBM i 7.5 for ordinary labs plus an approved journaled non-production IBM i for transaction execution when PUB400 is unsuitable
-
-This backlog separates source review from behavior proven on IBM i.
 
 ## Gate 1 — Prerequisite State
 
-- [ ] Module 2 base objects validated or an equivalent clean base is documented.
-- [ ] CATEGORY / PRODUCT / INVENTORY definitions match the Module 3 assumptions.
-- [ ] Module 3 does not require altering Module 2 canonical objects.
+- [ ] Module 2 base objects validated or equivalent clean base documented.
+- [ ] CATEGORY / PRODUCT / INVENTORY match Module 3 assumptions.
+- [ ] Module 3 does not alter Module 2 canonical objects.
 
 ## Gate 2 — Order DDL
 
-Run `10_create_order_access.sql`.
+- [ ] `ORDER_HEADER` created with system name `ORDHDR` and record format `OHDRR`.
+- [ ] `ORDER_LINES` created with system name `ORDLINE` and record format `OLINER`.
+- [ ] explicit system column names match DDL.
+- [ ] PK/FK/CHECK constraints verified.
+- [ ] ORDER_LINES PRODUCT foreign key points to Module 2 PRODUCT.
+- [ ] catalog/external-description evidence captured.
 
-- [ ] `ORDER_HEADER` created with system name `ORDHDR`.
-- [ ] `ORDER_LINE` created with system name `ORDLINE`.
-- [ ] record formats are `ORDHDR` and `ORDLINE` as requested.
-- [ ] explicit system column names match design.
-- [ ] primary/foreign/check constraints exist.
-- [ ] PRODUCT foreign key points to Module 2 PRODUCT.
-- [ ] system catalog verifies SQL name, system name, and column mapping.
+## Gate 3 — Seed
 
-## Gate 3 — Seed Data
-
-- [ ] deterministic order seed inserts cleanly.
-- [ ] documented row counts match actual.
-- [ ] relationships and totals are internally consistent.
-- [ ] reset restores the expected state.
+- [ ] header count = 3.
+- [ ] line count = 4.
+- [ ] 5001/5002/5003 line counts = 1/1/2.
+- [ ] header totals reconcile to line totals.
 
 ## Gate 4 — Native External Description
 
-For each `.rpgle` example:
+For each RPGLE example:
 
-- [ ] replace learner schema placeholder correctly.
-- [ ] compile-time `EXTDESC` resolves the intended file.
-- [ ] runtime `EXTFILE(*EXTDESC)` opens the intended file.
-- [ ] compile action creates the intended program object.
-- [ ] no library-list ambiguity remains undocumented.
+- [ ] schema placeholder replaced correctly.
+- [ ] EXTDESC resolves intended file at compile time.
+- [ ] EXTFILE(*EXTDESC) opens intended runtime file.
+- [ ] compile action creates intended program object.
+- [ ] external fields/formats match the program source.
 
 ## Gate 5 — Native Reads
 
-- [ ] CHAIN found case verified.
-- [ ] CHAIN not-found case verified with `%FOUND`.
-- [ ] SETLL + READE loop begins at intended key.
-- [ ] loop terminates using documented status behavior.
-- [ ] `%EOF` interpretation matches current RPG behavior.
-- [ ] result record values match seed data.
+- [ ] CHAIN found case.
+- [ ] CHAIN missing case and `%FOUND(ORDHDR)` behavior.
+- [ ] SETLL + READE partial-key scan.
+- [ ] 5001 count = 1; 5003 count = 2; missing count = 0.
+- [ ] `%EOF(ORDLINE)` termination verified.
 
-## Gate 6 — Native Changes and Locks
+## Gate 6 — Native Changes / Locks
 
-- [ ] disposable WRITE succeeds.
-- [ ] duplicate/constraint failure is handled without weakening rules.
-- [ ] UPDATE changes only intended disposable record.
-- [ ] DELETE preview/target/cleanup proven.
-- [ ] normal update-read record lock behavior observed safely where practical.
-- [ ] any lock demonstration is time-bounded and does not disrupt shared users.
+- [ ] disposable 5901 initially absent.
+- [ ] WRITE creates one header.
+- [ ] UPDATE changes only intended header.
+- [ ] DELETE removes it after dependency proof.
+- [ ] final absence proven.
+- [ ] any lock observation is coordinated/time-bounded.
+- [ ] ordinary record-lock behavior is not confused with commitment-control locks.
 
-## Gate 7 — SQLRPGLE Single-Row
+## Gate 7 — SELECT INTO
 
-- [ ] source extension/action compiles through SQL precompiler/compiler.
-- [ ] host variable mappings are correct.
-- [ ] SELECT INTO returns expected product.
-- [ ] no-row condition handled deliberately.
-- [ ] more-than-one-row assumption is not hidden.
+- [ ] SQLRPGLE action/precompiler path works.
+- [ ] PRODUCT_ID 1001 maps expected values.
+- [ ] missing key produces deliberate no-data path.
+- [ ] one-row assumption tied to PK uniqueness.
 
 ## Gate 8 — Cursor
 
-- [ ] DECLARE/OPEN/FETCH/CLOSE sequence compiles.
-- [ ] expected rows fetched in deterministic order.
-- [ ] SQLCODE +100 / SQLSTATE no-data behavior is observed and documented.
-- [ ] cursor closes on normal path.
-- [ ] error path does not spin or continue with stale host variables.
+- [ ] DECLARE/OPEN/FETCH/CLOSE compiles.
+- [ ] low-inventory IDs/results match validated Module 2 base.
+- [ ] final +100/no-data behavior observed.
+- [ ] negative errors are not treated as EOF.
+- [ ] no stale host variables processed.
 
 ## Gate 9 — Diagnostics
 
-- [ ] SQLSTATE observed for success.
-- [ ] SQLCODE observed for success/no data/error.
-- [ ] controlled integrity failure captured.
-- [ ] GET DIAGNOSTICS returns useful condition data on target release.
-- [ ] ROW_COUNT after DML matches actual affected rows.
-- [ ] learner material does not hard-code an unverified environment-specific message.
+- [ ] disposable diagnostic key/name preflight prevents collision.
+- [ ] check-constraint failure captured.
+- [ ] actual SQLSTATE and SQLCODE recorded.
+- [ ] GET DIAGNOSTICS RETURNED_SQLSTATE/message behaves as documented.
+- [ ] ROW_COUNT behavior captured on a successful DML statement.
 
 ## Gate 10 — Transaction Environment
 
-- [ ] journaled files confirmed.
-- [ ] approved journal/receiver identified.
-- [ ] commitment control start/end process confirmed.
+- [ ] files journaled appropriately.
+- [ ] journal/receiver identified.
+- [ ] commitment-control start/end method confirmed.
 - [ ] SQL compile/run commit setting confirmed.
-- [ ] normal learner authority is sufficient, or alternate instructor environment is used.
-- [ ] no course step requires authority escalation on PUB400.
+- [ ] normal approved authority is sufficient or alternate instructor system selected.
 
 ## Gate 11 — Commit/Rollback
 
-- [ ] successful unit commits header + lines together.
-- [ ] controlled failure rolls back the entire unit.
-- [ ] no partial order remains after rollback.
+- [ ] clean disposable 5950 start.
+- [ ] positive header + line commit together.
+- [ ] positive data cleaned before failure run.
+- [ ] invalid product line creates controlled failure.
+- [ ] rollback removes partial header.
 - [ ] commitment boundary/lock release evidence captured.
-- [ ] transaction cleanup returns data to baseline.
 
-## Gate 12 — Native vs SQL Decision Lesson
+## Gate 12 — Engineering Choice
 
-- [ ] examples accurately reflect both interfaces.
-- [ ] no claim says one interface is always faster/modern/correct.
-- [ ] set-oriented work is demonstrated with SQL.
-- [ ] native keyed access is demonstrated without presenting it as obsolete.
-- [ ] mixed-access caveats are explained.
+- [ ] no universal native-vs-SQL claim.
+- [ ] set-oriented SQL example accurate.
+- [ ] keyed native example accurate.
+- [ ] mixed-access transaction/lock caveats explained.
 
 ## Gate 13 — Tooling
 
-- [ ] Code for IBM i actions validated for RPGLE.
-- [ ] SQLRPGLE compile action validated.
-- [ ] deploy-first/local source behavior matches current extension.
-- [ ] Problems/listing/diagnostic workflow matches learner instructions.
-- [ ] current Db2 for IBM i extension behavior matches SQL setup instructions.
+- [ ] local RPGLE Action validated.
+- [ ] SQLRPGLE no-commit Action validated.
+- [ ] transaction SQLRPGLE Action/commit option validated.
+- [ ] `&RELATIVEPATH`, `&NAME`, `&CURLIB`, deploy-first behavior verified with delivery version.
+- [ ] compile diagnostics appear as instructed.
 
-## Gate 14 — Bob
+## Gate 14 — Bob / Safety
 
-- [ ] Bob prompts contain no secrets or real data.
-- [ ] Bob can explain access paths without inventing target resolution.
-- [ ] learner records accepted/rejected findings.
-- [ ] capstone independent section cannot be completed solely by copying Bob output.
+- [ ] prompts contain no sensitive data.
+- [ ] learner records finding dispositions.
+- [ ] Bob does not invent runtime target/journal/lock evidence.
+- [ ] capstone remains independently defensible.
 
 ## Gate 15 — Independent Reviewer
 
-Reviewer other than the author must:
-
-- [ ] follow setup from scratch
-- [ ] create/reset order objects
-- [ ] compile all required RPG/SQLRPGLE sources
+- [ ] setup from scratch
+- [ ] create/seed/reset
+- [ ] compile all RPGLE/SQLRPGLE
 - [ ] reproduce native/SQL results
 - [ ] reproduce diagnostics
-- [ ] complete the approved transaction path
-- [ ] record defects/ambiguities
+- [ ] complete approved transaction matrix
+- [ ] record defects
 
 Reviewer: ____________________  Date: ____________________
 
 ## Gate 16 — Learner Pilot
 
-- [ ] first-time learner completes setup without hidden steps
-- [ ] learner can explain compile vs runtime target
-- [ ] learner predicts keyed-read results
-- [ ] learner handles SQL no-data without guessing
-- [ ] learner stops on unknown transaction prerequisites
-- [ ] learner can defend native-vs-SQL choice
-- [ ] assessment wording is unambiguous
+- [ ] no hidden setup
+- [ ] compile/runtime target explained
+- [ ] native read termination understood
+- [ ] SQL no-data/error distinguished
+- [ ] transaction stop decision demonstrated
+- [ ] engineering choice defended
+- [ ] assessment unambiguous
 
 ## Release Blockers
 
-Block release for any unexplained compile failure, wrong runtime target, wrong row/record result, uncontrolled data change, unsafe lock behavior, transaction prerequisite mismatch, assessment/content mismatch, or hidden instructor dependency.
+Any unexplained compile failure, wrong runtime target, wrong data result, uncontrolled change, unsafe lock handling, transaction prerequisite mismatch, assessment/content mismatch, or hidden instructor dependency blocks release.
 
-## Completion Record
-
-Validated commit/tag: ____________________  
-Technical reviewer: ____________________  
-Instructional reviewer: ____________________  
-Source reviewer: ____________________  
-Release approver: ____________________  
-Date: ____________________
+Validated commit/tag: ____________________

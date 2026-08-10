@@ -9,17 +9,7 @@
 
 ## Learning Objectives
 
-The learner can:
-
-1. Trace native RPG I/O and embedded SQL from source to the same Db2 for i data.
-2. Explain the difference between record-oriented and set-oriented access at an introductory level.
-3. Identify which target facts must be known before compiling or running either style.
-4. Explain why existing native I/O is not automatically a modernization defect.
-5. Identify one question Bob cannot answer without environment evidence.
-
-## Why This Matters
-
-Real IBM i applications rarely use only one access style. A mature application may contain native RPG file operations, embedded SQL, stored procedures, views, and newer API-oriented services. A developer who treats one style as “real IBM i” and the other as “modern” will miss the engineering question: what behavior does the application need, and what evidence proves the chosen access is safe and maintainable?
+The learner can trace native RPG I/O and embedded SQL to the same Db2 for i data, explain record-oriented versus set-oriented access, identify target evidence before compile/run, avoid treating native I/O as an automatic modernization defect, and identify environment facts Bob cannot prove from source.
 
 ## Two Paths to the Same Data
 
@@ -31,86 +21,43 @@ RPG source
    +--> EXEC SQL SELECT/UPDATE -----------+--> Db2 for i objects
 ```
 
-Native I/O names an RPG file, works with externally described record formats, and uses operations such as `CHAIN`, `READE`, `WRITE`, `UPDATE`, and `DELETE`.
-
-Embedded SQL uses SQL statements, host variables, result sets, SQL conditions, and cursors. SQL is usually stronger when the business question naturally describes a set of rows rather than a record-by-record navigation path.
-
-Neither diagram removes IBM i authority, object resolution, constraints, or production controls.
+Native I/O works with file definitions, externally described record formats, keys, and file operation status. Embedded SQL uses SQL statements, host variables, result sets, SQL conditions, and cursors. Neither style removes IBM i authority, constraints, target resolution, locks, or operational controls.
 
 ## Module 3 Application Increment
 
-Module 2 created the Coffee Catalog. Module 3 adds order data. The course intentionally gives each SQL order table an explicit IBM i system name and record-format name so learners can see how descriptive SQL names coexist with names used by native RPG.
+Module 2 created the Coffee Catalog. Module 3 adds:
 
-```text
-SQL name      System name / record format
-ORDER_HEADER  ORDHDR / ORDHDR
-ORDER_LINE    ORDLINE / ORDLINE
-```
+| SQL name | System name | Record format |
+|---|---|---|
+| ORDER_HEADER | ORDHDR | OHDRR |
+| ORDER_LINES | ORDLINE | OLINER |
 
-## Read the Requirement Before the Interface
+This mapping is deliberate. SQL uses descriptive names; native RPG can use stable IBM i external names. The DDL must be validated before learners trust this bridge.
 
-Example requirement:
+## Requirement Before Interface
 
-> Retrieve one order by order ID and show its status.
-
-A keyed native `CHAIN` can express that directly when the key and file definition support it. A single-row SQL `SELECT INTO` can also express it directly.
-
-Different requirement:
-
-> Return every active product at or below its reorder point with category information.
-
-That is naturally a multi-table set question. SQL can express the join/filter as one query. A record-level implementation is possible, but it may require more navigation logic.
-
-The lesson is not “SQL wins.” The lesson is to recognize the shape of the problem.
+“One order by primary key” can be a good direct keyed native lookup or a one-row SQL SELECT INTO. “All low-inventory products with category data” is naturally a relational set query. The course asks which shape best matches the requirement rather than declaring one interface universally correct.
 
 ## Safety Gate
 
-Before data access, record:
+Record host, profile, compile library, runtime file/schema, read/change intent, and expected cardinality before access.
 
-- host
-- profile
-- compile library
-- runtime library/file or SQL schema/table
-- read/change intent
-- expected result cardinality
+## Bob Activity
 
-For native I/O, compile-time external description and runtime opened file can be separate concerns. For SQL, naming mode, schema qualification, and compile/run environment can affect resolution. Module 3 makes target resolution visible instead of relying on luck.
-
-## Bob-Assisted Activity
-
-Ask Bob:
-
-> Compare a keyed RPG CHAIN with a single-row SQL SELECT INTO. Describe what each one proves, what it assumes about the data model, and what environment facts you cannot know from source alone. Do not recommend a rewrite.
-
-Mark each response item as source-supported, environment-dependent, or opinion.
-
-## Hands-On Practice
-
-1. Inspect `10_create_order_access.sql` without running it.
-2. Identify SQL table names, system names, record-format names, and primary keys.
-3. Draw the two access paths that future RPG examples will use.
-4. Predict which objects must exist before native RPG can compile with external descriptions.
-5. Predict which Module 2 object is referenced by an order-line foreign key.
+Ask Bob to compare a keyed CHAIN with primary-key SELECT INTO, including assumptions and environment facts it cannot know. Classify each finding as supported, environment-dependent, or opinion.
 
 ## Independent Task
 
-Without Bob, write a short design note choosing an access style for each:
-
-- fetch one order by primary key
-- list all low-inventory products by category
-- update one known order status
-- calculate total order value across many lines
-
-Multiple answers can be defensible. Explain the reasoning rather than naming a favorite technology.
+Choose an access approach for one-order lookup, low inventory list, one known status update, and total order value. Defend reasoning without Bob.
 
 ## Common Mistakes
 
-- Calling native I/O obsolete without analyzing the application.
-- Calling embedded SQL automatically safer merely because it is SQL.
-- Ignoring object resolution because the source compiled once.
-- Confusing record navigation with relational business relationships.
-- Assuming a tool can prove production authority or data distribution from source alone.
+- “Native is obsolete.”
+- “SQL is automatically safe.”
+- “Compile success proves the runtime target.”
+- “A key explains the business relationship.”
+- unsupported performance claims.
 
 ## Completion Criteria
 
-The learner can trace both access paths, state their target/evidence requirements, and make a reasoned interface choice for a simple business question.
+Learner can trace both paths and defend a simple access decision with target/evidence requirements.

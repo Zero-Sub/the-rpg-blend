@@ -1,6 +1,6 @@
 # RPG Blend Academy — Module 3: Files + Data Access
 
-**Status:** development build — source/static validation in progress; IBM i execution validation pending  
+**Status:** content build complete — source/static validation in progress; IBM i execution validation pending  
 **Roadmap position:** Module 3 of 8  
 **Prerequisites:** Module 0 — Getting Started; Module 1 — RPG Fundamentals; Module 2 — Db2 for i + SQL  
 **Primary environment:** Visual Studio Code + Code for IBM i + Db2 for IBM i extension  
@@ -54,12 +54,12 @@ By the end of Module 3, the learner can:
 
 Module 3 extends the fictional RPG Blend Coffee Company database from Module 2 with two tables:
 
-- SQL table `ORDER_HEADER`, system name `ORDHDR`, record format `ORDHDR`
-- SQL table `ORDER_LINE`, system name `ORDLINE`, record format `ORDLINE`
+- SQL table `ORDER_HEADER`, system name `ORDHDR`, record format `OHDRR`
+- SQL table `ORDER_LINES`, system name `ORDLINE`, record format `OLINER`
 
-The DDL explicitly assigns short IBM i system names to long SQL names/columns. Embedded SQL examples use the descriptive SQL names. Native RPG examples use the stable system names. That makes the SQL/native bridge visible instead of leaving generated names to chance.
+The SQL names are intentionally longer than a traditional 10-character system object name, allowing the DDL to assign explicit IBM i system names. Embedded SQL examples use descriptive SQL names. Native RPG examples use stable system names/record formats. This makes the SQL/native bridge visible rather than leaving generated names to chance.
 
-`ORDER_LINE.PRODUCT_ID` references the Module 2 `PRODUCT` table. Module 3 therefore assumes Module 2 base objects exist when the integrated labs run.
+`ORDER_LINES.PRODUCT_ID` references the Module 2 `PRODUCT` table. Module 3 therefore assumes Module 2 base objects exist when the integrated labs run.
 
 ## Safety Model
 
@@ -84,35 +84,30 @@ The transaction exercise has a mandatory preflight. If the environment cannot sa
 
 ## IBM Bob Integration
 
-Bob may:
-
-- explain a `DCL-F` definition or file operation
-- trace a native I/O sequence
-- compare native access with embedded SQL
-- review a cursor loop
-- explain an SQLSTATE/diagnostic after the learner captures it
-- identify possible lock or missed-impact risks
-- propose boundary/error tests
-- review a completed Git diff
-
-Bob may not choose the production target, expand authority, manufacture runtime evidence, or turn an unjournaled environment into a safe transaction environment by assertion.
+Bob may explain file definitions/operations, trace native I/O, compare access styles, review cursor loops, explain captured SQL diagnostics, identify dependency/lock risks, propose tests, and review a completed Git diff. Bob may not choose the production target, expand authority, manufacture runtime evidence, or declare transaction prerequisites satisfied without evidence.
 
 ## Independent Work Rule
 
 Every lesson contains an independent task. The capstone requires the learner to write and defend core access logic without copying a Bob-generated solution. Bob is review/reference only during the assessed portion.
 
-## Development Gates
+## Content Package
 
-### Content
+- 10 canonical lessons
+- order DDL, seed, and reset SQL
+- three native RPG examples
+- four SQLRPGLE examples
+- Bob prompt set
+- PUB400 setup and transaction preflight
+- local Action reference
+- learner workbook
+- capstone + instructor solution
+- assessment + answer key
+- instructor guide
+- source register
+- slide source
+- technical validation backlog
 
-- [x] Canonical Module 3 scope confirmed from curriculum map
-- [x] Primary/source references identified
-- [x] Application increment designed to preserve Module 2 objects
-- [ ] All lesson manuscripts complete
-- [ ] RPG/SQL source assets complete
-- [ ] Workbook, lab, assessment, instructor guide, slide source complete
-
-### Before release
+## Before Release
 
 - [ ] Module 2 runtime validation completed or compatible base database proven
 - [ ] Order DDL executed on IBM i 7.5 target
@@ -125,6 +120,7 @@ Every lesson contains an independent task. The capstone requires the learner to 
 - [ ] Reset/rebuild proven
 - [ ] Independent technical reviewer run completed
 - [ ] First-time learner pilot completed
+- [ ] Branded publication assets generated from validated canonical source
 
 ## Definition of Done
 

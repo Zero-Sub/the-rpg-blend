@@ -2,25 +2,17 @@
 
 ## Files + Data Access
 
-**Status:** development package  
-**Canonical branch:** `academy/module-3-files-data-access`  
-**Stacking rule:** this branch is based on the Module 2 development branch while Module 2 runtime validation proceeds
+**Status:** content-complete development package; target execution validation pending  
+**Canonical source branch:** `academy/module-3-files-data-access` family  
+**Stacking rule:** Module 3 is developed from the Module 2 branch while Module 2 runtime validation proceeds
 
 ## Purpose
 
-Module 3 turns database knowledge into application data access. It deliberately covers both native RPG record-level access and embedded SQL because enterprise IBM i developers encounter both and must reason about their operational differences.
+Module 3 turns database knowledge into application data access. It covers both native RPG record-level access and embedded SQL because enterprise IBM i developers encounter both and must reason about their operational differences.
 
 ## Prerequisites
 
-Learner has completed Modules 0–2 and can:
-
-- work in VS Code/Code for IBM i
-- compile/run basic RPG
-- understand scalar data, decisions, loops, and beginner procedures
-- navigate a Db2 for i schema
-- read DDL, keys, constraints, NULL, SELECT, joins, and safe DML
-- verify host/profile/library/schema before changes
-- use Git and Bob under Academy evidence rules
+Modules 0–2. Learner can already use VS Code/Code for IBM i, compile basic RPG, understand data/decisions/loops/basic procedures, navigate Db2 for i, read DDL/keys/constraints/SELECT/joins, use safe DML habits, and work with Git/Bob under Academy rules.
 
 ## Canonical Lessons
 
@@ -35,24 +27,26 @@ Learner has completed Modules 0–2 and can:
 9. `lessons/03-09-native-vs-sql.md`
 10. `lessons/03-10-module-lab.md`
 
-## Executable Assets
-
-### SQL
+## SQL Assets
 
 - `code/sql/10_create_order_access.sql`
 - `code/sql/11_seed_orders.sql`
 - `code/sql/19_reset_module3.sql`
 
-### RPG
+## Native RPG Assets
 
-- `code/rpg/03_native_lookup.pgm.rpgle`
-- `code/rpg/04_native_order_update.pgm.rpgle`
+- `code/rpg/03_native_header_lookup.pgm.rpgle`
+- `code/rpg/03_native_line_scan.pgm.rpgle`
+- `code/rpg/04_native_order_change.pgm.rpgle`
+
+## Embedded SQL RPG Assets
+
 - `code/rpg/05_sql_product_lookup.pgm.sqlrpgle`
 - `code/rpg/06_sql_low_inventory.pgm.sqlrpgle`
 - `code/rpg/07_sql_diagnostics.pgm.sqlrpgle`
 - `code/rpg/08_transaction_order.pgm.sqlrpgle`
 
-Every executable asset remains **reviewed, not runtime-validated** until target IBM i evidence exists.
+All executable assets remain **reviewed rather than runtime-validated** until target IBM i evidence exists.
 
 ## Supporting Assets
 
@@ -60,6 +54,7 @@ Every executable asset remains **reviewed, not runtime-validated** until target 
 - `environment/TRANSACTION_PREFLIGHT.md`
 - `environment/actions-module3.example.json`
 - `code/bob/module3_prompts.md`
+- `code/README.md`
 - `workbook/student-workbook.md`
 - `lab/module-03-lab.md`
 - `lab/instructor-solution.md`
@@ -69,6 +64,15 @@ Every executable asset remains **reviewed, not runtime-validated** until target 
 - `sources/source-register.md`
 - `presentations/module-03-slide-source.md`
 - `TECHNICAL_VALIDATION_BACKLOG.md`
+
+## Object Bridge
+
+| SQL name | IBM i system name | Record format | Native purpose |
+|---|---|---|---|
+| ORDER_HEADER | ORDHDR | OHDRR | header keyed lookup/change |
+| ORDER_LINES | ORDLINE | OLINER | partial-key order-line scan |
+
+Long descriptive SQL column names receive explicit system column names in the DDL where needed. Runtime validation must verify the external descriptions actually presented to RPG.
 
 ## Teaching Architecture
 
@@ -96,8 +100,6 @@ DELETE / locks              SQLSTATE / diagnostics
 
 Module 3 teaches data access, not deep ILE modularity. Module 4 owns prototypes, procedure-interface depth, modules, service programs, exports, binding, activation groups, and reusable service architecture.
 
-Module 3 may use a small internal procedure only when needed to keep examples readable; it must not turn that use into the primary learning objective.
-
 ## Publication Rule
 
-Canonical Markdown and source files are the technical authority for this module. Branded coursebooks, PDFs, slides, LMS pages, and video scripts are generated after runtime validation. Corrections flow into canonical source first.
+Canonical Markdown/source is the technical authority. Generate branded coursebook, instructor guide, workbook, slides, video/LMS adaptations, and download packages only after runtime validation. Corrections flow into canonical source first.
