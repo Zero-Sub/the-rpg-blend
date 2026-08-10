@@ -1,6 +1,6 @@
 # RPG Blend Academy — Module 2: Db2 for i + SQL
 
-**Status:** Content build complete — technical execution validation pending  
+**Status:** Content + source/static validation complete — target IBM i execution validation pending  
 **Roadmap position:** Module 2 of 8  
 **Prerequisite:** Module 0 — Getting Started; Module 1 — RPG Fundamentals  
 **Primary environment:** Visual Studio Code + Code for IBM i + Db2 for i extension  
@@ -25,9 +25,9 @@ By the end of Module 2, the learner can:
 4. Create original training tables using SQL DDL in an assigned learner schema.
 5. Select, filter, sort, calculate, and label query results.
 6. Explain primary keys, foreign keys, constraints, NULL, defaults, views, and indexes at an introductory level.
-7. Join related tables using explicit join conditions.
+7. Join related tables using explicit join conditions and distinguish constraint-enforced from observed cardinality.
 8. Summarize data with aggregate functions, GROUP BY, and HAVING.
-9. Insert, update, and delete training data using explicit safe-change discipline.
+9. Insert, update, and delete training data using explicit preview-before-change discipline.
 10. Use IBM Bob to explain or review SQL while independently validating the result.
 11. Complete an independent database task without relying entirely on Bob.
 12. Produce evidence showing what was created, queried, changed, and validated.
@@ -38,10 +38,10 @@ By the end of Module 2, the learner can:
 |---:|---|---|
 | 2.1 | Db2 for i Is Part of the Platform | Explain Db2 for i, SQL, and the IBM i database mental model |
 | 2.2 | Libraries, Schemas, Files, Tables, Fields, Columns, Records, and Rows | Translate terminology and inspect objects safely |
-| 2.3 | Build the Coffee Catalog Schema | Create tables with appropriate names and data types |
+| 2.3 | Build the Coffee Catalog Schema | Create tables with appropriate names, data types, keys, and cardinality |
 | 2.4 | Keys, Constraints, Defaults, and NULL | Protect data quality through database definitions |
 | 2.5 | SELECT: Ask the Database a Precise Question | Select columns, filter rows, sort output, and use expressions |
-| 2.6 | Joins: Put Related Business Data Back Together | Join tables using keys and identify incorrect join behavior |
+| 2.6 | Joins: Put Related Business Data Back Together | Join tables using keys and identify incorrect join/cardinality assumptions |
 | 2.7 | Aggregation: Turn Rows into Information | Use COUNT, SUM, AVG, MIN, MAX, GROUP BY, and HAVING |
 | 2.8 | Safe Data Changes | Use INSERT, UPDATE, and DELETE with evidence-first safety habits |
 | 2.9 | Views, Indexes, and the Next Layer | Explain the purpose of views and indexes without over-teaching performance tuning |
@@ -60,6 +60,18 @@ This module creates only the objects needed for its learning goals:
 - `IX_PRODUCT_CATEGORY` introductory index
 
 Customer and order objects are intentionally deferred until later modules need them. The learner should understand a small model deeply before the Academy expands the application.
+
+### Important cardinality note
+
+The DDL enforces:
+
+- one CATEGORY can be referenced by many PRODUCT rows
+- each PRODUCT must reference an existing CATEGORY
+- each INVENTORY row must reference an existing PRODUCT
+- at most one INVENTORY row can exist for a PRODUCT because `INVENTORY.PRODUCT_ID` is the primary key
+- the schema does **not** require every PRODUCT to have an INVENTORY row
+
+The deterministic seed data contains one INVENTORY row for every PRODUCT. Lessons and assessments explicitly distinguish that observed seed state from what the schema actually requires.
 
 ## Package Map
 
@@ -122,7 +134,7 @@ Before any data-changing statement, the course trains the learner to answer:
 6. How will I validate the result?
 7. What cleanup or reset is required in the training environment?
 
-A successful SQL statement is not sufficient evidence of a safe change.
+The preview-before-change rule applies to both UPDATE and DELETE. A successful SQL statement is not sufficient evidence of a safe change.
 
 ## IBM Bob Integration
 
@@ -144,7 +156,9 @@ The module capstone includes a no-copy independent section. Bob may be used only
 
 ## Source Basis
 
-Primary publication validation uses current IBM documentation. Supplemental Academy research includes:
+Executable behavior is validated first against IBM i **7.5** documentation because PUB400 is the target public training host. IBM i 7.6 documentation is used as a current/forward cross-check and must not introduce an unvalidated 7.6-only dependency into the 7.5 learner path.
+
+Supplemental Academy research includes:
 
 - COMMON iBegin — Db2 for i
 - COMMON iBegin — Db2 for i Tooling
@@ -159,24 +173,44 @@ Primary publication validation uses current IBM documentation. Supplemental Acad
 
 These sources validate coverage and terminology. Academy lessons, examples, SQL, labs, diagrams, and assessments remain original.
 
+## 2026-08-10 Validation Pass
+
+Completed static/source validation included:
+
+- IBM i 7.5 SQL behavior and syntax cross-check
+- current Code for IBM i / Db2 for IBM i tooling documentation review
+- current PUB400 service facts review
+- expected-result reconciliation from deterministic seed data
+- member/partition terminology correction
+- PRODUCT/INVENTORY cardinality correction
+- assessment DELETE-preview correction
+- reset hardening with `DROP ... IF EXISTS`
+- workbook/lab/answer-key/slide-source reconciliation
+
+See `TECHNICAL_VALIDATION_BACKLOG.md` for the detailed evidence boundary.
+
 ## Development Gates
 
-### Content build
+### Content and static/source validation
 
 - [x] Roadmap alignment confirmed
 - [x] Module purpose and lesson sequence defined
-- [x] Current primary documentation mapped to material claims
-- [x] Module source register created
+- [x] IBM i 7.5 target documentation mapped to executable claims
+- [x] IBM i 7.6 used as forward/current cross-check only
+- [x] Current Code for IBM i / Db2 for IBM i documentation reviewed
+- [x] Current PUB400 environment documentation reviewed
+- [x] Module source register created/reconciled
 - [x] All ten lesson manuscripts drafted
 - [x] Original SQL starter/practice/reset assets drafted
 - [x] Bob activities drafted
 - [x] Independent work included in every major skill area
 - [x] Capstone lab drafted
 - [x] Instructor lab solution drafted
-- [x] Assessment and answer key drafted
+- [x] Assessment and answer key drafted and reconciled
 - [x] Instructor guide drafted
-- [x] Learner workbook drafted
-- [x] Presentation source drafted
+- [x] Learner workbook drafted and reconciled
+- [x] Presentation source drafted and reconciled
+- [x] Expected result set mathematically reconciled from seed data
 - [x] Technical validation backlog defined
 
 ### Still required before release
@@ -186,7 +220,7 @@ These sources validate coverage and terminology. Academy lessons, examples, SQL,
 - [ ] Every SQL asset executed on the target IBM i environment
 - [ ] Negative-test SQLSTATE/messages captured
 - [ ] Expected row counts/results reconciled with actual execution
-- [ ] Reset and clean rebuild proven
+- [ ] Full and partial reset plus clean rebuild proven
 - [ ] Independent technical reviewer repeat run completed
 - [ ] First-time learner pilot completed
 - [ ] Pilot feedback incorporated
