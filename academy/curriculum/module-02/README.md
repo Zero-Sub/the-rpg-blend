@@ -1,11 +1,11 @@
 # RPG Blend Academy — Module 2: Db2 for i + SQL
 
-**Status:** Development  
+**Status:** Content build complete — technical execution validation pending  
 **Roadmap position:** Module 2 of 8  
 **Prerequisite:** Module 0 — Getting Started; Module 1 — RPG Fundamentals  
 **Primary environment:** Visual Studio Code + Code for IBM i + Db2 for i extension  
 **Supplementary environment:** IBM i Access Client Solutions Run SQL Scripts when its deeper database tooling is useful  
-**Training system:** PUB400 or another approved non-production IBM i with a learner-specific library/schema  
+**Training system:** PUB400 or another approved non-production IBM i with a learner-specific library/schema
 
 ## Module Promise
 
@@ -32,9 +32,9 @@ By the end of Module 2, the learner can:
 11. Complete an independent database task without relying entirely on Bob.
 12. Produce evidence showing what was created, queried, changed, and validated.
 
-## Working Lesson Sequence
+## Lesson Sequence
 
-| Lesson | Working title | Skill outcome |
+| Lesson | Title | Skill outcome |
 |---:|---|---|
 | 2.1 | Db2 for i Is Part of the Platform | Explain Db2 for i, SQL, and the IBM i database mental model |
 | 2.2 | Libraries, Schemas, Files, Tables, Fields, Columns, Records, and Rows | Translate terminology and inspect objects safely |
@@ -47,22 +47,66 @@ By the end of Module 2, the learner can:
 | 2.9 | Views, Indexes, and the Next Layer | Explain the purpose of views and indexes without over-teaching performance tuning |
 | 2.10 | Module Lab — Build and Query the Coffee Catalog | Independently build and validate a small relational database increment |
 
-Lesson numbering remains provisional until technical and pilot review. The module title and roadmap position are canonical.
-
 ## Sample Application Increment
 
 Module 2 establishes the first relational database increment for **The RPG Blend Coffee Company**.
 
-Initial objects are expected to include a small subset of:
+This module creates only the objects needed for its learning goals:
 
-- `CUSTOMER`
-- `PRODUCT`
 - `CATEGORY`
+- `PRODUCT`
 - `INVENTORY`
-- `ORDER_HEADER`
-- `ORDER_DETAIL`
+- `ACTIVE_PRODUCT_SUMMARY` view
+- `IX_PRODUCT_CATEGORY` introductory index
 
-The learner will not build the full application schema in one sitting. Objects are introduced only when they support the current learning objective.
+Customer and order objects are intentionally deferred until later modules need them. The learner should understand a small model deeply before the Academy expands the application.
+
+## Package Map
+
+### Canonical content
+
+- `MASTER_COURSE_PACKAGE.md`
+- `lessons/02-01-db2-for-i-platform.md`
+- `lessons/02-02-native-and-sql-terms.md`
+- `lessons/02-03-build-coffee-catalog-schema.md`
+- `lessons/02-04-keys-constraints-defaults-null.md`
+- `lessons/02-05-select-precise-question.md`
+- `lessons/02-06-joins.md`
+- `lessons/02-07-aggregation-group-by-having.md`
+- `lessons/02-08-safe-data-changes.md`
+- `lessons/02-09-views-indexes-next-layer.md`
+- `lessons/02-10-module-lab.md`
+
+### Learner assets
+
+- `workbook/student-workbook.md`
+- `lab/module-02-lab.md`
+- `assessment/module-02-assessment.md`
+
+### Instructor assets
+
+- `instructor-notes/instructor-guide.md`
+- `lab/instructor-solution.md`
+- `assessment/module-02-answer-key.md`
+
+### Executable/source assets
+
+- `environment/PUB400_SETUP.md`
+- `code/sql/01_create_catalog.sql`
+- `code/sql/02_seed_catalog.sql`
+- `code/sql/03_select_practice.sql`
+- `code/sql/04_join_practice.sql`
+- `code/sql/05_aggregation_practice.sql`
+- `code/sql/06_safe_data_changes.sql`
+- `code/sql/07_views_and_indexes.sql`
+- `code/sql/99_reset.sql`
+- `code/bob/module2_prompts.md`
+
+### Review/publication assets
+
+- `sources/source-register.md`
+- `TECHNICAL_VALIDATION_BACKLOG.md`
+- `presentations/module-02-slide-source.md`
 
 ## Safety Model
 
@@ -82,14 +126,15 @@ A successful SQL statement is not sufficient evidence of a safe change.
 
 ## IBM Bob Integration
 
-Bob activities will include:
+Bob activities include:
 
 - explaining unfamiliar DDL or SELECT syntax
 - comparing IBM i and SQL terminology
 - reviewing a proposed table design
 - identifying missing join predicates or unsafe UPDATE/DELETE statements
 - suggesting boundary and data-quality test cases
-- generating a documentation draft after the learner has verified the database behavior
+- reviewing views and index claims
+- assisting with diagnostics without replacing evidence
 
 Learners must identify what Bob got right, what required correction, and what independent evidence they used.
 
@@ -97,9 +142,9 @@ Learners must identify what Bob got right, what required correction, and what in
 
 The module capstone includes a no-copy independent section. Bob may be used only in the mode defined by the assessment. The learner must be able to explain every submitted SQL statement and reproduce the required result.
 
-## Initial Source Basis
+## Source Basis
 
-Primary publication validation will use current IBM documentation. Supplemental Academy research includes:
+Primary publication validation uses current IBM documentation. Supplemental Academy research includes:
 
 - COMMON iBegin — Db2 for i
 - COMMON iBegin — Db2 for i Tooling
@@ -112,25 +157,43 @@ Primary publication validation will use current IBM documentation. Supplemental 
 - COMMON SQL Bootcamp — Joining Tables
 - COMMON SQL Bootcamp — Next Steps: A Little Bit Beyond the Basics
 
-These sources validate coverage and terminology. Academy lessons, examples, SQL, labs, diagrams, and assessments must remain original.
+These sources validate coverage and terminology. Academy lessons, examples, SQL, labs, diagrams, and assessments remain original.
 
 ## Development Gates
 
+### Content build
+
 - [x] Roadmap alignment confirmed
-- [x] Module purpose and lesson sequence drafted
-- [ ] Current IBM 7.6 documentation mapped to material claims
-- [ ] Db2 for i extension workflow validated against current tooling
+- [x] Module purpose and lesson sequence defined
+- [x] Current primary documentation mapped to material claims
+- [x] Module source register created
+- [x] All ten lesson manuscripts drafted
+- [x] Original SQL starter/practice/reset assets drafted
+- [x] Bob activities drafted
+- [x] Independent work included in every major skill area
+- [x] Capstone lab drafted
+- [x] Instructor lab solution drafted
+- [x] Assessment and answer key drafted
+- [x] Instructor guide drafted
+- [x] Learner workbook drafted
+- [x] Presentation source drafted
+- [x] Technical validation backlog defined
+
+### Still required before release
+
+- [ ] Db2 for IBM i extension workflow smoke-tested against the delivery version
 - [ ] PUB400 permissions and learner-library assumptions smoke-tested
-- [ ] SQL starter schema created and executed
-- [ ] Lessons drafted
-- [ ] Bob activities drafted and reviewed
-- [ ] Labs and independent task completed
-- [ ] Assessment and answer key completed
-- [ ] Instructor guide completed
-- [ ] Learner workbook/course book completed
-- [ ] Branded slide deck completed
-- [ ] Full technical validation run completed
-- [ ] Pilot learner review completed
+- [ ] Every SQL asset executed on the target IBM i environment
+- [ ] Negative-test SQLSTATE/messages captured
+- [ ] Expected row counts/results reconciled with actual execution
+- [ ] Reset and clean rebuild proven
+- [ ] Independent technical reviewer repeat run completed
+- [ ] First-time learner pilot completed
+- [ ] Pilot feedback incorporated
+- [ ] Branded coursebook/PDF generated from validated canonical source
+- [ ] Branded instructor/learner documents generated
+- [ ] Branded PPTX generated from validated slide source
+- [ ] Release manifest frozen and release candidate tagged
 
 ## Definition of Done
 
