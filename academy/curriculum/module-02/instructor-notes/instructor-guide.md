@@ -2,7 +2,7 @@
 
 ## Db2 for i + SQL
 
-**Status:** author-review build; end-to-end technical validation pending  
+**Status:** source/static validated build; end-to-end technical validation pending  
 **Roadmap position:** Module 2 of 8  
 **Prerequisites:** Module 0 and Module 1  
 **Recommended delivery:** 8–10 instructional hours plus capstone/assessment, adaptable to shorter sessions  
@@ -26,20 +26,23 @@ For DML:
 Target → Preview → Predict row count → Change → Verify → Cleanup
 ```
 
+The preview-before-change rule applies to both UPDATE and DELETE.
+
 ## Instructor Preflight
 
 Before delivery:
 
-- [ ] Confirm PUB400 availability and current IBM i release.
+- [ ] Confirm PUB400 availability, current IBM i release, and current SSH port.
 - [ ] Confirm each learner has a working profile and private library/schema.
-- [ ] Confirm Code for IBM i connection.
-- [ ] Confirm Db2 for IBM i extension connection and current UI labels.
+- [ ] Record the delivery versions of Code for IBM i and Db2 for IBM i.
+- [ ] Confirm Code for IBM i connection using the current PUB400 SSH setting.
+- [ ] Confirm Db2 for IBM i extension connection, SQL job, Schema Browser, current UI labels, and expected per-user server-component prompt.
 - [ ] Run every Module 2 SQL script from a clean learner-equivalent schema.
 - [ ] Record actual base row counts and expected query results.
-- [ ] Run `99_reset.sql` and rebuild from scratch.
+- [ ] Run `99_reset.sql` from both a full and partial Module 2 object state, then rebuild from scratch.
 - [ ] Confirm no course instruction depends on authority outside the learner schema.
 - [ ] Review Bob access/approval and remind learners not to share secrets or sensitive data.
-- [ ] Recheck version-sensitive claims against current IBM/product documentation.
+- [ ] Recheck version-sensitive claims against target-release IBM and current project/service documentation.
 
 Do not deliver the lab as “validated” until the execution evidence is recorded.
 
@@ -75,7 +78,7 @@ Replace the “separate database server” assumption with the IBM i integrated-
 2. Show the Code for IBM i server context.
 3. Open Db2 for IBM i.
 4. Show the learner schema.
-5. Run a bounded read-only catalog query.
+5. Run a bounded read-only catalog/current-context query.
 6. Ask what the successful connection proves and does not prove.
 
 ## Teaching points
@@ -84,6 +87,7 @@ Replace the “separate database server” assumption with the IBM i integrated-
 - SQL is a language/interface, not the database itself.
 - Native and SQL interfaces coexist.
 - Database work is governed by IBM i authority and operational controls.
+- A zero-row table catalog result in a new schema can simply mean the learner has not created the Module 2 objects yet.
 
 ## Watch for
 
@@ -108,16 +112,16 @@ Use the translation table but repeatedly say: **useful mapping, not universal id
 Key cautions:
 
 - a library can contain many non-database objects
+- member ↔ partition is contextual: an SQL partitioned table maps to members through the traditional interface, while SQL can use an alias to address a specific member of a native multimember file
 - a logical file can represent behavior not captured by the simplistic “view” mapping
 - a keyed logical file is not automatically equivalent to a simple SQL index
-- member/partition concepts should be introduced without suggesting that multi-member tables are the default modern design
 
 ## Demonstration
 
 Show the same learner schema through:
 
 - Code for IBM i Object Browser
-- Db2 for IBM i schema/database browser
+- Db2 for IBM i Schema Browser
 
 Ask: Which view answers which question better?
 
@@ -139,6 +143,7 @@ Make learners read DDL as a set of business decisions.
 6. Run one CREATE at a time.
 7. Run metadata verification.
 8. Browse the resulting objects.
+9. Ask what the PRODUCT/INVENTORY keys enforce and what they do not enforce.
 
 ## Questions to ask
 
@@ -146,6 +151,8 @@ Make learners read DDL as a set of business decisions.
 - Why can `ROAST_LEVEL` be NULL?
 - Why is SKU unique separately from product ID?
 - Why does INVENTORY reference PRODUCT?
+- Why can a PRODUCT legally exist without an INVENTORY row in this schema?
+- Why can there be at most one INVENTORY row for one PRODUCT?
 - Which rule belongs in the database because it is universally true?
 
 ## Safety note
@@ -219,15 +226,23 @@ Use `03_select_practice.sql`.
 
 ## Instructor objective
 
-Make relationship reasoning precede syntax.
+Make relationship reasoning precede syntax and separate constraint-enforced cardinality from what the current rows happen to show.
 
 ## Whiteboard/diagram
 
 ```text
-CATEGORY 1 ───< PRODUCT 1 ─── 1 INVENTORY
+CATEGORY 1 ───< PRODUCT 1 ─── 0..1 INVENTORY
 ```
 
 Then write the key columns under the lines.
+
+Explain explicitly:
+
+- `PRODUCT.CATEGORY_ID` must reference CATEGORY.
+- `INVENTORY.PRODUCT_ID` must reference PRODUCT.
+- `INVENTORY.PRODUCT_ID` is a primary key, so one PRODUCT can have at most one INVENTORY row.
+- No constraint in Module 2 requires every PRODUCT to have INVENTORY.
+- The seed data currently has one INVENTORY row for every PRODUCT, so the base inner join returns five rows.
 
 ## Demonstration
 
@@ -237,7 +252,7 @@ Discuss the no-predicate example conceptually. Do not normalize comma-join/carte
 
 ## Critical misconception
 
-`DISTINCT` is not a join-debugging strategy. If rows unexpectedly multiply, investigate relationships and source data first.
+`DISTINCT` is not a join-debugging strategy. If rows unexpectedly multiply, investigate relationships, optionality, uniqueness, and source data first.
 
 ---
 
@@ -280,14 +295,15 @@ Behavior matters more than DML speed.
 
 Do not batch-run `06_safe_data_changes.sql` on the first demonstration.
 
-For each change:
+For UPDATE and DELETE:
 
-1. preview
+1. preview using the exact planned predicate
 2. state expected row count
-3. run change
-4. verify
+3. stop if actual preview count differs
+4. run the change
+5. verify
 
-Use only a disposable row.
+INSERT also requires an unused-key/SKU check and post-insert verification. Use only a disposable row.
 
 ## Stop conditions
 
@@ -347,10 +363,11 @@ Require the learner to explain at least:
 
 - environment/schema
 - relationship model
+- schema-enforced versus observed cardinality
 - integrity rule
 - join cardinality
 - aggregate grain
-- DML safety sequence
+- DML safety sequence for UPDATE and DELETE
 - view/index distinction
 - Bob contribution and one independently verified correction/decision
 
@@ -385,7 +402,7 @@ A numeric score cannot override a critical safety failure.
 
 ## Object already exists
 
-Determine whether the learner is continuing a prior run. Do not immediately run DROP. Verify all target names, then use the documented reset only if rebuilding is intended.
+Determine whether the learner is continuing a prior run. Do not immediately run DROP. Verify all target names, then use the documented reset only if rebuilding is intended. `99_reset.sql` uses `IF EXISTS`, but that protects only against absent Academy objects—not a wrong schema substitution.
 
 ## SQL syntax error
 
@@ -397,7 +414,7 @@ Identify the named constraint/rule. Ask whether the data is invalid or the model
 
 ## Unexpected query rows
 
-Compare expected grain, predicates, NULL logic, joins, and source row counts.
+Compare expected grain, predicates, NULL logic, joins, cardinality assumptions, and source row counts.
 
 ## Unexpected aggregate
 
@@ -405,7 +422,7 @@ Inspect the unaggregated joined detail set before changing GROUP BY/HAVING.
 
 ## Authority failure
 
-Confirm learner library ownership and intended operation. Do not teach “get more authority” as the default fix.
+Confirm learner library ownership, expected Db2 extension setup, and intended operation. Do not teach “get more authority” as the default fix.
 
 ## Tool/UI mismatch
 
@@ -418,10 +435,11 @@ The Db2 for IBM i extension evolves independently. Recheck current project docum
 - A successful sign-on is not proof of a correct target.
 - A successful SQL statement is not proof of correct business behavior.
 - Schema qualification reduces target ambiguity.
-- Preview row sets before DML.
+- Preview row sets before UPDATE and DELETE.
 - Constraints are safety mechanisms, not obstacles.
 - Query result order is not promised without ORDER BY.
 - Correct totals require correct underlying relationships.
+- Constraint-enforced cardinality and observed data cardinality are different evidence.
 - Performance claims require evidence.
 - AI assistance does not transfer accountability.
 
@@ -435,8 +453,8 @@ Capture after each delivery:
 |---|---|
 | Actual total duration | |
 | Setup friction | |
-| PUB400 permission issues | |
-| Db2 extension UI drift | |
+| PUB400 connection/permission issues | |
+| Db2 extension UI/server-component drift | |
 | SQL statement failures | |
 | Confusing terminology | |
 | Lab steps requiring hints | |
@@ -448,4 +466,4 @@ Do not silently alter expected behavior after a pilot. Update the source, valida
 
 ## Instructor Completion Gate
 
-Module 2 is ready for release only after a reviewer other than the author can start with the setup guide, rebuild the schema, reproduce every expected result, run the capstone, reset successfully, and verify that the learner-facing material matches actual IBM i behavior.
+Module 2 is ready for release only after a reviewer other than the author can start with the setup guide, rebuild the schema, reproduce every expected result, run the capstone, complete full and partial reset/rebuild, and verify that the learner-facing material matches actual IBM i behavior.
