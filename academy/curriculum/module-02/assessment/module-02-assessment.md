@@ -7,6 +7,7 @@
 - **Passing standard:** 80% plus successful lab and no critical safety failure
 - **AI mode:** reference only for Part D after the learner has produced an answer; no complete-solution generation
 - **Required evidence:** submitted answers, SQL source, practical output, learner explanation
+- **Validation status:** source/static validated; practical execution validation pending
 
 ## Objective Map
 
@@ -131,7 +132,7 @@ Before execution, write the expected row count.
 
 Write a query returning product name, category name, quantity on hand, and reorder point only for products at or below the reorder point.
 
-State the two relationships involved and the expected row count before execution.
+State the two relationships involved and the expected row count before execution. Explain which part of the PRODUCT/INVENTORY cardinality is enforced by constraints and which part depends on the current seed data.
 
 ### 19. Aggregation task — 8 points
 
@@ -147,14 +148,17 @@ Write one safe negative INSERT test that should fail because of a defined databa
 
 For one disposable row, submit:
 
-1. preview SELECT proving the key is unused
-2. INSERT
+1. preview SELECT proving the key/SKU is unused
+2. INSERT with an explicit column list
 3. verification SELECT
-4. preview SELECT for a one-row UPDATE
+4. preview SELECT using the exact one-row UPDATE predicate
 5. UPDATE
 6. verification SELECT
-7. cleanup DELETE
-8. final SELECT proving cleanup
+7. preview SELECT using the exact one-row DELETE predicate
+8. DELETE
+9. final SELECT proving cleanup
+
+The preview-before-change rule applies to **both** UPDATE and DELETE. If either preview returns an unexpected row count, stop and investigate rather than changing the predicate casually.
 
 The instructor may stop the assessment immediately if the learner runs an unbounded data-changing statement against non-disposable rows.
 
