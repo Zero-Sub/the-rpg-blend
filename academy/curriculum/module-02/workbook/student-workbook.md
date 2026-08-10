@@ -6,18 +6,18 @@
 **Prerequisites:** Module 0 — Getting Started; Module 1 — RPG Fundamentals  
 **Primary tools:** Visual Studio Code, Code for IBM i, Db2 for IBM i extension  
 **Training system:** PUB400 learner-owned schema/library  
-**Status:** author-review build; execution validation pending
+**Status:** source/static validated build; execution validation pending
 
 Use this workbook as your evidence record while completing the canonical Module 2 lessons. Never record passwords, tokens, private keys, customer data, PHI, or production data.
 
 ## Module Outcomes
 
 - [ ] Explain Db2 for i and its relationship to IBM i and SQL.
-- [ ] Translate native IBM i and SQL database terminology.
+- [ ] Translate native IBM i and SQL database terminology without overgeneralizing the mappings.
 - [ ] Verify the correct schema before running SQL.
 - [ ] Create tables with intentional data types, keys, defaults, and constraints.
 - [ ] Query with SELECT, WHERE, ORDER BY, expressions, and NULL handling.
-- [ ] Join related tables and explain expected cardinality.
+- [ ] Join related tables and distinguish schema-enforced from observed cardinality.
 - [ ] Aggregate with GROUP BY and HAVING.
 - [ ] Perform controlled INSERT, UPDATE, and DELETE work.
 - [ ] Explain views and indexes at an introductory level.
@@ -31,6 +31,7 @@ Use this workbook as your evidence record while completing the canonical Module 
 | Connection nickname | |
 | PUB400 user profile | |
 | Learner library/schema | |
+| SSH port/current connection setting | |
 | Code for IBM i version | |
 | Db2 for IBM i extension version | |
 | Date verified | |
@@ -45,7 +46,7 @@ Use this workbook as your evidence record while completing the canonical Module 
 
 ## Evidence
 
-Read-only metadata query:
+Read-only metadata/current-context query:
 
 ```sql
 
@@ -58,6 +59,10 @@ What did the result prove?
 >
 
 What did it fail to prove?
+
+>
+
+If a catalog query returned zero table rows before you built the catalog, why would that not automatically mean the learner schema was invalid?
 
 >
 
@@ -91,6 +96,10 @@ Explain IBM i, Db2 for i, SQL, and a schema/library in five sentences or fewer w
 | Record | | |
 | Logical file | | |
 | Keyed logical file | | |
+
+For `member` and `partition`, explain why the mapping is useful but not universal. Include the role an SQL alias can play when SQL needs to address a specific member of a multimember database file.
+
+>
 
 ## Environment Observation
 
@@ -127,6 +136,15 @@ Choose one table and explain its design.
 | Default(s) | |
 | CHECK rule(s) | |
 | Foreign key(s) | |
+
+## PRODUCT / INVENTORY Cardinality Check
+
+What does the DDL enforce?
+
+- Each INVENTORY row must reference an existing PRODUCT: ____________________
+- Maximum INVENTORY rows allowed for one PRODUCT: ____________________
+- Does the schema require every PRODUCT to have INVENTORY? ____________________
+- How many seeded PRODUCT rows currently have INVENTORY? ____________________
 
 ## Execution Evidence
 
@@ -228,12 +246,16 @@ Bob used on independent task? **No:** ________
 
 # Lesson 2.6 — Joins
 
-Complete the relationship map.
+Complete the relationship map from what the constraints actually enforce.
 
 ```text
 CATEGORY.____________  1 ---- many PRODUCT.____________
-PRODUCT.____________   1 ---- 1    INVENTORY.____________
+PRODUCT.____________   1 ---- 0..1 INVENTORY.____________
 ```
+
+Why does the seeded data currently behave as one-to-one between PRODUCT and INVENTORY even though the schema permits zero-or-one INVENTORY row per PRODUCT?
+
+>
 
 | Join | Expected rows | Actual rows | Relationship evidence |
 |---|---:|---:|---|
@@ -318,7 +340,7 @@ Actual result:
 
 | Step | Expected | Actual/evidence |
 |---|---|---|
-| Key unused | 0 rows | |
+| Key/SKU unused | 0 rows | |
 | INSERT | 1 row created | |
 | Post-insert verification | 1 row | |
 | UPDATE preview | 1 row | |
@@ -328,7 +350,7 @@ Actual result:
 | DELETE | intended row only | |
 | Final verification | 0 rows | |
 
-What should happen if the UPDATE preview returns two rows?
+What should happen if either the UPDATE or DELETE preview returns an unexpected number of rows?
 
 >
 
@@ -391,10 +413,11 @@ Complete `../lab/module-02-lab.md` and attach or link the SQL source used.
 ## Independent Defense
 
 - [ ] I can explain the three-table relationship.
+- [ ] I can distinguish schema-enforced PRODUCT/INVENTORY cardinality from the seeded rows.
 - [ ] I can explain one integrity constraint.
 - [ ] I can explain a join and expected cardinality.
 - [ ] I can explain the grain of a grouped query.
-- [ ] I can explain the preview → change → verify workflow.
+- [ ] I can explain preview → change → verify for both UPDATE and DELETE.
 - [ ] I can explain a view.
 - [ ] I can explain an index without making an unsupported performance claim.
 
