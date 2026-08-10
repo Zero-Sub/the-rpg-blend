@@ -9,7 +9,7 @@
 - **Required tools:** VS Code, Db2 for IBM i extension
 - **Required files:** `../code/sql/01_create_catalog.sql`
 - **Sample application:** CATEGORY, PRODUCT, INVENTORY
-- **Validation status:** source reviewed; execution validation pending
+- **Validation status:** source/static validated; execution validation pending
 - **Target:** PUB400 IBM i 7.5 learner library
 
 ## Today's Coffee
@@ -26,6 +26,7 @@ The learner can:
 4. Choose character, integer, decimal, date, and timestamp types for the Coffee Catalog.
 5. Read a complete CREATE TABLE statement before running it.
 6. Verify that the intended objects were created in the intended schema.
+7. Explain what the PRODUCT/INVENTORY keys do—and do not—enforce.
 
 ## Why This Matters
 
@@ -51,15 +52,17 @@ Module 2 focuses on `CREATE TABLE`, then later introduces `CREATE VIEW` and `CRE
 CATEGORY
    1
    |
-   | one category has many products
+   | one category can have many products
    v
 PRODUCT
    1
    |
-   | one product has one inventory row in this training model
+   | zero or one inventory row per product is allowed by this schema
    v
 INVENTORY
 ```
+
+The foreign key on `INVENTORY.PRODUCT_ID` requires every inventory row to reference an existing product. Making that same column the INVENTORY primary key prevents more than one inventory row for the same product. These rules enforce **zero or one** inventory row per product—not “exactly one.” The Module 2 seed data intentionally supplies one inventory row for each of the five products.
 
 This is intentionally small. The point is to understand relational structure, not to build the entire application in one module.
 
@@ -129,6 +132,7 @@ A DDS physical file can also define stored database data on IBM i. This lesson d
 5. Run the catalog verification query.
 6. Browse the objects with the Db2 for IBM i extension.
 7. Record the object names and types.
+8. Explain why the schema allows a PRODUCT row to exist before an INVENTORY row is added.
 
 ## IBM Bob-Assisted Activity
 
@@ -155,6 +159,7 @@ Do not ask Bob to choose the definition. After you finish, Bob may review it.
 - Using approximate numeric types for exact prices without understanding the tradeoff.
 - Allowing NULL by accident.
 - Creating a table without a key because the sample data happens to be unique.
+- Assuming a foreign key in INVENTORY forces every PRODUCT to have an inventory row.
 - Treating a successful CREATE as proof that the design is good.
 
 ## Pro Tips
@@ -162,11 +167,12 @@ Do not ask Bob to choose the definition. After you finish, Bob may review it.
 - Read the entire DDL statement before execution, including constraints at the bottom.
 - Name constraints so diagnostics are easier to understand.
 - Prefer database-enforced rules for universal data integrity rules.
+- Describe cardinality from what the constraints actually enforce, not only from what the sample rows happen to contain.
 - Keep training DDL deterministic so reset/rebuild cycles are easy to reproduce.
 
 ## Manager's Perspective
 
-Database design review should happen before application code hardens around a weak model. A five-minute conversation about nullability or key choice can prevent years of defensive logic across RPG, SQL, APIs, and reports.
+Database design review should happen before application code hardens around a weak model. A five-minute conversation about nullability, key choice, or cardinality can prevent years of defensive logic across RPG, SQL, APIs, and reports.
 
 ## Knowledge Check
 
@@ -175,12 +181,14 @@ Database design review should happen before application code hardens around a we
 3. What does `NOT NULL` prevent?
 4. Why would you name a constraint?
 5. What is the difference between a column default and a value supplied explicitly by an INSERT?
-6. Why should the learner verify the created object through metadata after CREATE succeeds?
-7. Why does the Academy prefer SQL DDL for new relational objects while still teaching DDS recognition?
+6. What does the INVENTORY primary-key/foreign-key design enforce about the number of inventory rows per product?
+7. Why does it not enforce that every product has an inventory row?
+8. Why should the learner verify the created object through metadata after CREATE succeeds?
+9. Why does the Academy prefer SQL DDL for new relational objects while still teaching DDS recognition?
 
 ## Completion Criteria
 
-The learner creates CATEGORY, PRODUCT, and INVENTORY in the assigned schema, explains every major DDL clause, and verifies the objects independently.
+The learner creates CATEGORY, PRODUCT, and INVENTORY in the assigned schema, explains every major DDL clause, accurately states the PRODUCT/INVENTORY cardinality enforced by the schema, and verifies the objects independently.
 
 ## Final Sip
 
