@@ -12,7 +12,7 @@
 - **Required access:** PUB400 learner profile with learner-owned private library/schema
 - **Expected deliverables:** SQL source, evidence record, answers to reflection questions
 - **AI mode:** Bob allowed for review/reference only; complete solution generation prohibited
-- **Validation status:** lab design reviewed; end-to-end learner run pending
+- **Validation status:** source/static validated; end-to-end learner run pending
 
 ## Scenario
 
@@ -39,6 +39,9 @@ Before beginning, record:
 | Connection nickname | |
 | IBM i user profile | |
 | Learner schema/library | |
+| SSH port/current connection setting | |
+| Code for IBM i version | |
+| Db2 for IBM i extension version | |
 | Date/time | |
 | Db2 for IBM i connection verified | |
 
@@ -46,13 +49,15 @@ Do not record credentials or secrets.
 
 ## Part A — Verify the Boundary
 
-1. Connect to PUB400 with the approved learner profile.
+1. Connect to PUB400 with the approved learner profile and current documented connection settings.
 2. Locate the assigned private schema in the Db2 for IBM i extension.
-3. Run a read-only catalog query that proves the schema name.
+3. Run a read-only catalog or current-context query that supports the schema/connection check.
 4. Record one sentence explaining why the schema is safe for the lab.
 5. Stop if the schema or ownership is uncertain.
 
-**Evidence:** schema name, read-only query, result count.
+**Evidence:** schema name, read-only query, result/context evidence.
+
+A new learner schema can legitimately contain no Module 2 tables yet. A zero-row `SYSTABLES` result before Part B is not proof that the schema is invalid.
 
 ## Part B — Build the Relational Model
 
@@ -86,11 +91,14 @@ Required business rules:
 
 Required business rules:
 
-- one inventory row per product in this training model
+- every inventory row belongs to an existing product
+- at most one inventory row may exist for a given product in this training model
+- the schema does **not** require every product to have an inventory row
 - quantity on hand cannot be negative
 - reorder point cannot be negative
 - count timestamp required with a reasonable default
-- product must exist
+
+The primary-key/foreign-key design on `INVENTORY.PRODUCT_ID` enforces the first two rules. The seed data later creates one inventory row for every product, but that is a property of the seed data, not a mandatory one-to-one rule enforced from PRODUCT to INVENTORY.
 
 You may start from the lesson DDL, but you must explain every constraint before execution.
 
@@ -163,7 +171,11 @@ Return:
 
 only for products at or below the reorder point.
 
-Explain why the join predicates represent real relationships rather than merely matching similarly named columns.
+Before execution, explain:
+
+- why the join predicates represent real relationships rather than merely matching similarly named columns
+- what PRODUCT → INVENTORY cardinality the schema enforces
+- why the seeded data currently gives one matching INVENTORY row for each PRODUCT
 
 ## Part F — Aggregate
 
@@ -195,7 +207,7 @@ For each test, record:
 
 At least one negative test must be designed without Bob.
 
-Do not remove a constraint to make an invalid statement succeed.
+Do not remove a constraint to make an invalid statement succeed. A syntax error is not proof that an intended database constraint works.
 
 ## Part H — Controlled Data Change
 
@@ -203,7 +215,7 @@ Create a disposable product row with an unused training identifier and SKU.
 
 Then perform this sequence:
 
-1. SELECT to prove the target key is unused.
+1. SELECT to prove the target key/SKU is unused.
 2. INSERT exactly one disposable row.
 3. SELECT to verify the inserted row.
 4. SELECT with the exact future UPDATE predicate and prove it returns one row.
@@ -256,6 +268,7 @@ Bob may not write the remaining unanswered lab queries for you.
 With Bob closed, explain to the instructor or reviewer:
 
 - the three-table relationship
+- the difference between schema-enforced PRODUCT/INVENTORY cardinality and the seeded data
 - one integrity rule and what invalid state it prevents
 - one join's expected cardinality
 - the grain of one aggregate query
@@ -266,13 +279,14 @@ With Bob closed, explain to the instructor or reviewer:
 ## Validation Checklist
 
 - [ ] Correct PUB400 host/profile/schema verified
+- [ ] Current connection/tool versions recorded
 - [ ] CATEGORY, PRODUCT, INVENTORY created in learner schema
 - [ ] Base row counts are 3 / 5 / 5
 - [ ] Required SELECTs return predicted rows
-- [ ] Join row counts are explained
+- [ ] Join row counts and cardinality are explained
 - [ ] Aggregate grain is explained
 - [ ] Three negative constraint tests behave as predicted
-- [ ] Disposable DML row is inserted, updated, deleted, and verified
+- [ ] Disposable DML row is previewed, inserted, verified, update-previewed, updated, verified, delete-previewed, deleted, and cleanup-verified
 - [ ] View is queryable
 - [ ] Index object exists
 - [ ] Bob evidence records are complete
@@ -289,9 +303,9 @@ With Bob closed, explain to the instructor or reviewer:
 | Duplicate-key error | Verify whether the key/SKU already exists; do not change the constraint casually |
 | Query returns too many rows | Inspect predicates and joins before adding DISTINCT |
 | Aggregate is too high | Inspect underlying joined detail rows for multiplication |
-| UPDATE preview returns unexpected rows | Stop; inspect the key/predicate and data before changing anything |
-| Permission failure | Verify learner schema ownership; do not request broad access as a shortcut |
-| Bob and actual behavior disagree | Treat executed evidence and current IBM documentation as authoritative; investigate the mismatch |
+| UPDATE/DELETE preview returns unexpected rows | Stop; inspect the key/predicate and data before changing anything |
+| Permission failure | Verify learner schema ownership and expected extension setup; do not request broad access as a shortcut |
+| Bob and actual behavior disagree | Treat executed evidence and target-release IBM documentation as authoritative; investigate the mismatch |
 
 ## Reflection
 
@@ -312,7 +326,9 @@ The reset must remove only:
 - `PRODUCT`
 - `CATEGORY`
 
-After reset, confirm the Module 2 objects no longer exist. Do not drop the learner's library/schema.
+The reset uses `DROP ... IF EXISTS` so a partial prior run can be cleaned safely without failing merely because an Academy object is already absent. This does not protect against a wrong schema substitution.
+
+After reset, confirm the Module 2 objects no longer exist. Do not drop the learner's library/schema. Then perform the required clean rebuild during technical validation.
 
 ## Completion
 
