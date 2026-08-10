@@ -8,27 +8,23 @@
 **Training system:** PUB400 learner-owned schema/library  
 **Status:** author-review build; execution validation pending
 
-This workbook is the learner's evidence record. Complete it while working through the lesson manuscripts and SQL assets. Do not record passwords, tokens, private keys, customer data, PHI, or production data.
+Use this workbook as your evidence record while completing the canonical Module 2 lessons. Never record passwords, tokens, private keys, customer data, PHI, or production data.
 
 ## Module Outcomes
 
-By the end of the module, I can:
-
 - [ ] Explain Db2 for i and its relationship to IBM i and SQL.
-- [ ] Translate common native IBM i and SQL database terminology.
-- [ ] Verify a safe learner schema before running SQL.
+- [ ] Translate native IBM i and SQL database terminology.
+- [ ] Verify the correct schema before running SQL.
 - [ ] Create tables with intentional data types, keys, defaults, and constraints.
-- [ ] Query data with SELECT, WHERE, ORDER BY, expressions, and NULL handling.
+- [ ] Query with SELECT, WHERE, ORDER BY, expressions, and NULL handling.
 - [ ] Join related tables and explain expected cardinality.
-- [ ] Aggregate rows with GROUP BY and HAVING.
-- [ ] Perform controlled INSERT, UPDATE, and DELETE work in a learner schema.
+- [ ] Aggregate with GROUP BY and HAVING.
+- [ ] Perform controlled INSERT, UPDATE, and DELETE work.
 - [ ] Explain views and indexes at an introductory level.
-- [ ] Use IBM Bob for explanation/review while independently validating its output.
-- [ ] Complete the Coffee Catalog capstone without relying on Bob for the solution.
+- [ ] Use IBM Bob for review while independently validating its output.
+- [ ] Complete the Coffee Catalog capstone independently.
 
----
-
-# Environment Record
+## Environment Record
 
 | Item | My value |
 |---|---|
@@ -39,26 +35,17 @@ By the end of the module, I can:
 | Db2 for IBM i extension version | |
 | Date verified | |
 
-### Safety statement
+**Why is this schema appropriate for Module 2?**
 
-In one sentence, explain why this schema is appropriate for Module 2:
-
-> 
+>
 
 ---
 
 # Lesson 2.1 — Db2 for i Is Part of the Platform
 
-## I can
-
-- [ ] Explain Db2 for i.
-- [ ] Distinguish the database manager from SQL.
-- [ ] Explain why the database is part of the IBM i application environment.
-- [ ] Run a read-only metadata query.
-
 ## Evidence
 
-Read-only query used:
+Read-only metadata query:
 
 ```sql
 
@@ -68,49 +55,32 @@ Rows returned: __________
 
 What did the result prove?
 
-> 
+>
 
-What did it **not** prove?
+What did it fail to prove?
 
-> 
+>
 
-## Bob review
+## Bob Review
 
-Prompt:
+| Item | My record |
+|---|---|
+| Prompt | |
+| Verified fact | |
+| Assumption | |
+| Suggestion accepted/corrected/rejected | |
+| Evidence for decision | |
+| Risk Bob missed | |
 
-> 
+## Independent Check
 
-Verified fact:
+Explain IBM i, Db2 for i, SQL, and a schema/library in five sentences or fewer without Bob.
 
-> 
-
-Assumption:
-
-> 
-
-Suggestion accepted/corrected/rejected:
-
-> 
-
-Evidence:
-
-> 
-
-Risk Bob missed:
-
-> 
-
-## Independent check
-
-Without Bob, explain IBM i, Db2 for i, SQL, and a schema/library in five sentences or fewer:
-
-> 
+>
 
 ---
 
 # Lesson 2.2 — Native and SQL Terminology
-
-Complete the translation table in your own words.
 
 | IBM i / native | SQL-oriented | Where the comparison can mislead |
 |---|---|---|
@@ -122,7 +92,7 @@ Complete the translation table in your own words.
 | Logical file | | |
 | Keyed logical file | | |
 
-## Environment observation
+## Environment Observation
 
 | Object | What the tool shows | SQL description if applicable | Safe for me to change? |
 |---|---|---|---|
@@ -132,25 +102,21 @@ Complete the translation table in your own words.
 
 What is the difference between **data** and **metadata**?
 
-> 
+>
 
 ---
 
 # Lesson 2.3 — Build the Coffee Catalog Schema
 
-## Before execution
+My schema: ____________________
 
-My schema is: ____________________
-
-Objects I expect to create:
+Expected objects:
 
 - [ ] CATEGORY
 - [ ] PRODUCT
 - [ ] INVENTORY
 
-## DDL review
-
-Choose one table and explain these choices:
+Choose one table and explain its design.
 
 | Decision | My explanation |
 |---|---|
@@ -162,7 +128,7 @@ Choose one table and explain these choices:
 | CHECK rule(s) | |
 | Foreign key(s) | |
 
-## Execution evidence
+## Execution Evidence
 
 | Table | CREATE succeeded? | Metadata verification |
 |---|---|---|
@@ -170,9 +136,7 @@ Choose one table and explain these choices:
 | PRODUCT | | |
 | INVENTORY | | |
 
-## Independent definition task
-
-Propose one new column for a scratch copy of the model.
+## Independent Definition Task
 
 Column name: ____________________  
 Data type: ____________________  
@@ -181,13 +145,13 @@ Default? ____________________
 
 Business justification:
 
-> 
+>
 
 ---
 
 # Lesson 2.4 — Keys, Constraints, Defaults, and NULL
 
-## Base data counts
+## Base Counts
 
 | Table | Expected | Actual |
 |---|---:|---:|
@@ -197,24 +161,22 @@ Business justification:
 
 Do not continue until expected and actual counts are reconciled.
 
-## Constraint tests
+## Constraint Tests
 
-| Test | Rule tested | Expected result | Actual result | Evidence/message |
+| Test | Rule tested | Expected | Actual | Evidence/message |
 |---|---|---|---|---|
 | 1 | | | | |
 | 2 | | | | |
 | 3 | | | | |
 | Independent | | | | |
 
-## NULL check
-
 In your own words, NULL means:
 
-> 
+>
 
 Why is blank different?
 
-> 
+>
 
 Correct NULL predicate:
 
@@ -226,55 +188,31 @@ Correct NULL predicate:
 
 # Lesson 2.5 — SELECT: Ask a Precise Question
 
-For every exercise, predict first.
+## Query Record
 
-## Query A — explicit columns
+| Query | Business question | Expected rows | Actual rows |
+|---|---|---:|---:|
+| Explicit columns | | | |
+| Price filter | | | |
+| Expression | | | |
+| NULL test | | | |
+| Bounded result | | | |
 
-Business question:
+What does `ORDER BY` guarantee?
 
-> 
+>
 
-Expected rows: __________
+Does a SELECT expression automatically modify stored data? Explain.
 
-Actual rows: __________
+>
 
-What did `ORDER BY` guarantee?
-
-> 
-
-## Query B — filter
-
-WHERE predicate:
-
-```sql
-
-```
-
-Plain-language meaning:
-
-> 
-
-## Query C — expression
-
-Expression:
-
-```sql
-
-```
-
-Does it modify stored PRICE values? Why or why not?
-
-> 
-
-## Query D — independent task
+## Independent Task
 
 Return active products below 16.00 using only SKU, product name, and price.
 
 Predicted products:
 
-> 
-
-My SQL:
+>
 
 ```sql
 
@@ -282,42 +220,36 @@ My SQL:
 
 Actual result:
 
-> 
+>
 
-Bob used on independent task? **No**: ________
+Bob used on independent task? **No:** ________
 
 ---
 
 # Lesson 2.6 — Joins
 
-## Relationship map
-
-Fill in the keys:
+Complete the relationship map.
 
 ```text
 CATEGORY.____________  1 ---- many PRODUCT.____________
 PRODUCT.____________   1 ---- 1    INVENTORY.____________
 ```
 
-## Join prediction record
-
-| Query | Relationship | Expected rows | Actual rows |
-|---|---|---:|---:|
+| Join | Expected rows | Actual rows | Relationship evidence |
+|---|---:|---:|---|
 | PRODUCT + CATEGORY | | | |
 | PRODUCT + INVENTORY | | | |
-| CATEGORY + PRODUCT + INVENTORY | | | |
+| Three-table join | | | |
 
-If expected and actual differ, what did you inspect first?
+If expected and actual row counts differ, what should you inspect first?
 
-> 
+>
 
-## Independent reorder query
+## Independent Reorder Query
 
-Expected matching products:
+Predicted products:
 
-> 
-
-My SQL:
+>
 
 ```sql
 
@@ -325,44 +257,36 @@ My SQL:
 
 Actual rows: __________
 
-Why would adding `DISTINCT` be the wrong first response to unexplained row multiplication?
+Why is `DISTINCT` the wrong first response to unexplained row multiplication?
 
-> 
+>
 
 ---
 
 # Lesson 2.7 — Aggregation
 
-Complete before running each query:
-
-| Query | One result row represents... | Expected result rows | Actual |
+| Query | One result row represents... | Expected rows | Actual rows |
 |---|---|---:|---:|
 | Whole-table metrics | | | |
 | Products by category | | | |
 | HAVING example | | | |
-| Inventory totals by category | | | |
-
-## WHERE vs HAVING
+| Inventory totals | | | |
 
 `WHERE` filters:
 
-> 
+>
 
 `HAVING` filters:
 
-> 
+>
 
-## Independent inventory-pressure query
+## Independent Inventory-Pressure Query
 
-Manual expected totals:
-
-| Category | Total quantity |
+| Category | Manual total quantity |
 |---|---:|
 | Coffee | |
 | Equipment | |
 | Merchandise | |
-
-My SQL returning only categories below 30:
 
 ```sql
 
@@ -370,7 +294,7 @@ My SQL returning only categories below 30:
 
 Actual result:
 
-> 
+>
 
 ---
 
@@ -378,21 +302,19 @@ Actual result:
 
 ## Change Gate
 
-Before running DML, fill this out:
-
 | Question | My answer |
 |---|---|
 | Which host? | |
 | Which profile? | |
 | Which schema? | |
 | Which table? | |
-| Which disposable key/SKU? | |
+| Disposable key/SKU? | |
 | Expected rows to change? | |
 | Preview query? | |
 | Verification query? | |
 | Cleanup plan? | |
 
-## Disposable-row evidence
+## Disposable-Row Evidence
 
 | Step | Expected | Actual/evidence |
 |---|---|---|
@@ -406,13 +328,13 @@ Before running DML, fill this out:
 | DELETE | intended row only | |
 | Final verification | 0 rows | |
 
-What should you do if the UPDATE preview returns two rows?
+What should happen if the UPDATE preview returns two rows?
 
-> 
+>
 
-Why is `ROLLBACK` not taught as a universal rescue button in this lesson?
+Why is `ROLLBACK` not taught as a universal rescue button here?
 
-> 
+>
 
 ---
 
@@ -424,33 +346,32 @@ View name: ____________________
 
 What logic does it centralize?
 
-> 
+>
 
 Where is the base data stored?
 
-> 
+>
 
-What does the view **not** guarantee?
+What does the view not guarantee?
 
-> 
+>
 
 ## Index
 
-Index name: ____________________
-
+Index name: ____________________  
 Column(s): ____________________
 
 What access pattern might it support?
 
-> 
+>
 
-Why is the five-row lab not proof of a performance improvement?
+Why is a five-row lab not proof of performance improvement?
 
-> 
+>
 
-What evidence would be stronger?
+What stronger evidence would you want?
 
-> 
+>
 
 ---
 
@@ -458,33 +379,16 @@ What evidence would be stronger?
 
 Complete `../lab/module-02-lab.md` and attach or link the SQL source used.
 
-## Capstone summary
+| Question | My summary |
+|---|---|
+| What did I create? | |
+| What did I query? | |
+| What did I change? | |
+| What did I verify? | |
+| What did Bob review? | |
+| What did I complete independently? | |
 
-What did you create?
-
-> 
-
-What did you query?
-
-> 
-
-What did you change?
-
-> 
-
-What did you verify?
-
-> 
-
-What did Bob help review?
-
-> 
-
-What did you complete independently?
-
-> 
-
-## Independent defense checklist
+## Independent Defense
 
 - [ ] I can explain the three-table relationship.
 - [ ] I can explain one integrity constraint.
@@ -492,7 +396,7 @@ What did you complete independently?
 - [ ] I can explain the grain of a grouped query.
 - [ ] I can explain the preview → change → verify workflow.
 - [ ] I can explain a view.
-- [ ] I can explain what an index does without claiming unsupported performance improvement.
+- [ ] I can explain an index without making an unsupported performance claim.
 
 ---
 
@@ -500,23 +404,23 @@ What did you complete independently?
 
 1. What changed most in your mental model of IBM i databases?
 
-> 
+>
 
 2. Which SQL mistake now seems most dangerous?
 
-> 
+>
 
 3. Which safety habit will you carry into Module 3?
 
-> 
+>
 
 4. What Bob suggestion did you reject or correct, and why?
 
-> 
+>
 
 5. What do you still need to practice before working with application data?
 
-> 
+>
 
 ## Completion Signoff
 
