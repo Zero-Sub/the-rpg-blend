@@ -1,904 +1,437 @@
 # The RPG Blend Academy Blueprint
 
-**Status:** Master curriculum plan  
+**Status:** Canonical Academy blueprint  
 **Owner:** George Van Eaton  
 **Repository:** `Zero-Sub/the-rpg-blend`  
-**Tagline:** Real Code. Real Coffee. No Nonsense.
+**Curriculum map:** [`../curriculum/CURRICULUM_MAP.md`](../curriculum/CURRICULUM_MAP.md)  
+**Last aligned:** August 10, 2026
 
 ---
 
 ## 1. Mission
 
-The RPG Blend Academy prepares developers to understand, support, build, and modernize real IBM i business applications using RPG, Db2 for i, SQL, disciplined engineering practices, and responsible AI assistance.
+The RPG Blend Academy prepares developers to contribute safely and effectively to a modern IBM i development team.
 
-The Academy is not a collection of disconnected articles. It is a structured learning system that moves a student from first exposure to independent contribution, modernization capability, technical mentoring, and platform leadership.
+The Academy teaches IBM i, RPG, Db2 for i, SQL, ILE, Git-based delivery, production support, modernization, and responsible AI-assisted development as one connected engineering discipline rather than as disconnected product topics.
+
+The Academy does not republish IBM, COMMON, vendor, book, or community training. Those materials are reference sources used to validate terminology, technical accuracy, coverage, and progression. Academy explanations, examples, code, labs, diagrams, quizzes, assessments, and capstones are original.
 
 ## 2. Vision
 
-Create the definitive learning pathway for IBM i and RPG developers by combining:
+Build a practical developer learning path that can serve:
 
-- beginner-friendly technical instruction
-- production-quality examples
-- legacy maintenance literacy
-- modern RPG and SQL development
-- VS Code, Git, and DevOps practices
-- responsible AI-assisted development
-- architecture and modernization guidance
-- engineering leadership and mentoring
+- new Associate RPG Developers
+- developers transferring from another language or platform
+- experienced RPG developers modernizing their skills
+- technical mentors and team leads
+- engineering managers and architects building sustainable IBM i capability
 
-The long-term goal is for the Academy to become a trusted public learning resource, an internal associate-developer onboarding system, a conference and workshop platform, and the foundation for future books and courses.
+The Academy should support public education, internal onboarding, workshops, conference sessions, downloadable guides, books, and future certification-style evidence of skill.
 
 ## 3. Founder and Lead Instructor
 
 The RPG Blend Academy was created by **George Van Eaton**, an IBM i engineering leader with more than 30 years of experience in RPG, Db2 for i, SQL, software architecture, modernization, production support, technical standards, hiring, and developer development.
 
-George is the author of *The RPG Blend* and a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*.
-
-The Academy translates real enterprise experience into a repeatable development curriculum for new developers, experienced modernizers, mentors, and engineering leaders.
+George is the author of *The RPG Blend* and a contributing author to the IBM Redbooks work-in-progress publication *Modernizing IBM i Applications*. The **work-in-progress** designation must remain until IBM publishes a final edition.
 
 ## 4. Academy Promise
 
-Every Academy lesson will be:
+Every Academy module must be:
 
 - technically accurate
-- beginner friendly
-- professionally written
-- practical and immediately usable
-- connected to a real business application
-- explicit about legacy versus preferred modern practice
-- supported by authoritative technical sources
-- reviewed for production relevance
+- practical and production-aware
+- approachable for a developer who is new to IBM i
+- explicit about legacy recognition versus preferred modern practice
+- built around observable skills rather than passive completion
+- validated against authoritative sources
+- demonstrated in modern tooling whenever practical
+- integrated with responsible IBM Bob use
 
-Students will learn not only how syntax works, but why the technique exists, where companies use it, what can fail in production, and how a professional developer should review and support it.
+Learners should understand not only how syntax works, but why it exists, where it is used, what can fail, how to troubleshoot it, and how to prove a change is safe.
 
-## 5. Audience Personas
+## 5. Target Learner
 
-### Persona A — Associate RPG Developer
+The primary learner already understands basic programming concepts but may be new to IBM i and RPG. The learner may be a recent graduate, career changer, or developer transferring from another platform.
 
-**Background:** College graduate, boot camp graduate, or entry-level developer with little or no RPG experience.  
-**Needs:** IBM i orientation, safe development habits, code-reading skills, guided labs, and clear feedback.  
-**Target outcome:** Complete supervised changes safely and explain the impact of the change.
-
-### Persona B — Developer Transitioning from Another Language
-
-**Background:** Experience with Java, C#, JavaScript, Python, COBOL, or another business language.  
-**Needs:** Translation between familiar concepts and IBM i terminology, architecture, RPG syntax, native I/O, SQL, and the IBM i object model.  
-**Target outcome:** Become productive without carrying inaccurate assumptions from another platform.
-
-### Persona C — Traditional RPG Developer Modernizing Skills
-
-**Background:** Strong fixed-format RPG, DDS, SEU, native I/O, and production-support experience.  
-**Needs:** Fully free-form RPG, SQL, procedures, service programs, Git, VS Code, testing, APIs, DevOps, and AI-assisted workflows.  
-**Target outcome:** Modernize incrementally without losing operational knowledge.
-
-### Persona D — Technical Mentor or Team Lead
-
-**Background:** Experienced developer responsible for reviews, mentoring, standards, and delivery.  
-**Needs:** A repeatable teaching model, code-review expectations, labs, assessments, and modernization decision tools.  
-**Target outcome:** Develop other engineers consistently and reduce knowledge concentration.
-
-### Persona E — Engineering Manager or Architect
-
-**Background:** Responsible for platform strategy, staffing, risk, architecture, modernization, and investment decisions.  
-**Needs:** A clear capability model, modernization roadmap, governance standards, metrics, and internal adaptation guidance.  
-**Target outcome:** Build a sustainable IBM i engineering organization.
+The target outcome is not merely RPG familiarity. The learner must be able to work safely inside an enterprise IBM i development team with normal review and mentoring.
 
 ## 6. Learning Progression
 
 ```text
 IBM i newcomer
-    ↓
-Platform-aware learner
-    ↓
-RPG code reader
-    ↓
-Supervised associate developer
-    ↓
-Independent RPG and SQL developer
-    ↓
-Modernization engineer
-    ↓
-Technical mentor
-    ↓
-Platform architect or engineering leader
+      ↓
+Platform-aware developer
+      ↓
+RPG-fluent developer
+      ↓
+Database-aware developer
+      ↓
+Safe application developer
+      ↓
+Team delivery contributor
+      ↓
+Modernization-capable engineer
 ```
 
-Progression is based on demonstrated capability, not simply lesson completion.
+Progression is based on demonstrated capability, not simply reading lessons or watching videos.
 
-## 7. Curriculum Levels
+## 7. Canonical Curriculum Map
 
-| Level | Name | Primary Outcome |
-|---|---|---|
-| 000 | Orientation | Understand IBM i, RPG, development tools, source flow, and business context |
-| 100 | Associate Foundations | Read code, make supervised changes, perform basic I/O, and debug safely |
-| 200 | Professional RPG Development | Build modular, maintainable RPG and SQL applications independently |
-| 300 | IBM i Modernization | Modernize database access, architecture, interfaces, tooling, and delivery practices |
-| 400 | Technical Leadership | Lead standards, architecture, mentoring, production readiness, and modernization strategy |
+The following eight-module sequence is authoritative. Detailed lesson plans may evolve inside a module, but they must not silently change the module order or purpose.
 
-## 8. Complete Lesson Catalog
+| Module | Title | Status | Primary focus |
+|---:|---|---|---|
+| 0 | Getting Started | Built | IBM i mental model, tools, and the first safe development loop |
+| 1 | RPG Fundamentals | Built | Read, declare, calculate, decide, loop, and test modern RPG |
+| 2 | Db2 for i + SQL | Next | Schemas, tables, queries, data quality, and safe updates |
+| 3 | Files + Data Access | Planned | Native I/O, embedded SQL, transactions, and errors |
+| 4 | Procedures + ILE | Planned | Prototypes, procedures, modules, service programs, and binding |
+| 5 | Debug + Test | Planned | Diagnostics, job logs, debugging, boundary tests, and regression tests |
+| 6 | Git + Team Delivery | Planned | Branches, reviews, build evidence, and controlled promotion |
+| 7 | Architecture + Capstone | Planned | APIs, SQL services, modernization patterns, and the final application |
 
-The initial catalog contains **75 lessons**. Lesson numbering may evolve, but each lesson must retain a stable identifier after publication.
+### Why this order
 
-### Level 000 — Orientation
+The path deliberately moves from language fluency to data fluency before mixing RPG and database-access techniques. Learners then modularize the application, learn to diagnose and test it, deliver changes through a team workflow, and finally integrate the pieces into an architecture and capstone.
 
-#### Module 000-00 — Getting Started with RPG and Coffee
+This prevents the curriculum from teaching isolated RPG syntax for too long before showing the database-centric nature of real IBM i applications.
 
-1. `000-00-01` Welcome to the RPG Blend Academy
-2. `000-00-02` What IBM i Is and Why Businesses Use It
-3. `000-00-03` IBM i, AS/400, iSeries, and System i Terminology
-4. `000-00-04` Libraries, Objects, Members, Jobs, and Subsystems
-5. `000-00-05` What RPG Is and How the Language Evolved
-6. `000-00-06` The IBM i Application Development Lifecycle
-7. `000-00-07` Connecting with VS Code and Code for IBM i
-8. `000-00-08` Navigating Source in the IFS and Source Physical Files
-9. `000-00-09` Your First Fully Free-Form RPG Program
-10. `000-00-10` Compiling, Running, and Reading Job Messages
-11. `000-00-11` Introduction to Git and the Academy Repository
-12. `000-00-12` Using AI Responsibly as an IBM i Learner
-13. `000-00-13` Module 0 Lab and Skills Check
+## 8. Module Outcomes
 
-### Level 100 — Associate Foundations
+### Module 0 — Getting Started
 
-#### Module 100-01 — Reading and Writing Modern RPG
+Learners establish the IBM i mental model, connect from Visual Studio Code, navigate the platform safely, compile and run a small program, understand the basic source-to-object loop, and begin using Git and IBM Bob responsibly.
 
-14. `100-01-01` Anatomy of a Fully Free-Form RPG Program
-15. `100-01-02` Control Options and Program Entry
-16. `100-01-03` Variables, Constants, Initialization, and Scope
-17. `100-01-04` Character, Numeric, Indicator, Date, Time, and Timestamp Types
-18. `100-01-05` Assignment, Expressions, and Operators
-19. `100-01-06` Built-In Functions for Character Data
-20. `100-01-07` Built-In Functions for Numeric Data
-21. `100-01-08` Built-In Functions for Dates and Time
-22. `100-01-09` IF, ELSEIF, ELSE, and SELECT
-23. `100-01-10` DOW, DOU, and FOR Loops
-24. `100-01-11` Error-Prone Patterns and Defensive Coding
-25. `100-01-12` Module Lab — Coffee Product Pricing
+### Module 1 — RPG Fundamentals
 
-#### Module 100-02 — Data Structures and Procedures
+Learners read and write fully free-form RPG, work with declarations and common data types, build expressions, make decisions, loop safely, use selected built-in functions, and prove behavior through simple tests and review.
 
-26. `100-02-01` Why Data Structures Matter
-27. `100-02-02` Qualified and Nested Data Structures
-28. `100-02-03` Arrays and Data Structure Arrays
-29. `100-02-04` Templates, LIKEDS, LIKE, and POS
-30. `100-02-05` Subroutines Versus Subprocedures
-31. `100-02-06` Procedure Interfaces, Parameters, and Return Values
-32. `100-02-07` CONST, VALUE, OPTIONS, and Parameter Safety
-33. `100-02-08` Module Lab — Customer Validation Procedures
+### Module 2 — Db2 for i + SQL
 
-#### Module 100-03 — Files and Native I/O
+Learners understand Db2 for i as an integrated part of IBM i and build database fluency before writing RPG data-access logic.
 
-34. `100-03-01` Physical Files, Tables, Record Formats, Rows, and Members
-35. `100-03-02` RPG File Declarations and Usage Options
-36. `100-03-03` Keyed Access with CHAIN
-37. `100-03-04` Positioning with SETLL and SETGT
-38. `100-03-05` Sequential Reading with READ, READE, and READP
-39. `100-03-06` Creating Records with WRITE
-40. `100-03-07` Updating and Deleting Records Safely
-41. `100-03-08` Record Locking and Production Consequences
-42. `100-03-09` Native I/O Error Handling
-43. `100-03-10` Module Lab — Customer Master CRUD
+Expected coverage includes:
 
-#### Module 100-04 — Debugging and Production Support
+- Db2 for i and its relationship to IBM i
+- native IBM i database terminology compared with SQL terminology
+- schemas and libraries
+- tables, physical files, columns, fields, rows, records, keys, and members
+- SQL DDL fundamentals
+- primary keys, foreign keys, constraints, views, and indexes at an introductory level
+- SELECT, WHERE, ORDER BY, expressions, aliases, and NULL awareness
+- joins and basic aggregation
+- INSERT, UPDATE, and DELETE
+- explicit safe-update habits
+- data-quality and integrity concepts
+- Db2 for i tooling in Visual Studio Code
+- ACS Run SQL Scripts when its capabilities make it the better tool
+- Bob-assisted SQL explanation, review, and test suggestions with human validation
 
-44. `100-04-01` Reading Compile Listings and Diagnostic Messages
-45. `100-04-02` Interactive Debugging and Breakpoints
-46. `100-04-03` Job Logs, Call Stacks, and Message Details
-47. `100-04-04` Program Status and File Information Data Structures
-48. `100-04-05` Reproducing Defects Safely
-49. `100-04-06` Module Lab — Diagnose a Failed Order
+Module 2 does **not** become the embedded-SQL-in-RPG module. That integration belongs in Module 3.
 
-### Level 200 — Professional RPG Development
+### Module 3 — Files + Data Access
 
-#### Module 200-01 — SQL and Db2 for i Foundations
+Learners connect RPG to business data using both the native record-level model they will encounter in existing applications and modern SQL-based access.
 
-50. `200-01-01` Relational Database Concepts on IBM i
-51. `200-01-02` DDS Physical Files Versus SQL Tables
-52. `200-01-03` Logical Files, SQL Views, and Indexes
-53. `200-01-04` Creating Schemas, Tables, Keys, and Constraints
-54. `200-01-05` SELECT, WHERE, ORDER BY, and Expressions
-55. `200-01-06` JOIN, GROUP BY, HAVING, and Aggregation
-56. `200-01-07` NULL Values and Data-Type Conversion
-57. `200-01-08` INSERT, UPDATE, and DELETE
-58. `200-01-09` Module Lab — Build the Coffee Catalog Database
+Expected coverage includes native I/O, file declarations, keyed access, sequential reads, writes and updates, locking, embedded SQL, host variables, result handling, cursors at the appropriate introductory depth, transactions, commitment control, diagnostics, and data-access error handling.
 
-#### Module 200-02 — Embedded SQL in RPG
+### Module 4 — Procedures + ILE
 
-59. `200-02-01` Static SQL and the RPG Precompiler
-60. `200-02-02` Host Variables and Indicator Variables
-61. `200-02-03` Singleton SELECT and Result Handling
-62. `200-02-04` Cursors and Multi-Row Processing
-63. `200-02-05` SQLCODE, SQLSTATE, and GET DIAGNOSTICS
-64. `200-02-06` Commitment Control, COMMIT, and ROLLBACK
-65. `200-02-07` Native I/O Versus SQL Decision Guide
-66. `200-02-08` Module Lab — Order Entry with Embedded SQL
+Learners move from single-program thinking toward reusable application components using data structures, prototypes, subprocedures, procedure interfaces, parameters, modules, service programs, binding, activation groups, and clear contracts.
 
-#### Module 200-03 — ILE and Modular Architecture
+### Module 5 — Debug + Test
 
-67. `200-03-01` The Integrated Language Environment
-68. `200-03-02` Modules, Programs, and Binding
-69. `200-03-03` Service Programs and Exported Procedures
-70. `200-03-04` Binder Source and Signature Management
-71. `200-03-05` Binding Directories
-72. `200-03-06` Activation Groups and Resource Scope
-73. `200-03-07` Designing Reusable Business Services
-74. `200-03-08` Module Lab — Pricing Service Program
+Learners diagnose compile and runtime failures using Problems, compiler diagnostics, job logs, call stacks, debugging tools, SQL diagnostics, and repeatable tests. Boundary, negative, and regression testing become normal development behavior rather than an afterthought.
 
-#### Module 200-04 — Professional Application Design
+### Module 6 — Git + Team Delivery
 
-75. `200-04-01` Separation of Concerns in RPG Applications
-76. `200-04-02` Validation, Business Logic, and Persistence Layers
-77. `200-04-03` Error Contracts and Message Handling
-78. `200-04-04` Logging, Auditing, and Observability
-79. `200-04-05` Unit-Testable Procedure Design
-80. `200-04-06` Code Review Standards for RPG and SQL
-81. `200-04-07` Module Lab — Refactor Customer Maintenance
+Learners work through a realistic team change: branch, edit, review, test, record build evidence, resolve feedback, and prepare controlled promotion. The focus is source control as an engineering workflow rather than Git as a backup utility.
 
-### Level 300 — IBM i Modernization
+### Module 7 — Architecture + Capstone
 
-#### Module 300-01 — Modernizing RPG and Database Access
+Learners integrate the course into a small but credible IBM i application. The module introduces APIs, SQL services, application boundaries, modernization patterns, and architectural tradeoffs, then requires a final independent application change with evidence, review, testing, and explanation.
 
-82. `300-01-01` Assessing a Legacy RPG Application
-83. `300-01-02` Fixed-Format to Fully Free-Form Conversion
-84. `300-01-03` Replacing Global State with Procedures and Data Structures
-85. `300-01-04` DDS-to-DDL Modernization Strategy
-86. `300-01-05` Native I/O-to-SQL Modernization Strategy
-87. `300-01-06` Views, Constraints, Indexes, and Database-Centered Rules
-88. `300-01-07` Incremental Modernization Without a Rewrite
-89. `300-01-08` Module Lab — Modernize Inventory Processing
+## 9. Primary Development Environment
 
-#### Module 300-02 — Git, VS Code, Builds, and DevOps
+The Academy teaches primarily through:
 
-90. `300-02-01` Git as Source Control, Not Backup
-91. `300-02-02` Repository Structure for IBM i Applications
-92. `300-02-03` Branching, Pull Requests, and Code Review
-93. `300-02-04` Building IBM i Source from the IFS
-94. `300-02-05` Introduction to IBM i Build Automation
-95. `300-02-06` Continuous Integration and Quality Gates
-96. `300-02-07` Deployment, Promotion, and Rollback Design
-97. `300-02-08` Module Lab — Build and Review a Change
+- Visual Studio Code
+- Code for IBM i
+- Db2 for i extension
+- Git and GitHub workflows
+- IBM i Access Client Solutions when it remains the appropriate tool
+- IBM Bob for AI-assisted IBM i development and learning
 
-#### Module 300-03 — APIs, Integration, and Open Source
+SEU, PDM, RDi, and green-screen techniques are taught when learners need to recognize, support, or translate existing workflows. They are not the Academy default development experience.
 
-98. `300-03-01` Integration Options on IBM i
-99. `300-03-02` JSON Processing in RPG and SQL
-100. `300-03-03` Calling HTTP Services from RPG
-101. `300-03-04` Exposing Business Logic Through APIs
-102. `300-03-05` Stored Procedures and External Consumers
-103. `300-03-06` Open-Source Tools and IBM i Services
-104. `300-03-07` Security Boundaries and Data Protection
-105. `300-03-08` Module Lab — Order Status API
+A modern editor changes the experience, not the accountability. The learner remains responsible for host, identity, target, command, source, result, evidence, and production safety.
 
-#### Module 300-04 — Testing, Performance, Security, and AI
+## 10. IBM Bob Integration
 
-106. `300-04-01` Testing Strategy for RPG Applications
-107. `300-04-02` Unit, Integration, Regression, and Production Verification
-108. `300-04-03` SQL Performance Fundamentals and Access Plans
-109. `300-04-04` Index Strategy and Query Review
-110. `300-04-05` Secure Coding, Authority, and Least Privilege
-111. `300-04-06` AI-Assisted Code Explanation and Documentation
-112. `300-04-07` AI-Assisted Refactoring, Review, and Test Design
-113. `300-04-08` AI Risks: Hallucination, Security, Licensing, and Accountability
-114. `300-04-09` Module Lab — Review and Harden an AI-Assisted Change
+IBM Bob is integrated throughout the learning path rather than isolated in an optional AI module.
 
-### Level 400 — Technical Leadership
+Learners use Bob to:
 
-#### Module 400-01 — Architecture and Modernization Leadership
+- explain unfamiliar RPG, CL, SQL, DDS, and application logic
+- analyze program and data flow
+- identify dependencies and possible missed impacts
+- generate and refine documentation
+- assist with modernization
+- review code
+- diagnose errors
+- suggest tests
+- support learning without replacing understanding
 
-115. `400-01-01` Creating an IBM i Application Architecture Map
-116. `400-01-02` Modernization Assessment and Technical Debt Inventory
-117. `400-01-03` Choosing Refactor, Replace, Replatform, or Retain
-118. `400-01-04` Architecture Decision Records
-119. `400-01-05` Data Ownership and Integration Boundaries
-120. `400-01-06` Production Readiness Reviews
-121. `400-01-07` Modernization Roadmaps and Investment Sequencing
+Each meaningful Bob activity should teach a validation step. Learners remain accountable for correctness, security, licensing, testing, and code quality.
 
-#### Module 400-02 — Engineering Standards and Governance
+Every module also includes an independent task that cannot be completed merely by accepting Bob output.
 
-122. `400-02-01` RPG Coding Standards
-123. `400-02-02` SQL and Database Standards
-124. `400-02-03` Git and Pull-Request Standards
-125. `400-02-04` Logging, Monitoring, and Support Standards
-126. `400-02-05` AI Usage Standards for IBM i Engineering
-127. `400-02-06` Exception Management and Technical Waivers
-128. `400-02-07` Measuring Standard Adoption
+## 11. Standard Lesson Design
 
-#### Module 400-03 — Mentoring and Team Development
+Each lesson must include:
 
-129. `400-03-01` Building an Associate Developer Program
-130. `400-03-02` Structured Code Reviews as Teaching Tools
-131. `400-03-03` Mentoring Without Creating Dependency
-132. `400-03-04` Skills Matrices and Progression Expectations
-133. `400-03-05` Reducing Knowledge Concentration
-134. `400-03-06` Running Technical Learning Sessions
-135. `400-03-07` Capstone — Present a Modernization Plan
-
-## 9. Standard Lesson Template
-
-Every published lesson follows this structure.
-
-### Metadata
-
-- lesson ID
-- title
-- curriculum level and module
-- estimated time
 - prerequisites
-- required tools
-- source references and verification date
-- sample-application component
+- measurable learning objectives
+- why the topic matters in real IBM i development
+- concepts and terminology before syntax
+- original Academy examples
+- VS Code demonstration whenever practical
+- a Bob-assisted activity
+- a knowledge check
+- deliberate practice or a lab increment
+- an independent learner task
+- production-safety and security considerations
+- common mistakes and troubleshooting
+- completion criteria
+- source validation notes
 
-### Today’s Coffee
+Legacy examples should be clearly marked as legacy, transitional, or still-valid practice. Modern recommendations should not erase operational knowledge needed to support existing systems.
 
-Connect a coffee, brewing method, or café experience to the lesson concept without allowing the analogy to replace technical explanation.
+## 12. Lab Standard
 
-### Learning Objectives
+Labs use the **RPG Blend Coffee Company** sample application and must be executable, reviewable, and resettable.
 
-Use observable verbs such as explain, identify, write, debug, compare, review, or implement.
+Each lab identifies:
 
-### Why This Matters
-
-Explain business value, operational impact, maintainability, production support, and why companies use the technique.
-
-### Concepts
-
-Teach the theory and terminology before syntax.
-
-### Architecture
-
-Include a diagram when the concept involves flow, layers, objects, jobs, modules, database relationships, deployment, or integration.
-
-### DDS
-
-Show DDS when it is relevant to understanding existing systems. Explain every line.
-
-### SQL DDL
-
-Show the SQL equivalent when appropriate. Explain every line and identify the preferred direction.
-
-### Legacy RPG
-
-Provide an RPG III or fixed-format RPG IV example when maintenance literacy is part of the lesson. Label it clearly as legacy.
-
-### Modern RPG
-
-Provide a fully free-form RPG example. Examples should compile unless intentionally demonstrating an error.
-
-### SQL
-
-Provide SQL implementation or comparison where appropriate.
-
-### Comparison Table
-
-Use concise comparisons such as:
-
-- DDS versus SQL DDL
-- native I/O versus SQL
-- fixed-format versus fully free-form RPG
-- subroutine versus subprocedure
-- program versus service program
-- static SQL versus dynamic SQL
-
-### Line-by-Line Explanation
-
-Explain each meaningful line or logical group. Do not merely repeat the syntax.
-
-### Common Mistakes
-
-Identify likely beginner errors, symptoms, causes, and corrections.
-
-### Pro Tips
-
-Provide practical production guidance based on enterprise experience.
-
-### Lab
-
-Require the student to perform the skill with clear setup, instructions, expected results, and completion criteria.
-
-### Challenge
-
-Provide a more difficult extension without a full solution in the student edition.
-
-### Knowledge Check
-
-Include 5–10 questions using a mix of recall, reasoning, code reading, and scenario analysis.
-
-### Manager’s Perspective
-
-Discuss onboarding, maintainability, code reviews, production support, mentoring, standards, and technical debt.
-
-### Final Sip
-
-End with a concise coffee analogy tied to craftsmanship, leadership, or professional growth.
-
-## 10. Lab Standard
-
-Every lab must include:
-
-- objective
 - business scenario
-- starting state
-- required files and branches
-- step-by-step tasks
-- validation commands or queries
-- expected output
-- troubleshooting guidance
-- completion checklist
-- cleanup or reset instructions
-- instructor solution
-- review rubric
+- objective
+- repository path and starting state
+- required library, schema, and objects
+- ordered tasks
+- expected result
+- repeatable validation
+- likely failures and troubleshooting
+- reflection questions
+- cleanup or reset steps
+- instructor solution and scoring guidance
 
-Labs should require the student to change, compile, run, inspect, and explain code rather than only copy it.
+Labs may use public IBM i environments such as PUB400 where appropriate, but instructions must account for shared-system limits, learner-specific libraries, permissions, and cleanup.
 
-## 11. Assessment Model
+No Academy lab requires production access or real customer data.
 
-| Assessment | Purpose | Minimum Standard |
-|---|---|---|
-| Knowledge check | Confirm lesson comprehension | 80% |
-| Guided lab | Demonstrate supported execution | Complete all required outcomes |
-| Independent challenge | Test transfer of learning | Meets rubric with limited assistance |
-| Code review | Test professional reasoning | Explain correctness, risk, and maintainability |
-| Module project | Integrate multiple skills | Working solution plus explanation |
-| Level capstone | Demonstrate role readiness | Pass technical and behavioral rubric |
+## 13. Assessment Model
 
-A student should not advance solely by watching videos or reading articles.
+Assessment verifies skill, not trivia.
 
-## 12. Sample Application Architecture
+Each module should combine:
 
-The curriculum uses one connected application: **The RPG Blend Coffee Company Order Management System**.
+- knowledge and terminology
+- code or SQL reading
+- hands-on implementation
+- troubleshooting
+- professional judgment
 
-### Core Business Areas
+Passing requires more than a quiz score. A learner must complete required practical work safely and explain the solution.
+
+Critical failures include exposing credentials or sensitive data, destructive work outside the approved training boundary, unresolved data-integrity defects, ignoring required error handling, or submitting AI-generated work the learner cannot explain.
+
+## 14. Sample Application
+
+The curriculum uses one connected business application: **The RPG Blend Coffee Company Order Management System**.
+
+Core areas include:
 
 - Customer Master
-- Coffee Product Catalog
+- Product Catalog
 - Inventory
-- Pricing and Discounts
+- Pricing
 - Order Entry
-- Billing and Payments
-- Shipping Status
-- Reporting and Analytics
+- Billing
+- Shipping
+- Reporting
 - APIs and Integration
 - Audit and Operational Logging
 
-### Conceptual Architecture
+The application grows with the curriculum rather than being replaced by disconnected examples.
 
 ```text
 User / Client
-     |
-     v
-5250 UI, Batch Job, API, or SQL Consumer
-     |
-     v
-Application Procedures and Service Programs
-     |
-     v
+      ↓
+Application Entry Point
+      ↓
+RPG Procedures / Services
+      ↓
 Validation and Business Rules
-     |
-     v
-Data Access: Native I/O and Embedded SQL
-     |
-     v
-Db2 for i Tables, Views, Indexes, Constraints, and Procedures
-     |
-     v
-Journaling, Logging, Monitoring, and Production Support
+      ↓
+Data Access
+      ↓
+Db2 for i
+      ↓
+Logging, Evidence, Support
 ```
 
-### Planned Database Objects
+Module 2 establishes the database foundation that later modules consume.
 
-| Object | Purpose |
-|---|---|
-| `CUSTOMER` | Customer identity, contact, status, and credit information |
-| `PRODUCT` | Coffee products, descriptions, sizes, prices, and status |
-| `INVENTORY` | Quantity on hand, committed quantity, reorder point, and location |
-| `ORDER_HEADER` | Order identity, customer, dates, totals, and status |
-| `ORDER_DETAIL` | Products, quantities, prices, discounts, and line totals |
-| `INVOICE` | Billing status, totals, due dates, and payment status |
-| `SHIPMENT` | Carrier, tracking, dates, and shipping status |
-| `AUDIT_LOG` | Change history and operational events |
+## 15. Technical Direction
 
-### Evolution by Level
-
-- **Level 000:** Hello program, repository, connection, compile, and run
-- **Level 100:** Customer and product CRUD using procedures and native I/O
-- **Level 200:** SQL schema, embedded SQL, service programs, transactions, and layered design
-- **Level 300:** Git pipelines, APIs, tests, performance, security, and modernization
-- **Level 400:** Architecture review, standards, modernization roadmap, and governance
-
-## 13. Technical Standards
-
-### Preferred New Development
+Preferred new Academy development emphasizes:
 
 - fully free-form RPG
 - meaningful names
-- procedures and explicit interfaces
 - qualified data structures
-- SQL DDL for new database objects
-- embedded SQL when it improves clarity and set-based processing
+- procedures with explicit interfaces
+- SQL DDL for new relational database objects
+- SQL where it improves clarity, integrity, and set-based processing
+- native I/O literacy for real-world support
 - Git-based source control
-- VS Code and Code for IBM i as the primary Academy workflow
-- automated or repeatable builds
-- explicit error handling and diagnostics
-- tests appropriate to the risk
-- least-privilege authority
-- documented architecture decisions
+- repeatable builds
+- explicit error handling
+- appropriate tests
+- least privilege
+- evidence-based review
 
-### Maintenance Literacy
+The Academy does not declare every legacy technique wrong. It teaches learners to distinguish historical constraints, still-valid platform capabilities, transitional approaches, and preferred modern design.
 
-Students must also learn to recognize and support:
+## 16. Source Governance
 
-- RPG III and fixed-format RPG IV
-- indicators and the RPG cycle
-- DDS physical, logical, display, and printer files
-- native record-level access
-- source physical files and members
-- CL commands and job-level behavior
-- 5250 applications and subfiles
-- traditional compile and deployment flows
-
-Legacy knowledge is taught for safe support. It is not automatically presented as the preferred design for new development.
-
-## 14. AI-Assisted Development Standard
-
-AI is taught as an engineering assistant, not an authority.
-
-Students must learn to use AI for:
-
-- explaining unfamiliar code
-- generating documentation drafts
-- suggesting refactoring options
-- creating test cases
-- reviewing SQL and RPG patterns
-- comparing legacy and modern approaches
-- preparing troubleshooting checklists
-- accelerating research within approved sources
-
-Students must also learn to:
-
-- protect credentials, PHI, PII, proprietary code, and production data
-- validate generated syntax against the target IBM i release
-- compile and test all generated code
-- review security, performance, locking, and transaction behavior
-- identify unsupported claims and hallucinations
-- preserve human accountability for every change
-
-## 15. Source Governance
-
-The Academy source hierarchy is:
+Source authority follows this order:
 
 1. Current IBM product documentation for release-sensitive behavior
-2. IBM manuals for documented language, SQL, database, and ILE concepts
-3. IBM Redbooks for modernization strategy and practical patterns
-4. COMMON training for instructional sequence and lab inspiration
-5. Academy standards for pedagogy, examples, and production context
+2. Current IBM manuals and references
+3. IBM Redbooks for architecture and modernization strategy
+4. COMMON and reputable vendor/community training for instructional perspective
+5. Academy experience and recommendations
 
-See [SOURCE_TO_CURRICULUM_MAP.md](SOURCE_TO_CURRICULUM_MAP.md).
+Every lesson records the source used to validate material claims. Version-sensitive information must be rechecked before publication.
 
-Every lesson must record:
+Uploaded materials are references. Do not copy substantial passages, slide structures, diagrams, labs, scripts, or exercises into Academy content.
 
-- source title
-- publication or product release
-- chapter, section, or page
-- verification date
-- release-sensitive items requiring revalidation
+When sources conflict, document the conflict and resolve it against the newest applicable primary source. Do not silently blend incompatible guidance.
 
-Copyrighted source material should not be copied into the repository unless redistribution rights are clear. Academy explanations, code, diagrams, and exercises must be original or properly licensed.
+## 17. Canonical Academy Artifacts
 
-The phrase **work in progress** must remain attached to *Modernizing IBM i Applications* until IBM publishes the final Redbook.
+Maintain one current version of each:
 
-## 16. Repository Structure
+- Academy curriculum map
+- Course catalog
+- Learning-path architecture
+- Competency matrix
+- Course design standard
+- Lesson template
+- Lab template
+- Assessment standard
+- Source and manual register
+- Terminology guide
+- Code-example repository structure
+- Publication backlog
+- Version and review history
 
-```text
-academy/
-├── README.md
-├── blueprint/
-│   ├── ACADEMY_BLUEPRINT.md
-│   └── SOURCE_TO_CURRICULUM_MAP.md
-├── standards/
-│   ├── LESSON_STANDARD.md
-│   ├── LAB_STANDARD.md
-│   ├── CODE_STANDARD.md
-│   ├── SOURCE_GOVERNANCE.md
-│   └── AI_USAGE_STANDARD.md
-├── curriculum/
-│   ├── level-000/
-│   ├── level-100/
-│   ├── level-200/
-│   ├── level-300/
-│   └── level-400/
-├── sample-application/
-│   ├── database/
-│   ├── rpgle/
-│   ├── sqlrpgle/
-│   ├── clle/
-│   ├── dds/
-│   ├── binder/
-│   ├── tests/
-│   └── scripts/
-├── labs/
-├── assessments/
-├── instructor-materials/
-├── workbooks/
-├── presentations/
-├── publishing/
-└── assets/
-```
+When a decision changes the curriculum, update the canonical artifacts instead of creating a competing roadmap.
 
-## 17. Content Deliverables
+## 18. Module Deliverables
 
-Each completed module should be capable of producing:
+A release-ready module should be capable of producing:
 
-- canonical Markdown lesson
-- GitHub source package
-- student lab
-- challenge exercise
-- knowledge check
-- answer key
+- canonical Markdown lessons
+- source code and SQL
+- learner workbook
+- course book
 - instructor guide
-- student workbook
-- PDF guide
-- slide deck
-- video script
-- conference-session outline
-- public article adaptation
-- internal onboarding adaptation
+- facilitator or pilot guide
+- labs and starter assets
+- instructor solutions
+- knowledge checks and module assessment
+- answer key and rubric
+- branded presentation deck
+- setup and environment guide
+- source validation register
+- publication or release manifest
+- GitHub learner package
 
-The Markdown lesson is the canonical source. Other formats should be generated or adapted from it to reduce drift.
-
-## 18. Public Publishing Roadmap
-
-### Phase 1 — Foundation
-
-- finish the Blueprint and standards
-- complete Module 0
-- publish Academy landing page
-- establish sample application repository structure
-- release the first downloadable student guide
-
-### Phase 2 — Level 100 Release
-
-- publish one lesson every two weeks
-- release complete module packages after individual lessons
-- publish labs and sample code with each module
-- produce short supporting videos
-- collect learner feedback and corrections
-
-### Phase 3 — Level 200 and Workshops
-
-- publish SQL and ILE tracks
-- produce instructor-led workshop versions
-- create conference sessions from completed modules
-- introduce formal module assessments
-
-### Phase 4 — Modernization Track
-
-- publish Git, DevOps, APIs, testing, AI, security, and database-modernization modules
-- align content with current IBM guidance and the modernization Redbook
-- create modernization field guides and decision tools
-
-### Phase 5 — Leadership and Scale
-
-- publish architecture and leadership curriculum
-- release internal-adaptation toolkit
-- package the Academy as a structured course or book series
-- create contributor and technical-review processes
+The canonical written source should drive derivative formats to reduce drift.
 
 ## 19. Internal Associate Developer Adaptation
 
-The public Academy teaches transferable IBM i and RPG skills. Internal onboarding adds company-specific material without changing the public core.
+The public Academy teaches transferable IBM i development skills. An internal onboarding overlay may add organization-specific architecture, security, environments, naming standards, source control, deployment, ticketing, incident response, and domain knowledge without changing the public technical core.
 
-### Internal Overlay
+A new associate should move from supervised execution toward independent contribution as evidence accumulates across the modules.
 
-- company architecture and product overview
-- secure access and environment setup
-- naming and coding standards
-- source-control and deployment workflow
-- ticket, incident, and change-management processes
-- database and data-classification rules
-- production-support expectations
-- domain terminology
-- mentor assignments
-- supervised work progression
+## 20. Quality Review
 
-### Suggested 90-Day Path
+Every lesson and module passes:
 
-| Period | Focus | Expected Outcome |
-|---|---|---|
-| Days 1–30 | Level 000, basic Level 100, environment, product orientation | Compile, run, read, and explain small programs |
-| Days 31–60 | Native I/O, debugging, procedures, SQL foundations | Complete a supervised defect or small enhancement |
-| Days 61–90 | Embedded SQL, reviews, support workflow, team standards | Deliver a reviewed change with limited assistance |
+1. technical review
+2. instructional review
+3. source review
+4. code and SQL validation
+5. tooling validation
+6. lab validation
+7. editorial review
+8. production-safety review
+9. Bob/AI accountability review
+10. pilot learner review before final publication when practical
 
-### Mentor Responsibilities
-
-- weekly technical check-in
-- lab and code review
-- explanation of production context
-- progressive reduction of assistance
-- written assessment against the skills matrix
-
-## 20. Branding Guidelines
-
-### Voice
-
-- conversational
-- practical
-- direct
-- encouraging
-- production-aware
-- technically precise
-- coffee-centered without becoming gimmicky
-
-### Message
-
-The Academy respects legacy systems and the people who built them while teaching the practices needed to sustain and modernize them.
-
-### Required Brand Elements
-
-- The RPG Blend Academy name
-- Real Code. Real Coffee. No Nonsense.
-- Today’s Coffee opening
-- Final Sip closing
-- consistent diagram and code formatting
-- clear legacy, transitional, and modern labels
-
-### Avoid
-
-- empty hype
-- “rewrite everything” messaging
-- dismissive language about legacy developers
-- unexplained jargon
-- syntax dumps without context
-- coffee analogies that obscure the technical point
-
-## 21. Quality Review Process
-
-Every lesson passes these reviews before release:
-
-1. **Technical review** — syntax, behavior, release compatibility, and production implications
-2. **Instructional review** — objectives, sequence, clarity, examples, lab, and assessment alignment
-3. **Source review** — citations, source authority, release sensitivity, and copyright compliance
-4. **Code validation** — compile, run, expected output, cleanup, and repeatability
-5. **Editorial review** — voice, grammar, formatting, terminology, and consistency
-6. **Manager review** — onboarding value, maintainability, supportability, and team applicability
-
-## 22. Definition of Done
+## 21. Definition of Done
 
 ### Lesson Done
 
-- follows the lesson template
-- includes validated code
-- includes a lab or deliberate practice
-- includes a knowledge check
-- identifies legacy and preferred modern practice
-- cites authoritative sources
-- passes technical and editorial review
+- objectives are measurable
+- examples are original and technically validated
+- learner practice exists
+- Bob activity includes validation
+- independent work exists
+- common mistakes and troubleshooting are covered
+- safety considerations are explicit
+- sources are recorded
 
 ### Module Done
 
 - all lessons complete
-- module project complete
-- code packaged
-- labs and solutions complete
+- module lab or project complete
+- code and SQL validated on the documented environment
 - assessments and answer keys complete
-- instructor notes complete
-- workbook and publication versions complete
+- learner and instructor materials complete
 - source register complete
+- branded presentation complete
+- completion criteria defined
+- release package reviewed
 
-### Level Done
+### Learning Path Done
 
-- all modules complete
-- capstone complete
-- skills rubric complete
-- student progression criteria defined
-- internal adaptation complete
-- feedback incorporated into the next release
+- all eight modules complete
+- final capstone complete
+- competency evidence defined
+- learner progression criteria defined
+- feedback incorporated
 
-## 23. Success Metrics
+## 22. Governance and Change Control
 
-### Learning Metrics
+George Van Eaton owns the Academy curriculum structure, technical direction, brand voice, and release approval.
 
-- lesson completion rate
-- knowledge-check pass rate
-- lab completion rate
-- time to complete first supervised change
-- reduction in repeated mentor intervention
-- code-review defect trends
-- student confidence before and after each module
+Material changes to module order, learning outcomes, tooling direction, sample-application architecture, or production-safety expectations require an explicit curriculum decision and updates to the canonical Curriculum Map and this Blueprint.
 
-### Content Metrics
+The eight-module roadmap in Section 7 supersedes the older level-based module catalog previously stored in this Blueprint.
 
-- lessons published versus plan
-- percentage with current source verification
-- code examples compiled and validated
-- reported corrections and resolution time
-- workbook, video, and presentation conversion rate
+## 23. Current Build Plan
 
-### Organizational Metrics
+1. Maintain Module 0 — Getting Started as the completed onboarding foundation.
+2. Maintain Module 1 — RPG Fundamentals as the completed language foundation.
+3. Build **Module 2 — Db2 for i + SQL** next.
+4. Validate Module 2 in Visual Studio Code with the Db2 for i extension and ACS where appropriate.
+5. Build Module 3 — Files + Data Access after the learner has database fluency.
+6. Continue through Procedures + ILE, Debug + Test, Git + Team Delivery, and Architecture + Capstone.
+7. Update learner-facing roadmap visuals and release packages from this sequence.
 
-- associate developer retention
-- time to independent contribution
-- mentor hours per new developer
-- production defects from new-developer changes
-- modernization practices adopted by teams
-- reduction in single-person knowledge dependencies
+## 24. Final Sip
 
-### Public Metrics
-
-- subscribers and repeat readers
-- repository stars, forks, and issue participation
-- lesson downloads
-- workshop attendance
-- conference-session acceptance
-- community citations and referrals
-
-## 24. Governance and Ownership
-
-### Curriculum Owner
-
-George Van Eaton owns the Academy vision, curriculum structure, technical direction, brand voice, and release approval.
-
-### Technical Reviewers
-
-Reviewers validate topics within their expertise and document any release-specific limitations.
-
-### Contributors
-
-Contributors follow Academy templates, source rules, code standards, and licensing requirements. Contributions do not bypass technical review.
-
-### Change Control
-
-Material changes to curriculum order, technical standards, sample-application architecture, or branding require an update to this Blueprint or an Architecture Decision Record.
-
-## 25. Initial Build Plan
-
-### Milestone 1 — Foundation Complete
-
-- complete Blueprint
-- complete Source-to-Curriculum Map
-- create lesson, lab, code, source, and AI standards
-- establish sample-application skeleton
-
-### Milestone 2 — Module 0 Complete
-
-- lesson manuscripts
-- VS Code setup
-- source and compile scripts
-- student lab
-- knowledge check
-- answer key
-- instructor guide
-- workbook
-
-### Milestone 3 — Level 100 Core Complete
-
-- modern RPG fundamentals
-- data structures and procedures
-- native I/O
-- debugging and support
-- level capstone
-
-### Milestone 4 — Level 200 Planned and Started
-
-- SQL foundation
-- embedded SQL
-- ILE architecture
-- professional design standards
-
-### Milestone 5 — Publishing Engine Operating
-
-- repeatable Markdown-to-PDF workflow
-- slide and video templates
-- publishing calendar
-- feedback and correction process
-
-## 26. Immediate Next Actions
-
-1. Create the five standards files under `academy/standards/`.
-2. Finish Module 0 against this Blueprint.
-3. Build the Coffee Company database and source skeleton.
-4. Create the lesson catalog as trackable repository issues or project items.
-5. Produce Module 1: Reading and Writing Modern RPG.
-6. Establish the publishing calendar and review workflow.
-
-## 27. Final Sip
-
-A good academy should work like a dependable coffee program and a dependable software platform: consistent ingredients, clear standards, repeatable preparation, careful review, and room to improve the blend. The goal is not to produce developers who can copy RPG syntax. The goal is to develop professionals who can understand the business, protect production, improve the codebase, and teach the next person.
+A useful IBM i curriculum should work like a dependable software system: one architecture, clear interfaces, validated components, controlled changes, and evidence that the whole thing works together. The Academy's job is not to create developers who can repeat syntax. It is to develop engineers who can understand the platform, protect the data, make a safe change, prove it, and explain it to the next person.
