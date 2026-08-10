@@ -2,7 +2,7 @@
 
 **Purpose:** canonical presentation outline for later branded PPTX generation  
 **Source authority:** canonical Module 2 lessons; this file must not override lesson technical content  
-**Status:** draft presentation source; regenerate after technical validation
+**Status:** source/static validated presentation source; regenerate after target execution validation
 
 Use The RPG Blend Academy branding and the current module roadmap. Keep code readable on screen; split long SQL across multiple slides rather than shrinking type.
 
@@ -91,6 +91,8 @@ VS Code → Db2 for IBM i extension → IBM i job → Db2 for i → schema objec
 
 Show bounded `QSYS2.SYSTABLES` metadata query.
 
+Teaching note: zero table rows before the catalog is created can be legitimate; verify schema/context separately.
+
 ## Slide 10 — Evidence gate
 
 Ask before Run:
@@ -111,17 +113,19 @@ Two-column mapping:
 
 - library ↔ schema
 - physical file ↔ table
-- member ↔ partition
+- member ↔ partition **in the appropriate table/partition context**
 - field ↔ column
 - record ↔ row
 - logical file ↔ view
 - keyed logical file ↔ index
 
+Teaching warning: mappings are bridges, not universal object identity. A specific member of a native multimember database file can be addressed from SQL through an alias.
+
 ## Slide 12 — The warning label
 
 **Useful mapping, not universal identity.**
 
-Explain library and logical-file nuance.
+Explain library, member/partition, and logical-file nuance.
 
 ## Slide 13 — Data vs metadata
 
@@ -130,7 +134,7 @@ Explain library and logical-file nuance.
 
 ## Slide 14 — Tool comparison
 
-Code for IBM i Object Browser vs Db2 for IBM i schema browser.
+Code for IBM i Object Browser vs Db2 for IBM i Schema Browser.
 
 Question: which tool answers which question?
 
@@ -148,8 +152,15 @@ Focus actions:
 ## Slide 16 — Coffee Catalog model
 
 ```text
-CATEGORY 1 ───< PRODUCT 1 ─── 1 INVENTORY
+CATEGORY 1 ───< PRODUCT 1 ─── 0..1 INVENTORY
 ```
+
+Teaching note:
+
+- every INVENTORY row must reference a PRODUCT
+- INVENTORY primary key allows at most one row per PRODUCT
+- the DDL does not require every PRODUCT to have INVENTORY
+- the seed data intentionally has one INVENTORY row for every PRODUCT
 
 ## Slide 17 — CATEGORY DDL
 
@@ -238,6 +249,11 @@ Calculated result ≠ stored update.
 
 Draw keys before writing JOIN.
 
+Distinguish:
+
+- cardinality enforced by constraints
+- cardinality observed in the current seed data
+
 ## Slide 32 — Inner join
 
 Show PRODUCT → CATEGORY SQL.
@@ -246,13 +262,15 @@ Show PRODUCT → CATEGORY SQL.
 
 Predict rows before execution.
 
+For PRODUCT → INVENTORY, explain why the schema permits 0..1 INVENTORY row per product even though the seed data currently has one for each.
+
 ## Slide 34 — Missing predicate
 
 5 products × 3 categories = 15 unrelated combinations in base dataset.
 
 ## Slide 35 — DISTINCT is not a repair kit
 
-Investigate relationship, uniqueness, and source data first.
+Investigate relationship, uniqueness, optionality, and source data first.
 
 ---
 
@@ -284,7 +302,9 @@ Wrong joins create believable wrong totals.
 
 ## Slide 41 — Risk changes here
 
-SELECT observes. INSERT/UPDATE/DELETE change state.
+SELECT is read-only for the Module 2 examples. INSERT/UPDATE/DELETE change database state.
+
+Teaching note: do not turn that sentence into a universal claim about every possible SQL statement or function. The point is the risk boundary in this course.
 
 ## Slide 42 — Safe DML loop
 
@@ -292,13 +312,15 @@ SELECT observes. INSERT/UPDATE/DELETE change state.
 Verify → Preview → Predict → Change → Verify → Cleanup
 ```
 
+Apply preview-before-change to both UPDATE and DELETE.
+
 ## Slide 43 — Disposable row
 
 Use product 2999 / lab SKU example or learner equivalent.
 
 ## Slide 44 — Preview the exact predicate
 
-Expected row count = 1 before UPDATE/DELETE.
+Expected row count = 1 before UPDATE **and** before DELETE.
 
 ## Slide 45 — Valid SQL can be unsafe
 
@@ -393,6 +415,7 @@ Explain without Bob:
 
 - relationships
 - constraint
+- schema-enforced vs observed cardinality
 - join cardinality
 - aggregate grain
 - DML safety
@@ -420,6 +443,7 @@ A fast query is useful. A correct, controlled, explainable query is professional
 
 - Use original Academy diagrams, never screenshots copied from COMMON/IBM decks.
 - Current tool screenshots must be captured from the validated extension version.
+- Record the actual PUB400 connection settings used by the delivery; current validation documentation shows SSH port 2222 but that must be rechecked before release.
 - Keep SQL at readable presentation size; use progressive reveals rather than dense code walls.
 - Add speaker notes from `instructor-notes/instructor-guide.md` during PPTX generation.
-- Regenerate slides after technical validation if query output or UI labels change.
+- Regenerate slides after technical validation if query output, environment facts, or UI labels change.
