@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Module 3 - Compile RPGLE stream file",
+    "command": "CRTBNDRPG PGM(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTRLS(*CURRENT) TGTCCSID(*JOB)",
+    "environment": "ile",
+    "deployFirst": true,
+    "extensions": ["RPGLE"]
+  },
+  {
+    "name": "Module 3 - Compile SQLRPGLE no-commit lab",
+    "command": "CRTSQLRPGI OBJ(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') COMMIT(*NONE) OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTRLS(*CURRENT)",
+    "environment": "ile",
+    "deployFirst": true,
+    "extensions": ["SQLRPGLE"]
+  },
+  {
+    "name": "Module 3 - Compile SQLRPGLE commitment-control lab",
+    "command": "?CRTSQLRPGI OBJ(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') COMMIT(*CHG) OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTRLS(*CURRENT)",
+    "environment": "ile",
+    "deployFirst": true,
+    "extensions": ["SQLRPGLE"]
+  }
+]
