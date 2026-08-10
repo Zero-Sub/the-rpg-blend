@@ -1,7 +1,7 @@
 # Module 2 Assessment — Instructor Answer Key
 
 **Instructor-only source**  
-**Validation status:** reviewed; practical output validation on PUB400 pending
+**Validation status:** source/static validated; practical output validation on PUB400 pending
 
 ## Part A — Knowledge and Terminology — 20 points
 
@@ -9,7 +9,7 @@
 
 **Correct:** C.
 
-Db2 for i is the database manager integrated with IBM i. SQL is a language/interface for defining and working with relational data. A is incorrect because the course source basis explicitly treats Db2 for i as integrated rather than an unrelated optional server. B confuses a database manager with a language. D is false because Db2 for i supports SQL access from many interfaces/languages.
+Db2 for i is the database manager integrated with IBM i. SQL is a language/interface for defining and working with relational data. A is incorrect because the course source basis treats Db2 for i as integrated rather than an unrelated optional server. B confuses a database manager with a language. D is false because Db2 for i supports SQL access from multiple interfaces and languages.
 
 **Objective:** 1.
 
@@ -170,6 +170,8 @@ Relationships:
 - PRODUCT.CATEGORY_ID → CATEGORY.CATEGORY_ID
 - INVENTORY.PRODUCT_ID → PRODUCT.PRODUCT_ID
 
+Cardinality explanation required for full credit: the INVENTORY primary key allows at most one inventory row for a product, and its foreign key requires every inventory row to reference a product. The schema does not require every product to have inventory. The base seed data happens to include one inventory row for every product.
+
 Expected base row count: 2.
 
 Expected products:
@@ -220,18 +222,18 @@ Do not award full credit for mere syntax errors or targeting a different schema.
 
 Score the evidence chain rather than requiring a single identifier. Full credit requires:
 
-- unused-key preview
+- unused-key/SKU preview
 - explicit INSERT column list
 - post-insert verification
 - exact one-row UPDATE preview
 - narrow UPDATE
 - post-update verification
-- exact one-row DELETE preview (may be included as part of submitted evidence even though learner prompt summarizes cleanup)
+- exact one-row DELETE preview
 - narrow DELETE
 - zero-row final verification
-- learner explains the sequence
+- learner explains the sequence and stops on any unexpected preview count
 
-Deduct substantially if the learner changes a permanent seed row rather than a disposable row.
+Deduct substantially if the learner changes a permanent seed row rather than a disposable row. A DELETE performed without the required target preview does not satisfy the Module 2 safety workflow even if it deletes the intended row.
 
 ## Capstone and Overall Passing
 
