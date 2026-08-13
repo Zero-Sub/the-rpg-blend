@@ -1,140 +1,30 @@
 # The RPG Blend Academy
 
-## Module 0: Getting Started with RPG (and Coffee)
+## RPGBA-101 Module 0 — Getting Started with IBM i Development—and Coffee
 
-**Estimated time:** 2-3 hours  
-**Experience required:** None  
-**Primary development environment:** Visual Studio Code with Code for IBM i  
-**Supplemental operational tool:** IBM i Access Client Solutions  
-**Verified:** July 31, 2026
+**Status:** Review Candidate  
+**Estimated time:** 5–7 hours  
+**Primary environment:** Visual Studio Code + Code for IBM i  
+**Reviewed:** August 13, 2026
 
-The Academy uses a **VS Code-first workflow**. Students connect to IBM i through Code for IBM i, browse native objects, open and edit source members, run IBM i commands, compile RPG, review diagnostics, and execute the resulting program without leaving VS Code. ACS remains available for 5250 and other operational tasks but is not the primary coding environment.
+Module 0 is the Academy onboarding module. It covers the IBM i platform mental model, modern developer tooling, safe context verification, libraries/objects/IFS navigation, the first controlled RPG compile/run workflow, introductory Db2 for i work, IBM Bob validation habits, Git evidence, and an independent task.
 
-## Module outcomes
+Deeper RPG language development begins in Module 1.
 
-- Explain IBM i as the operating system and IBM Power as the current hardware family.
-- Explain RPG, RPG IV/ILE RPG, legacy RPG III, and fully free-form RPG.
-- Recognize AS/400, iSeries, and System i as historical platform names.
-- Understand libraries, objects, source physical files, members, and the library list.
-- Install and configure Visual Studio Code with Code for IBM i.
-- Connect to IBM i through SSH from VS Code.
-- Use the Code for IBM i Object Browser and terminal.
-- Create `RPGACADEMY/QRPGLESRC(HELLO)` from the VS Code terminal.
-- Edit the `HELLO` source member in the VS Code editor.
-- Compile `RPGACADEMY/HELLO` and review diagnostics in the Problems panel.
-- Run the program from the VS Code IBM i terminal.
+### Toolbelt
 
-## VS Code-first development cycle
+Visual Studio Code and Code for IBM i are the primary development environment. The Db2 for i extension is the primary SQL workflow when practical. IBM i Access Client Solutions is used where appropriate for Run SQL Scripts, 5250, spooled files, data transfer, database tooling, and SQL performance work. IBM Navigator for i is used for approved browser-based operational and administrative views. Learners recognize existing SEU, PDM, STRSQL, and RDi workflows without treating them as the Academy's default development path.
 
-1. Open VS Code.
-2. Connect to the training partition with Code for IBM i.
-3. Open the IBM i Object Browser.
-4. Create or locate the training library and source physical file.
-5. Open the RPGLE source member in the VS Code editor.
-6. Save the member.
-7. Compile from a standardized Code for IBM i action or run the explicit command in the VS Code terminal.
-8. Review diagnostics in the Problems panel and terminal output.
-9. Verify the resulting `*PGM` object.
-10. Run the program from the VS Code terminal.
+### Learning loop
 
-## First RPG program
+**Verify context → Understand → Change minimally → Compile or run → Read evidence → Validate → Review diff → Commit**
 
-```rpgle
-**free
+IBM Bob is integrated for explanation, review, diagnostics, impact analysis, test ideas, and documentation. Learners remain responsible for validation, testing, security, and final decisions.
 
-ctl-opt dftactgrp(*no);
+### Completion
 
-dcl-s message varchar(52);
+Learners must demonstrate safe environment verification, appropriate tool selection, a controlled RPG change, introductory SQL work, basic diagnostic interpretation, validated Bob use, Git evidence, and an independent task completed without relying on Bob for the core change or explanation.
 
-message = 'Welcome to The RPG Blend Academy.';
+### Next module
 
-dsply message;
-
-*inlr = *on;
-return;
-```
-
-## Create the workspace from the VS Code terminal
-
-```cl
-CRTLIB LIB(RPGACADEMY) TEXT('RPG Blend Academy training')
-
-CRTSRCPF FILE(RPGACADEMY/QRPGLESRC)
-          RCDLEN(112)
-          TEXT('RPG source members')
-
-ADDPFM FILE(RPGACADEMY/QRPGLESRC)
-       MBR(HELLO)
-       SRCTYPE(RPGLE)
-       TEXT('First RPG program')
-```
-
-After running these commands, refresh the Code for IBM i Object Browser and open:
-
-`RPGACADEMY` → `QRPGLESRC` → `HELLO`
-
-## Compile in VS Code
-
-The preferred classroom workflow is a standardized Code for IBM i compile action. Students must also see the underlying command at least once:
-
-```cl
-CRTBNDRPG PGM(RPGACADEMY/HELLO)
-           SRCFILE(RPGACADEMY/QRPGLESRC)
-           SRCMBR(HELLO)
-           OPTION(*EVENTF)
-           DBGVIEW(*SOURCE)
-           REPLACE(*YES)
-```
-
-`OPTION(*EVENTF)` allows client tooling to surface compile diagnostics in the VS Code Problems panel.
-
-## Run in VS Code
-
-```cl
-CALL PGM(RPGACADEMY/HELLO)
-```
-
-Run the command from the Code for IBM i terminal. The expected message is:
-
-`Welcome to The RPG Blend Academy.`
-
-## Role of ACS
-
-ACS is supplemental in this course. It may be used for:
-
-- A 5250 session when required by the organization.
-- Password-change or operational workflows that are not exposed through the VS Code connection.
-- Run SQL Scripts in later database lessons.
-- Data transfer, printer output, and other IBM i client functions.
-
-Students should not use SEU, a 5250 editor, or RDi as the primary Module 0 coding path unless an internal adaptation explicitly changes the Academy standard.
-
-## Guided lab
-
-Create the training library and source file, add the `HELLO` member, enter the RPG source, compile it, verify the `*PGM`, and call it. Then introduce a missing semicolon, recompile, review the first diagnostic in VS Code, correct the source, and compile successfully again.
-
-## Challenge
-
-Create `HELLO2` and personalize the welcome message with a student name. The program must use fully free-form RPG, declare at least two variables, display the personalized message, and end cleanly.
-
-## Knowledge check
-
-Students should be able to explain:
-
-1. The difference between IBM i and IBM Power.
-2. Why AS/400 remains common conversational terminology.
-3. The purpose of a library.
-4. The relationship among a source physical file, a member, and a program object.
-5. The edit-compile-diagnose-run cycle.
-6. Why qualified names are used in the module.
-7. Why VS Code with Code for IBM i is the Academy standard.
-
-## Manager's perspective
-
-A strong onboarding environment gives new developers least-privilege access, a predictable training library, standard compile actions, clear source naming, and a non-production partition. The goal is not merely to get one program to run. The goal is to teach a repeatable workflow that supports code review, maintainability, and safe production habits.
-
-## Preparation for Module 1
-
-**Module 1: Reading and Writing Modern RPG — Program Structure, Variables, Data Types, and Expressions**
-
-Module 1 continues in the same VS Code workspace and expands the shared **RPG Blend Coffee Company Order Management System**.
+Module 1 — **RPG Fundamentals: Read, Change, Test — and Coffee** — begins the deeper RPG path with modern program structure, declarations, expressions, decisions, loops, procedures, testing, review, and the capstone.
