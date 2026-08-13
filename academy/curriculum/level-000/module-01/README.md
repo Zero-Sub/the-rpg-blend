@@ -2,27 +2,28 @@
 
 ## RPG Fundamentals: Read, Change, Test — and Coffee
 
-**Status:** Release Candidate 1  
+**Status:** Release Candidate / Review Candidate  
 **Primary environment:** Visual Studio Code + Code for IBM i  
-**Lab target:** learner-owned non-production IBM i environment; PUB400 may be used with the learner's own assigned profile, private libraries, and IFS home  
-**AI:** IBM Bob is integrated into each lesson as a bounded reviewer and learning assistant
+**Review baseline:** August 13, 2026
 
-Module 0 now owns IBM i orientation, tooling, connection, navigation, first compile/run, basic SQL awareness, and evidence habits. Module 1 begins the first deeper RPG development work.
+Module 0 owns IBM i orientation, tool selection, connection/context verification, navigation, first compile/run, introductory SQL, and evidence habits. Module 1 begins deeper RPG development.
 
-### Module 1 progression
+### Progression
 
-1. Read a modern fully free-form RPG program.
-2. Declare data that matches the business need.
+1. Read modern fully free-form RPG.
+2. Declare data deliberately.
 3. Build expressions and use selected built-in functions.
-4. Express business decisions with clear conditionals.
-5. Repeat work with bounded loops.
+4. Express business decisions clearly.
+5. Use bounded loops.
 6. Extract focused logic into an internal procedure.
 7. Complete the Blend Order Calculator capstone.
 
-The learner uses the same safe change loop throughout: **Verify context → Understand → Define → Change minimally → Compile → Test → Review → Commit.**
+The learner uses the safe change loop: **Verify context → Understand → Define → Change minimally → Compile → Test → Review → Commit.**
 
-### Release gate
+### Review state
 
-This module remains an RC until all learner source is compiled and run on the selected IBM i lab environment, the required boundary tests pass, the Code for IBM i workflow is exercised as documented, and no Critical or High technical defect remains open.
+The curriculum and supporting review package are ready for curriculum and technical-content review. Module 1 remains RC until live IBM i compile/runtime validation and the documented release gates pass.
 
-See `MASTER_COURSE_PACKAGE.md` for the canonical course design and `src/` for Academy-owned original examples.
+The repository currently contains the canonical Module 1 structure plus Lesson 1 and Lesson 2 source artifacts. Later lesson and capstone source still need completion or reconciliation before a complete executable-source review is finished.
+
+See `MASTER_COURSE_PACKAGE.md` and `VALIDATION_RUNBOOK.md` for the canonical design and release gate.
