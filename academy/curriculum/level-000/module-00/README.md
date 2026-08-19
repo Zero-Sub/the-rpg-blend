@@ -197,7 +197,7 @@ The next pilot must record intervention telemetry. The independent challenge tar
 - [x] Source/manual register reconciled to current Academy reference set
 - [ ] Run actual learner-equivalent environment smoke test
 - [ ] Revalidate version-sensitive Code for IBM i, Db2 tooling, ACS, Navigator/PDI, and IBM Bob claims immediately before delivery
-- [ ] Reconcile/generated formatted coursebook and deck to this source package
+- [ ] Regenerate/reconcile formatted coursebook and deck to this source package
 - [ ] Run new independent target-learner pilot
 - [ ] Resolve all Critical/High pilot defects before release
 
