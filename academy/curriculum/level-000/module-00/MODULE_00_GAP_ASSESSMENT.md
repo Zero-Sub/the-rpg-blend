@@ -1,91 +1,88 @@
-# Module 0 — Canonical Gap Assessment and Drift Report
+# Module 0 — Canonical Audit, Drift Report, and Remediation Record
 
 **Module:** IBM i Orientation  
 **Delivery subtitle:** Your First Controlled IBM i Development Change  
-**Assessment date:** August 18, 2026  
-**Decision:** READY TO REBUILD
+**Audit date:** August 18, 2026  
+**Remediation source-package update:** August 19, 2026  
+**Audit recommendation:** READY TO REBUILD  
+**Current remediation status:** Canonical learner/instructor source package rebuilt; validation gates remain
 
 ## Executive finding
 
-The existing Module 0 direction is sound: it correctly emphasizes IBM i orientation, modern tooling, safe context verification, VS Code/Code for IBM i, complementary ACS usage, operational awareness, the first compile/run loop, Git evidence, and responsible AI use.
+The prior Module 0 direction was sound: IBM i orientation, modern tooling, context verification, VS Code/Code for IBM i, complementary ACS usage, operational awareness, first compile/run experience, Git evidence, and responsible AI use were all worth preserving.
 
-The module does **not** require a restart.
+The principal defect was learner independence. Two target learners required experienced IBM i developer guidance during the pilot. That demonstrated that useful information existed, but the module did not yet reliably convert that information into an independent workflow for the intended learner.
 
-The principal defect is learner independence. Two target learners required experienced IBM i developer guidance during the pilot. That demonstrates that the current materials contain useful information but do not yet reliably convert that information into an independent workflow for the intended learner.
+The remediation therefore focused on intentional sequencing rather than making the module larger.
 
-The remediation is therefore to make Module 0 more intentional, not larger.
+## KEEP / MOVE / EXPAND / REMOVE / ADD decisions
 
-## KEEP / MOVE / EXPAND / REMOVE / ADD
-
-| Current content | Decision | Destination | Reason / required change |
+| Prior content | Decision | Destination | Remediation |
 |---|---|---|---|
-| IBM Power vs IBM i vs application | KEEP | Module 0 | Essential beginner mental model; make concrete and action-oriented |
-| AS/400 / iSeries / System i terminology | KEEP | Module 0 | Recognition only; use IBM i as current Academy wording |
-| Libraries, objects, jobs, source members, IFS | KEEP + EXPAND | Module 0 | Tie each term to what the learner will actually navigate or verify |
-| Native/SQL vocabulary translation | KEEP | Module 0 | Preserve nuance; do not teach native terminology as wrong |
-| Production/nonproduction safety boundary | KEEP | Module 0 | Apply it in every lab and evidence record |
-| VS Code + Code for IBM i | KEEP | Module 0 | Primary development workflow |
-| Db2 for i extension | KEEP | Module 0 | Introductory observation/query use only; deeper SQL is Module 2 |
-| ACS / Run SQL Scripts | KEEP | Module 0 | Complementary tool; teach when it is appropriate |
+| IBM Power vs IBM i vs application | KEEP | Module 0 | Rebuilt as action-oriented context model |
+| AS/400 / iSeries / System i terminology | KEEP | Module 0 | Recognition only; IBM i remains current terminology |
+| Libraries, objects, jobs, source members, IFS | KEEP + EXPAND | Module 0 | Tied directly to learner navigation and build context |
+| Native/SQL vocabulary translation | KEEP | Module 0 | Preserved as orientation; deeper SQL deferred |
+| Production/nonproduction safety boundary | KEEP | Module 0 | Embedded in lab, workbook, assessment, instructor guide |
+| VS Code + Code for IBM i | KEEP | Module 0 | Retained as development home base |
+| Db2 for i extension | KEEP | Module 0 | Read-only observation; deeper SQL remains Module 2 |
+| ACS / Run SQL Scripts | KEEP | Module 0 | Reframed as problem-driven complementary tooling |
 | Navigator for i / PDI | KEEP | Module 0 | Recognition/observation, not administration proficiency |
-| Collection Services / Job Watcher / Disk Watcher configuration | MOVE | Later support/performance instruction | Module 0 learner recognizes purpose and escalation boundary only |
+| Collection Services / Job Watcher / Disk Watcher configuration | MOVE | Later support/performance curriculum | Module 0 teaches recognition and escalation only |
 | SEU / PDM / RDi / STRSQL / 5250 | KEEP as recognition | Module 0 | Real-world interoperability; not Academy default |
-| Git first principles | MOVE as teaching | Engineering Foundations | Reinforce Git evidence here |
-| Git status/diff/commit evidence | KEEP | Module 0 | Required proof of controlled change |
-| Testing first principles | MOVE as teaching | Engineering Foundations | Apply expected/actual thinking here |
-| General AI prompting/verification principles | MOVE as teaching | Engineering Foundations | Reinforce in IBM i context here |
-| IBM Bob | KEEP as implementation example | Module 0 | Product cannot define the durable competency |
-| Bob-specific workflows/labels | MOVE | Bob implementation/reference material | Version-sensitive; revalidate before delivery |
-| First RPG source inspection | KEEP | Module 0 | Needed to learn the workflow, not RPG language depth |
-| First controlled RPG change | KEEP + EXPAND | Module 0 | Must become Coffee Company continuity and include prediction/evidence |
-| Compile / diagnostics / run | KEEP + EXPAND | Module 0 | Explicit source → command → object → runtime evidence chain |
-| Introductory SQL context query | KEEP | Module 0 | Read-only context observation |
-| SQL DDL/data manipulation | MOVE | Module 2 — Db2 for i and SQL | Too deep for orientation |
-| HELLO-only continuity | REMOVE / REPLACE | Coffee Company starter | Disconnected throwaway exercise conflicts with connected reference application rule |
-| Formal Blend MVC instruction | DO NOT ADD | Later modules | Premature architectural complexity |
-| Tool-selection decision model | EXPAND | Module 0 | Organize around problems, not product feature lists |
-| Troubleshooting ladder | ADD | Module 0 | Required by pilot evidence |
-| Expected-result and recovery cues | ADD | Every lab | Removes tacit expert dependency |
-| Independent completion gate | ADD | Module 0 capstone | Learner must prove capability without expert navigation |
-| Pilot intervention telemetry | ADD | Instructor validation materials | Repeated intervention becomes measurable curriculum defect |
+| Git first principles | MOVE as teaching | Engineering Foundations | Git evidence retained in Module 0 application |
+| Testing first principles | MOVE as teaching | Engineering Foundations | Expected/actual evidence applied here |
+| General AI prompting/verification principles | MOVE as teaching | Engineering Foundations | IBM i-specific application retained |
+| IBM Bob | KEEP as implementation example | Module 0 | Durable competency renamed AI-assisted engineering |
+| Bob-specific workflows/labels | MOVE | Bob implementation/reference material | Version-sensitive and revalidation required |
+| First RPG source inspection | KEEP | Module 0 | Preserved without turning Module 0 into RPG syntax course |
+| First controlled RPG change | KEEP + EXPAND | Module 0 | Converted to Coffee Company continuity with evidence |
+| Compile / diagnostics / run | KEEP + EXPAND | Module 0 | Explicit source → build → object → runtime evidence chain |
+| Introductory SQL context query | KEEP | Module 0 | Read-only observation |
+| SQL DDL/data manipulation | MOVE | Module 2 — Db2 for i and SQL | Removed from orientation competency |
+| HELLO-only continuity | REMOVE / REPLACE | Coffee Company | Replaced by `COFFEE00` starter and continuous evidence record |
+| Formal Blend MVC instruction | DO NOT ADD | Later modules | Avoided premature architecture |
+| Tool-selection decision model | EXPAND | Module 0 | Rebuilt around problem → tool → boundary |
+| Troubleshooting ladder | ADD | Module 0 | Added to lab, workbook, lesson, instructor guide |
+| Expected-result and recovery cues | ADD | Every guided workflow | Added to canonical lab frame |
+| Independent completion gate | ADD | Module 0 capstone | Implemented as “Do It Without Me” |
+| Pilot intervention telemetry | ADD | Instructor validation | Added intervention log and 0–4 scale |
 
-## Learning progression audit
+## Learning progression
 
 ### LEARN
 
-The learner must understand enough IBM i vocabulary, context, safety, source/object flow, and tool roles to make sense of the development workflow.
+Learner gains only the IBM i vocabulary, context, safety, source/object flow, and tool roles needed to perform the orientation workflow.
 
-**Finding:** Strong content exists, but it can arrive too densely before the learner has a concrete problem to attach it to.
+**Remediation:** six canonical lessons now attach concepts to concrete tasks instead of front-loading disconnected terminology.
 
 ### PRACTICE
 
-The learner performs a guided Coffee Company workflow: verify context, locate source, identify target, predict, edit, compile, diagnose, run, observe, review, and capture evidence.
+Learner performs a guided Coffee Company workflow: verify context, locate source, identify target, predict, compile, diagnose, change, run, observe, review, and capture evidence.
 
-**Finding:** Current activities are useful but need a consistent learner-facing structure and clearer expected states.
+**Remediation:** the guided lab now uses Before → Goal → Do → Expect → Recover → Prove → Explain.
 
 ### PROVE
 
-The learner completes a second Coffee Company change independently.
+Learner completes a second Coffee Company change independently.
 
-**Finding:** This is the most important remediation. Pilot evidence shows the current module has not yet demonstrated independent success.
+**Remediation:** the independent challenge now explicitly prohibits step-by-step instructor navigation and AI-supplied workflow before the learner's first attempt.
 
 ### REVIEW
 
-The learner uses a fixed review checklist covering context, diff, compile result, object target, runtime result, SQL observation, AI findings, sensitive-data handling, and escalation boundaries.
+Learner reviews context, diff, build result, target object, runtime, SQL observation, AI findings, sensitive-data handling, and escalation boundaries.
 
-**Finding:** Existing evidence-first material is strong and should be preserved.
+**Remediation:** evidence record, workbook, and assessment now use consistent review criteria.
 
 ### EXPLAIN
 
-The learner explains the source-to-object path, why a tool was selected, what the compiler proved, what runtime evidence proved, and what AI did or did not contribute.
+Learner explains source-to-object flow, tool choice, build evidence, runtime evidence, Git evidence, and AI boundaries.
 
-**Finding:** Present in current material but must become an explicit completion requirement.
+**Remediation:** explain-back is now an assessed completion component rather than an optional reflection.
 
-## Prerequisite audit
+## Prerequisite boundary
 
-### Engineering Foundations
-
-Teach before or outside Module 0:
+### Engineering Foundations owns
 
 - source-control mental model;
 - test/evidence basics;
@@ -94,20 +91,16 @@ Teach before or outside Module 0:
 - AI-assisted engineering basics;
 - security/secrets fundamentals.
 
-### Introduce in Module 0
+### Module 0 introduces/applies
 
-- IBM Power and IBM i relationship;
-- IBM i integrated environment;
-- Db2 for i role;
+- IBM Power / IBM i relationship;
+- integrated IBM i environment;
+- Db2 for i orientation;
 - libraries, objects, jobs, source members, IFS;
-- library/source/target context;
+- source/build/target context;
 - IBM i tool-selection model;
 - source → compile → object → run evidence chain;
 - IBM i-specific safety and escalation boundaries.
-
-### Undocumented assumption to eliminate
-
-The learner must not be expected to know how to recover when the UI, environment, or result differs from the happy-path instructions.
 
 ## RPG Blend Method mapping
 
@@ -123,42 +116,38 @@ The learner must not be expected to know how to recover when the UI, environment
 | Govern | PRIMARY |
 | Repeat | REINFORCED |
 
-The canonical RPG Blend Method is the governing framework. Any prior Module 0 “safe loop” or “operating loop” language may remain only as an operational checklist under the Method, not as a competing methodology.
+No competing “safe change methodology” remains. Operational checklists are subordinate to the canonical Method.
 
 ## Blend MVC mapping
 
-- View — NOT APPLICABLE as a taught competency
-- Controller — NOT APPLICABLE as a taught competency
-- Model / Domain Services — NOT APPLICABLE as a taught competency
-- Data Services — NOT APPLICABLE as a taught competency
+- View — not assessed
+- Controller — not assessed
+- Model / Domain Services — not assessed
+- Data Services — not assessed
 
-Coffee Company is introduced without premature architecture. Formal responsibility separation comes later when the learner can understand it meaningfully.
+Coffee Company is introduced without premature architecture.
 
-## AI audit
+## AI audit result
 
-The existing behavior is mostly correct: use AI to explain, analyze, diagnose, suggest tests, and review; never outsource verification, security, testing, correctness, or final decisions.
+The durable competency is **AI-assisted engineering**. IBM Bob remains an IBM i-oriented implementation example, not the definition of mastery.
 
-The required correction is abstraction.
-
-**Durable competency:** AI-assisted engineering.  
-**Implementation example:** IBM Bob.
-
-Module 0 mastery cannot be defined as successful use of Bob. The independent task must also prove that AI has not become a substitute for learner understanding or instructor dependency.
+Learners may use approved AI to explain, diagnose, review, suggest tests, and improve documentation. They remain responsible for context, verification, security, testing, review, and final decisions.
 
 ## Coffee Company continuity
 
 ### Starting state
 
-A deliberately small Coffee Company Git repository and approved IBM i training environment.
+A deliberately small Coffee Company Git/workspace source and approved IBM i training environment.
 
-### Learner changes
+### Module 0 learner work
 
 - verify context;
-- locate source;
-- identify compile target;
-- predict one visible behavior;
-- make a small controlled change;
-- compile and interpret diagnostics;
+- locate `COFFEE00.rpgle`;
+- identify target;
+- predict baseline behavior;
+- compile and verify baseline;
+- diagnose a controlled compile failure;
+- make one small specified message change;
 - run and validate;
 - perform one approved read-only SQL observation;
 - review Git evidence;
@@ -168,119 +157,88 @@ A deliberately small Coffee Company Git repository and approved IBM i training e
 
 ### Ending state
 
-A known-good Coffee Company starter program, buildable in the learner's approved environment, with a clean evidence record and focused Git history. Module 1 begins from this exact state.
+A known-good Coffee Company starter program, buildable in the learner's approved environment, with an evidence record and focused source-control history. Module 1 starts from this state.
 
-## Enterprise realism audit
+## Enterprise realism
 
-### Preserve
+Preserved and strengthened:
 
 - least privilege;
-- nonproduction/public training boundary;
-- source and target verification;
+- approved nonproduction/training boundary;
+- source/target verification;
 - no PHI/customer data/secrets/tokens/private keys in evidence or AI prompts;
 - read-only SQL by default;
 - no shared collector/configuration changes;
-- focused Git diffs;
+- focused Git evidence;
 - diagnostic evidence;
-- escalation when work crosses role boundaries.
-
-### Strengthen
-
-- troubleshooting by symptom;
-- expected-versus-actual comparison;
-- explicit source-to-object evidence;
-- human review boundary;
-- independence measurement;
-- documentation of instructor intervention during pilots.
-
-## Measurable competency matrix
-
-| Competency | Exercise | Evidence | Review criterion |
-|---|---|---|---|
-| Verify IBM i context | Context lab | host/profile/library/source/target record | All context fields correct |
-| Select appropriate tool | Scenario set | selection + rationale | Correct tool or escalation boundary identified |
-| Locate Coffee Company source | Navigation lab | source/target record | Learner locates without instructor navigation |
-| Predict impact | First-change lab | written expected result | Prediction exists before execution |
-| Make controlled change | Coffee Company change | focused Git diff | Only intended change present |
-| Compile correctly | Build lab | diagnostic/result + object proof | Correct target object created |
-| Diagnose simple failure | Controlled error | cause, evidence, correction | Evidence-based recovery |
-| Validate runtime | Run lab | expected vs actual | Result matches requirement |
-| Use SQL safely | Read-only context query | query/result explanation | Learner states what result proves and does not prove |
-| Use AI responsibly | AI review | finding disposition | Findings independently verified |
-| Commit safely | Git lab | commit | Intended source only |
-| Explain workflow | Explain-back | instructor rubric | Learner defends context, change, evidence, and decisions independently |
+- escalation when work crosses role boundaries;
+- distinction between compiler evidence, runtime evidence, Git evidence, and AI suggestions.
 
 ## Pilot finding
 
 ### HIGH — Learner independence not yet reliable
 
-Two target learners required experienced IBM i developer guidance during Module 0.
+Two target learners required experienced IBM i developer guidance during the August 18 pilot.
 
-This is treated as curriculum evidence. It indicates that one or more prerequisite assumptions, transitions, navigation instructions, recovery paths, or completion cues are insufficiently explicit for the target learner.
+This remains open until the re-pilot demonstrates that the rebuilt curriculum resolves the issue.
 
-Do not guess the exact friction points after the fact. Capture them in the next pilot using intervention telemetry.
+The new pilot telemetry uses:
 
-### Next-pilot acceptance standard
+0. Independent
+1. Clarification only
+2. Hint required
+3. Step-by-step guidance required
+4. Instructor performed action
 
-A learner must complete the core workflow with course materials, approved references, and bounded AI assistance without step-by-step expert direction.
+The independent challenge release target is level **0 or 1**.
 
-For each major step record:
-
-| Step | Independent | Reference used | AI used | Instructor hint | Instructor intervention | Friction |
-|---|---|---|---|---|---|---|
-
-Repeated instructor intervention on the same step is a curriculum defect to remediate before release.
-
-## Drift severity
+## Drift severity after source-package remediation
 
 ### CRITICAL
 
-None identified in the underlying IBM i orientation philosophy or technical direction.
+None identified in the technical/orientation philosophy.
 
-### HIGH
+### HIGH — open until validation
 
-1. Pilot learners required expert guidance.
-2. Coffee Company is not yet the continuous Module 0 application backbone.
-3. AI competency is expressed too closely through IBM Bob in older artifacts.
-4. Engineering Foundations and IBM i-specific instruction are mixed.
-5. Tool information can exceed the learner's working context before they have a concrete task.
+1. Learner independence must be re-proven with a new target learner.
+2. Actual learner-equivalent environment must be smoke-tested against the new Coffee Company workflow.
 
-### MEDIUM
+### MEDIUM — remaining publication work
 
-1. Performance/tooling detail should be compressed around tool selection and escalation.
-2. Guided labs need consistent expected-state and recovery instructions.
-3. Troubleshooting must become explicit competency.
-4. Explain-back must become a formal completion gate.
-5. Prior local loop terminology must be subordinated to the canonical RPG Blend Method.
-6. Deeper SQL content belongs in Module 2.
+1. Version-sensitive tool/product claims require pre-delivery revalidation.
+2. Formatted coursebook and deck must be regenerated from the rebuilt source package.
+3. Screenshots/visuals must be refreshed and sanitized against current UI.
 
 ### LOW
 
-1. Canonical title should be Module 0 — IBM i Orientation.
-2. Coffee branding remains optional delivery personality, not curriculum taxonomy.
-3. Tool and product labels must be normalized across coursebook/workbook/lab/deck.
-4. Historical timing and superseded versions must remain archived rather than reintroduced.
+Editorial polish and timing may be adjusted after pilot telemetry, but should not change the canonical competency architecture without a recorded curriculum decision.
 
-## Estimated disposition
+## Estimated disposition from the original audit
 
-- **KEEP:** 55%
-- **MOVE:** 15%
-- **EXPAND:** 20%
-- **REMOVE:** 10%
+- KEEP: 55%
+- MOVE: 15%
+- EXPAND: 20%
+- REMOVE: 10%
 
-### Major ADD requirements
+## Remediation artifacts completed
 
-- Coffee Company from day one;
-- troubleshooting ladder;
-- standardized guided-lab frame;
-- learner navigation cues;
-- independent-completion gate;
-- pilot intervention telemetry;
-- canonical Method framing;
-- AI-neutral competency definitions.
+- six canonical learner lessons;
+- Coffee Company `COFFEE00` starter;
+- Coffee Company build/run templates;
+- guided lab;
+- student workbook;
+- preflight checklist;
+- tool-selection guide;
+- troubleshooting guide;
+- Coffee Company Change Evidence Record;
+- competency-based assessment;
+- instructor guide;
+- pilot intervention log;
+- reconciled source/manual register;
+- updated canonical README and master package.
 
-## Recommendation
+## Current recommendation
 
-**READY TO REBUILD**
+**SOURCE PACKAGE REBUILT — VALIDATION REQUIRED BEFORE RELEASE**
 
-The approved rebuild target is the canonical architecture in `MASTER_COURSE_PACKAGE.md` and `README.md`. Learner-facing prose and delivery artifacts should now be reconciled to that contract before another pilot.
+No additional curriculum decision is blocking Module 0. The next required work is empirical: smoke-test the actual environment, regenerate formatted delivery artifacts, and run a new independent target-learner pilot.
