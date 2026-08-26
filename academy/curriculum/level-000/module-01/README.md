@@ -1,29 +1,41 @@
-# RPGBA-101 — Module 1
+# The RPG Blend Academy — Module 1
 
-## RPG Fundamentals: Read, Change, Test — and Coffee
+## RPG Foundations — Read, Change, Test
 
-**Status:** Release Candidate / Review Candidate  
+**Status:** Release Candidate  
 **Primary environment:** Visual Studio Code + Code for IBM i  
-**Review baseline:** August 13, 2026
+**Reference application:** Coffee Company
 
-Module 0 owns IBM i orientation, tool selection, connection/context verification, navigation, first compile/run, introductory SQL, and evidence habits. Module 1 begins deeper RPG development.
+Module 0 owns IBM i orientation, tool selection, connection/context verification, navigation, first compile/run, introductory SQL observation, and evidence habits. Module 1 begins deeper RPG development while continuing the same Coffee Company application.
 
 ### Progression
 
 1. Read modern fully free-form RPG.
-2. Declare data deliberately.
-3. Build expressions and use selected built-in functions.
+2. Represent business data deliberately.
+3. Calculate without guessing.
 4. Express business decisions clearly.
-5. Use bounded loops.
-6. Extract focused logic into an internal procedure.
-7. Complete the Blend Order Calculator capstone.
+5. Use bounded loops and prove termination.
+6. Extract focused business logic into an internal procedure.
+7. Prove, review, and explain the change.
 
-The learner uses the safe change loop: **Verify context → Understand → Define → Change minimally → Compile → Test → Review → Commit.**
+The canonical Academy learning loop is **Learn → Practice → Prove → Review → Explain**.
 
-### Review state
+The RPG Blend core promise is: **Understand the system. Make a controlled change. Prove the result. Repeat.**
 
-The curriculum and supporting review package are ready for curriculum and technical-content review. Module 1 remains RC until live IBM i compile/runtime validation and the documented release gates pass.
+## Coffee Company code
 
-The repository currently contains the canonical Module 1 structure plus Lesson 1 and Lesson 2 source artifacts. Later lesson and capstone source still need completion or reconciliation before a complete executable-source review is finished.
+Module 0 starter:
 
-See `MASTER_COURSE_PACKAGE.md` and `VALIDATION_RUNBOOK.md` for the canonical design and release gate.
+`academy/curriculum/level-000/module-00/code/rpg/COFFEE00.rpgle`
+
+Module 1 evolved RPG source:
+
+`academy/curriculum/level-000/module-01/src/coffee-company/COFFEE01.rpgle`
+
+See `GETTING_THE_CODE.md` for learner instructions covering clone/pull, VS Code navigation, branching, and the distinction between Git source and the compiled IBM i object.
+
+## Release state
+
+`COFFEE01.rpgle` is the canonical Module 1 Coffee Company RC source. Module 1 remains RC until the documented IBM i compile/runtime validation, tool validation, independent technical review, and learner pilot gates pass.
+
+See `MASTER_COURSE_PACKAGE.md`, `GETTING_THE_CODE.md`, and `VALIDATION_RUNBOOK.md` for the canonical design and release gates.
