@@ -1,0 +1,9 @@
+# Learner-specific environment values
+.env
+
+# Local editor and OS noise
+.DS_Store
+Thumbs.db
+
+# Local validation evidence that may contain environment-specific values
+validation/local-evidence/
