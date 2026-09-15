@@ -2,7 +2,7 @@
 
 ## Procedures, Service Programs, and Domain Design
 
-**Status:** In Development  
+**Status:** Content Complete — IBM i Validation Pending  
 **Estimated time:** 8–10 hours including labs and independent challenge  
 **Prerequisite:** Modules 0–2 or equivalent demonstrated capability  
 **Primary environment:** Visual Studio Code, Code for IBM i, Db2 for IBM i extension, Git, IBM Bob  
@@ -53,14 +53,26 @@ Module 3 extracts order-pricing and order-validation behavior into an `ORDERDOM`
 
 This is an incremental modernization slice. Module 3 does **not** require a new web UI, API, or a rewrite of the surrounding application.
 
-## Repository layout
+## Content-complete package
 
 ```text
 module-03/
+├── 00_START_HERE.md
+├── STATUS.md
 ├── README.md
 ├── MASTER_COURSE_PACKAGE.md
+├── STUDENT_COURSEBOOK.md
+├── STUDENT_WORKBOOK.md
+├── LAB_GUIDE.md
+├── INSTRUCTOR_GUIDE.md
+├── QUICK_REFERENCE.md
+├── ASSESSMENT_AND_KEY.md
+├── INSTRUCTOR_DECK_OUTLINE.md
+├── GETTING_THE_CODE.md
 ├── VALIDATION_RUNBOOK.md
-├── lessons/
+├── docs/
+│   ├── architecture-decision.md
+│   └── evidence-checklist.md
 ├── src/
 │   └── coffee-company/
 │       ├── order_domain_contracts.rpgleinc
@@ -71,8 +83,21 @@ module-03/
     └── order_domain_cases.md
 ```
 
-## Release rule
+## Validation boundary
 
-The material on this branch is **development material**, not a release candidate. RPG source, build commands, Code for IBM i actions, binder-source paths, and runtime behavior must be validated on the designated IBM i training environment before promotion.
+The instructional content is complete. The module is **not yet a Release Candidate** because live IBM i evidence is still required for the source/build path.
+
+Before RC promotion, validate on the designated IBM i training environment:
+
+- RPG module compile;
+- IFS `/INCLUDE` resolution;
+- service-program creation from stream-file binder source;
+- binding-directory resolution;
+- caller bind/runtime behavior;
+- exported symbol/signature evidence;
+- complete normal/boundary/invalid/regression test matrix;
+- current Code for IBM i action behavior;
+- current IBM Bob activities;
+- independent learner pilot and technical review.
 
 IBM, COMMON, vendor, book, and community material is used only to validate terminology and technical behavior. Academy explanations, examples, labs, tests, and Coffee Company code are original.
