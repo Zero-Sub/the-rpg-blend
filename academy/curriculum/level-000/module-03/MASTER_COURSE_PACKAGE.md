@@ -2,7 +2,7 @@
 
 ## Module 3: Procedures, Service Programs, and Domain Design
 
-**Status:** In Development  
+**Status:** Content Complete — IBM i Validation Pending  
 **Estimated time:** 8–10 hours including labs and independent challenge  
 **Prerequisite:** Modules 0–2 or equivalent demonstrated capability  
 **Primary environment:** Visual Studio Code, Code for IBM i, Db2 for IBM i extension, Git, IBM Bob
@@ -37,29 +37,23 @@ By the end of Module 3, the learner can:
 ## Five mental models
 
 ### 1. Procedure contract
-
 A procedure is not merely a smaller block of code. Its interface is a promise about inputs, outputs, side effects, and failure behavior.
 
 ### 2. Module versus service program
-
-A module is a compiled building block. A service program is a reusable runtime capability created by binding modules and exposing selected procedures.
+A module is a compiled ILE building block. A service program is a reusable runtime capability created by binding modules and exposing selected procedures.
 
 ### 3. Public interface versus implementation
-
 Shared contracts are intentionally small and stable. Internal helpers, SQL details, file formats, job messages, and other implementation details remain behind the boundary unless deliberately made part of the contract.
 
 ### 4. Domain ownership
-
 Business rules belong in Model / Domain Services. Presentation, orchestration, and persistence have different responsibilities.
 
 ### 5. Reuse requires lifecycle discipline
-
 A reusable service needs a cohesive purpose, ownership, source control, compatibility strategy, test evidence, understandable state behavior, and a controlled build/release process.
 
 ## Lesson 1 — From Procedure to Capability
 
 ### Learn
-
 - Review internal procedures and explicit contracts.
 - Distinguish code decomposition from architectural separation.
 - Define cohesion and coupling in practical IBM i terms.
@@ -67,25 +61,20 @@ A reusable service needs a cohesive purpose, ownership, source control, compatib
 - Recognize that extraction is not automatically improvement.
 
 ### Practice
-
 Map the current Coffee Company order flow. Classify each responsibility and select one business capability that should change independently from the surrounding program.
 
 ### Prove
-
 Submit a before-state responsibility map and dependency list plus a written boundary rationale.
 
 ### Bob-assisted activity
-
 Complete the first map manually. Then ask Bob to identify likely boundaries and missed dependencies. Disposition material findings as **Accept, Reject, Investigate, or Defer**, with evidence.
 
 ### Independent task
-
 Analyze a second mixed procedure without Bob and identify which logic should remain local versus become a reusable capability.
 
 ## Lesson 2 — Procedure Contracts That Mean Something
 
 ### Learn
-
 - `DCL-PR` and `DCL-PI` as a caller/callee agreement.
 - Return values versus output parameters.
 - `CONST` and `VALUE` as deliberate parameter semantics.
@@ -95,21 +84,17 @@ Analyze a second mixed procedure without Bob and identify which logic should rem
 - Naming procedures around business capabilities instead of implementation steps.
 
 ### Practice
-
 Define `OrderRequest_t`, `ProductSnapshot_t`, and `OrderDecision_t` for the Coffee Company.
 
 ### Prove
-
 Compile a caller and implementation against the same contract and explain each parameter’s ownership and direction.
 
 ### Bob-assisted activity
-
 Use Bob after the learner draft to identify ambiguity, accidental mutation, implementation leakage, and missing boundary cases.
 
 ## Lesson 3 — Modules, NOMAIN, Exports, and Build Evidence
 
 ### Learn
-
 - A `*MODULE` is created by module compilation and later bound into a program or service program.
 - A `NOMAIN` RPG module has no program entry procedure and can contain reusable procedures.
 - `EXPORT` identifies procedures intended to be visible outside the module; the final service-program interface is still controlled by the binder step.
@@ -117,17 +102,14 @@ Use Bob after the learner draft to identify ambiguity, accidental mutation, impl
 - Build evidence must identify the source, command, target library, module, and final object.
 
 ### Practice
-
 Move the selected Coffee Company rule into `order_domain.rpgle`, compile it with an approved `CRTRPGMOD` Code for IBM i Action, and verify the intended `ORDERDOM *MODULE` object.
 
 ### Prove
-
 Capture the source revision, resolved command, compiler diagnostics, target module, and focused Git diff.
 
 ## Lesson 4 — Service Programs and Binding by Reference
 
 ### Learn
-
 - A `*SRVPGM` exposes procedures to bound ILE callers.
 - A service program has no normal program entry point and is not invoked with ordinary `CALL` as though it were a `*PGM`.
 - Callers bind to exported procedures by reference.
@@ -135,17 +117,14 @@ Capture the source revision, resolved command, compiler diagnostics, target modu
 - Binding directories help resolve approved reusable dependencies but require ownership and hygiene.
 
 ### Practice
-
 Create `ORDERDOM *SRVPGM`, add it to the learner application binding directory, and compile a small caller that uses the exported procedure.
 
 ### Prove
-
 Capture service-program object evidence, binder/export evidence, caller build evidence, and runtime behavior.
 
 ## Lesson 5 — Binder Language, Export Control, and Signature Stability
 
 ### Learn
-
 - Binder language defines the service program’s public export surface.
 - The Academy uses explicit binder source for reusable application services rather than exporting every eligible symbol.
 - Signatures provide a compatibility checkpoint between a service program and programs bound to it.
@@ -157,22 +136,20 @@ Capture service-program object evidence, binder/export evidence, caller build ev
 ```text
 STRPGMEXP PGMLVL(*CURRENT) SIGNATURE('RPGBAORDDOMV1')
   EXPORT SYMBOL('EVALUATEORDER')
-  EXPORT SYMBOL('CALCULATEORDERTOTAL')
 ENDPGMEXP
 ```
 
-### Practice
+`CalculateDiscount` remains a private implementation helper and is intentionally absent from the public export list.
 
+### Practice
 Build `ORDERDOM` from controlled binder source. Introduce a disposable interface change on the lab branch, predict its impact, observe evidence, then restore the supported contract.
 
 ### Prove
-
 Explain the public interface, why each symbol is exported, and why unrelated helpers remain private.
 
 ## Lesson 6 — Domain Design: Put Business Behavior Where It Belongs
 
 ### Learn
-
 - Model / Domain Services own reusable business rules and domain behavior.
 - Controllers coordinate application flow; they do not become the home of core business rules.
 - Data Services own persistence mechanics and technical data-access errors.
@@ -180,17 +157,14 @@ Explain the public interface, why each symbol is exported, and why unrelated hel
 - Pure or mostly pure rule procedures are easier to test and reuse than procedures that combine UI, SQL, committing, logging, and formatting.
 
 ### Practice
-
 Extract Coffee Company order-pricing and order-validation behavior into `ORDERDOM` while preserving required behavior.
 
 ### Prove
-
 Run the same boundary matrix before and after extraction and show no unintended behavior change.
 
 ## Lesson 7 — Error Contracts, State, and Activation-Group Awareness
 
 ### Learn
-
 - Distinguish expected business outcomes from technical failures.
 - Return stable application-facing result identifiers; keep detailed technical evidence available for diagnostics without making it the business contract.
 - Activation groups affect runtime lifetime and shared runtime resources.
@@ -198,34 +172,27 @@ Run the same boundary matrix before and after extraction and show no unintended 
 - Prefer explicit inputs, outputs, and scoped state for new domain services.
 
 ### Practice
-
 Add invalid-order, inactive-product, insufficient-quantity, and technical-failure outcomes to the design without making callers depend on SQLCODE or a database row layout.
 
 ### Prove
-
 Create a failure-mode table with outcome type, responsible layer, returned contract value, and diagnostic evidence.
 
 ### Bob-assisted activity
-
 Ask Bob to search for hidden state and error leakage. Verify each finding against source, object, or runtime evidence before accepting it.
 
 ## Lesson 8 — Prove the Refactor and Explain the Design
 
 ### Learn
-
 - Compiler acceptance is not behavior proof.
 - Runtime evidence is not architecture proof.
 - Architecture evidence must show that the boundary is intentional and implementation details did not leak upward.
 - Git review must include contract and binder-source changes, not only RPG implementation changes.
 
 ### Practice
-
 Perform a peer-style review of the completed Module 3 vertical slice.
 
 ### Prove
-
 Deliver one evidence packet containing:
-
 - source revision and focused diff;
 - resolved build commands;
 - `*MODULE`, `*SRVPGM`, and caller object evidence;
@@ -238,23 +205,18 @@ Deliver one evidence packet containing:
 ## Guided labs
 
 ### Lab 1 — Find the Boundary
-
 Classify mixed Coffee Company responsibilities and choose one domain rule for extraction.
 
 ### Lab 2 — Build a Reusable Module
-
 Create the contract include, `NOMAIN` module, exported procedure, compile action, and module evidence.
 
 ### Lab 3 — Create and Bind a Service Program
-
 Create binder source, service program, binding-directory entry, and caller.
 
 ### Lab 4 — Move Coffee Company Rules into Domain Services
-
 Refactor pricing/validation behavior without changing required outputs.
 
 ### Lab 5 — Break It Safely
-
 Make one controlled contract/export change on a disposable branch, predict the impact, observe the evidence, then restore compatibility.
 
 ## Independent challenge — Do It Without Me
@@ -283,7 +245,6 @@ Without step-by-step AI or instructor workflow direction, the learner must:
 - **Explain-back/review — 20%**: boundary, contract, binding strategy, failure behavior, and proof.
 
 ### Minimum completion standard
-
 - 80% overall.
 - No critical safety failure.
 - Practical implementation compiles and executes in the approved training environment.
@@ -294,7 +255,6 @@ Without step-by-step AI or instructor workflow direction, the learner must:
 ## IBM Bob rules
 
 Bob may:
-
 - explain unfamiliar RPG/ILE relationships;
 - identify candidate boundaries and dependencies;
 - review a focused procedure contract;
@@ -304,7 +264,6 @@ Bob may:
 - draft documentation from verified facts.
 
 Bob may not replace:
-
 - first-pass learner analysis where required;
 - environment verification;
 - acceptance criteria;
@@ -335,9 +294,15 @@ Bob may not replace:
 - Bob findings are dispositioned with evidence.
 - Learner can explain the final boundary, contract, binding, and error strategy independently.
 
+## Content-complete artifact set
+
+The GitHub module contains the learner/instructor content, assessment/key, code, tests, validation runbook, evidence checklist, architecture decision, and instructor-deck outline. Google Drive holds the canonical content master and curriculum tracking.
+
 ## Release status
 
-This package is in development. Promotion to release candidate requires live IBM i compile/runtime validation, Code for IBM i workflow validation, binder-source validation, technical review, learner pilot, and closure of Critical/High defects.
+**Content is complete. Release validation is not.** Promotion to Release Candidate requires live IBM i compile/runtime validation, Code for IBM i workflow validation, binder-source validation, technical review, learner pilot, and closure of Critical/High defects.
+
+Until those gates pass, build commands, source examples, and runtime expectations must be labeled **validation pending** rather than presented as proven production behavior.
 
 ## Primary validation sources
 
