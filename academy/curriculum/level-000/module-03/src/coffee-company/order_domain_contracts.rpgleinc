@@ -1,8 +1,7 @@
-**free
 // The RPG Blend Academy - Coffee Company
 // Module 3: Procedures, Service Programs, and Domain Design
 // Public application-facing contract for the Order Domain service.
-// Development source: compile/runtime validation pending on the training IBM i.
+// Content complete; compile/runtime validation pending on the training IBM i.
 
 dcl-c ORDER_OK 'OK';
 dcl-c ORDER_INVALID_QUANTITY 'INVALID_QUANTITY';
