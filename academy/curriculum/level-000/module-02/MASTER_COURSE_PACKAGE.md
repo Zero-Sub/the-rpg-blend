@@ -2,7 +2,7 @@
 
 ## Module 2: Db2 for i and SQL-Centered Development
 
-**Status:** In Development  
+**Status:** Content Complete — Validation Pending  
 **Estimated time:** 10–12 hours  
 **Prerequisite:** Modules 0–1 or equivalent  
 **Primary environment:** Visual Studio Code, Code for IBM i, Db2 for IBM i extension, Git, IBM Bob  
@@ -222,7 +222,7 @@ Submit before/change/rollback/final evidence plus a recovery explanation.
 
 Create `RPGBA_CC.V_PRODUCT_SNAPSHOT` with product identity, price, available quantity, and active-state facts. Do **not** put order eligibility, discount calculation, or approval/denial logic in the view.
 
-Create a small embedded-SQL RPG demonstration that reads the view and translates database outcomes to a stable data-access status. Raw SQL diagnostics remain implementation detail.
+Create a small embedded-SQL RPG demonstration that reads the relational view, translates persistence-specific types into the application-facing product snapshot used by Module 3, and translates database outcomes to a stable data-access status. Raw SQL diagnostics remain implementation detail.
 
 ### Prove
 
@@ -277,6 +277,7 @@ Module 3 may assume that the learner:
 - understands relational data and SQL fundamentals;
 - can identify Data Service responsibilities;
 - can read `V_PRODUCT_SNAPSHOT` and explain every column;
+- understands that the Data Service may translate SQL persistence types into a stable RPG snapshot contract;
 - understands that raw SQL diagnostics are not domain results;
 - can reason about transaction ownership at a basic level;
 - can prove database behavior with tests and evidence.
@@ -318,7 +319,7 @@ Bob may not replace:
 
 ## Release status
 
-The package is in development. Promotion to release candidate requires live IBM i execution of all SQL scripts, transaction/journaling validation, embedded-SQL compile/runtime validation, Db2 for IBM i extension workflow validation, current Bob behavior validation, independent technical review, learner pilot, and closure of Critical/High defects.
+The static instructional package is content complete. It is **not** a release candidate. Promotion requires live IBM i execution of all SQL scripts, transaction/journaling validation, embedded-SQL compile/runtime validation, Db2 for IBM i extension workflow validation, current Code for IBM i and Bob behavior validation, independent technical review, learner pilot, and closure of Critical/High defects.
 
 ## Primary validation sources
 
