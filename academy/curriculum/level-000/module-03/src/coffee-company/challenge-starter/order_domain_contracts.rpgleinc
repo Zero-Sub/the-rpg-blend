@@ -1,0 +1,37 @@
+// The RPG Blend Academy - Coffee Company
+// Module 3 independent challenge starter.
+// Intentionally omits the inactive-product result code so the learner must
+// decide how to represent the new business outcome.
+
+dcl-c ORDER_OK 'OK';
+dcl-c ORDER_INVALID_QUANTITY 'INVALID_QUANTITY';
+dcl-c ORDER_INSUFFICIENT_QTY 'INSUFFICIENT_QTY';
+dcl-c ORDER_PRODUCT_MISMATCH 'PRODUCT_MISMATCH';
+
+dcl-ds OrderRequest_t qualified template;
+   customerId packed(9 : 0);
+   productId packed(9 : 0);
+   quantity packed(7 : 0);
+end-ds;
+
+dcl-ds ProductSnapshot_t qualified template;
+   productId packed(9 : 0);
+   unitPrice packed(9 : 2);
+   quantityAvailable packed(9 : 0);
+   active ind;
+end-ds;
+
+dcl-ds OrderDecision_t qualified template;
+   allowed ind;
+   resultCode varchar(24);
+   message varchar(80);
+   unitPrice packed(9 : 2);
+   discountAmount packed(11 : 2);
+   finalTotal packed(11 : 2);
+end-ds;
+
+dcl-pr EvaluateOrder;
+   request likeds(OrderRequest_t) const;
+   product likeds(ProductSnapshot_t) const;
+   decision likeds(OrderDecision_t);
+end-pr;
