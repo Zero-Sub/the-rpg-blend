@@ -2,7 +2,7 @@
 
 **Status:** Canonical module sequence  
 **Owner:** George Van Eaton  
-**Last aligned:** September 14, 2026  
+**Last aligned:** September 15, 2026  
 **Architecture authority:** The RPG Blend Method and MVC Architecture v1.3
 
 This file is the authoritative high-level sequence for the Academy's primary developer learning path. Detailed lesson plans live inside each module and must not redefine the module order.
@@ -25,7 +25,7 @@ Before IBM i specialization, learners need durable engineering habits: developme
 |---:|---|---|---|
 | 1 | Modern RPG Fundamentals | Built | Read, change, test, and explain modern RPG safely |
 | 2 | Db2 for i and SQL-Centered Development | Next | Relational model, SQL querying/manipulation, safe data change, database tooling, and SQL-centered IBM i development |
-| 3 | Procedures, Service Programs, and Domain Design | In Development | Procedures, prototypes, modules, service programs, binding, contracts, cohesion/coupling, errors, and Model / Domain Services |
+| 3 | Procedures, Service Programs, and Domain Design | Content Complete — Validation Pending | Procedures, prototypes, modules, service programs, binding, contracts, cohesion/coupling, errors, state awareness, and Model / Domain Services |
 | 4 | Testing, Validation, and Production Readiness | Planned | Repeatable tests, diagnostics, validation evidence, failure handling, production-safety, and release readiness |
 | 5 | APIs, Integration, and Controllers | Planned | Controller responsibilities, request/response contracts, APIs, integration boundaries, and orchestration |
 | 6 | AI-Assisted IBM i Engineering | Planned | Governed AI-assisted analysis, coding, testing, review, documentation, and developer judgment |
@@ -112,6 +112,10 @@ The Module 3 Coffee Company slice should:
 - preserve behavior through tests and evidence;
 - use Bob for analysis/review after required learner-first work;
 - finish with an independent change and explain-back.
+
+### Module 3 current gate
+
+Instructional content, labs, assessment, reference source, and review material are complete. The remaining gate is live IBM i validation: compile/build, IFS include resolution, binder-source creation, service-program binding, runtime behavior, test matrix, current Code for IBM i behavior, technical review, and learner pilot.
 
 ## Change control
 
