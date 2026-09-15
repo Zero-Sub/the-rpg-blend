@@ -2,7 +2,7 @@
 
 ## Module 2: Db2 for i and SQL-Centered Development
 
-**Status:** In Development  
+**Status:** Content Complete — Validation Pending  
 **Estimated time:** 10–12 hours including labs and independent challenge  
 **Prerequisite:** Modules 0–1 or equivalent demonstrated capability  
 **Primary environment:** Visual Studio Code, Code for IBM i, Db2 for IBM i extension, Git, IBM Bob  
@@ -81,6 +81,6 @@ module-02/
 
 ## Release rule
 
-This branch contains development material. Promotion to release candidate requires live IBM i SQL/transaction validation, embedded-SQL compile/runtime validation, current Db2 for IBM i/Code for IBM i workflow validation, technical review, learner pilot, and closure of Critical/High defects.
+The static instructional package is content complete. It is **not** a release candidate yet. Promotion requires live IBM i SQL/transaction validation, embedded-SQL compile/runtime validation, current Db2 for IBM i/Code for IBM i workflow validation, current Bob validation, independent technical review, learner pilot, and closure of Critical/High defects.
 
 IBM, COMMON, vendor, and community sources are reference material used to validate terminology and coverage. Academy explanations, sequencing, Coffee Company schema, queries, labs, assessments, and code are original.
