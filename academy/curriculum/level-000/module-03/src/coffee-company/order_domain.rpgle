@@ -4,7 +4,7 @@ ctl-opt nomain option(*srcstmt : *nodebugio);
 // The RPG Blend Academy - Coffee Company
 // Module 3: Procedures, Service Programs, and Domain Design
 // Domain logic only: no display-file, SQL, record-format, or transport dependency.
-// Development source: compile/runtime validation pending on the training IBM i.
+// Content complete; compile/runtime validation pending on the training IBM i.
 
 /include 'order_domain_contracts.rpgleinc'
 
