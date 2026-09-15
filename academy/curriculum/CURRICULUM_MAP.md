@@ -24,7 +24,7 @@ Before IBM i specialization, learners need durable engineering habits: developme
 | Module | Title | Status | Primary focus |
 |---:|---|---|---|
 | 1 | Modern RPG Fundamentals | Built | Read, change, test, and explain modern RPG safely |
-| 2 | Db2 for i and SQL-Centered Development | Next | Relational model, SQL querying/manipulation, safe data change, database tooling, and SQL-centered IBM i development |
+| 2 | Db2 for i and SQL-Centered Development | Content Complete — Validation Pending | Relational model, SQL querying/manipulation, safe data change, database tooling, Data Services, and the Module 3 handoff |
 | 3 | Procedures, Service Programs, and Domain Design | Content Complete — Validation Pending | Procedures, prototypes, modules, service programs, binding, contracts, cohesion/coupling, errors, state awareness, and Model / Domain Services |
 | 4 | Testing, Validation, and Production Readiness | Planned | Repeatable tests, diagnostics, validation evidence, failure handling, production-safety, and release readiness |
 | 5 | APIs, Integration, and Controllers | Planned | Controller responsibilities, request/response contracts, APIs, integration boundaries, and orchestration |
@@ -97,21 +97,23 @@ SEU, PDM, RDi, and green-screen workflows may be taught for recognition, support
 
 ## Module 2 → Module 3 handoff
 
-Module 3 assumes the learner can already work with basic Db2 for i and SQL concepts from Module 2. Module 3 deliberately focuses on reusable RPG capability and domain ownership; it does not repeat the SQL curriculum or move SQL implementation details into domain contracts.
+Module 2 now ends with an explicit Coffee Company Data Service seam rather than a generic SQL endpoint. The learner builds and proves `V_PRODUCT_SNAPSHOT`, which exposes product identity, unit price, available quantity, and active state as facts. The learner also sees an embedded-SQL data-access example that translates database outcomes while keeping raw SQL diagnostics inside the implementation boundary.
 
-The Module 3 Coffee Company slice should:
+Module 3 may therefore assume that the learner can:
 
-- start with a known business rule and existing data/application context;
-- separate the business rule into Model / Domain Services;
-- establish an explicit RPG procedure contract;
-- compile a `NOMAIN` module;
-- create a service program with controlled binder source;
-- prove binding and runtime behavior;
-- keep persistence and presentation details outside the domain contract;
-- identify hidden state and activation-group assumptions;
-- preserve behavior through tests and evidence;
-- use Bob for analysis/review after required learner-first work;
-- finish with an independent change and explain-back.
+- understand the Coffee Company relational model, keys, constraints, and result grain;
+- query and join the required product/order data;
+- perform controlled DML with transaction awareness;
+- distinguish persistence shape from application-facing data contract;
+- explain why `V_PRODUCT_SNAPSHOT` returns facts rather than order-eligibility decisions;
+- keep SQL/database diagnostics behind Data Services;
+- produce schema/query/transaction evidence.
+
+Module 3 deliberately focuses on reusable RPG capability and domain ownership. It should not reteach SQL fundamentals or move persistence details into domain contracts.
+
+### Module 2 current gate
+
+Instructional content, labs, assessment, Coffee Company SQL source, validation matrix, Data Service boundary, and instructor/learner material are complete. The remaining gate is live IBM i validation: DDL/DML execution, constraints, expected query results, journaling/commitment-control behavior, rollback/commit proof, `V_PRODUCT_SNAPSHOT`, embedded-SQL compile/runtime behavior, current Db2 for IBM i/Code for IBM i workflow, Bob behavior, independent technical review, and learner pilot.
 
 ### Module 3 current gate
 
