@@ -2,12 +2,12 @@
 
 ## Db2 for i and SQL-Centered Development
 
-**Current state:** In Development  
+**Current state:** Content Complete — Validation Pending  
 **Branch:** `academy/module-02-db2-sql-centered`
 
-## Static curriculum scope
+## Static curriculum package
 
-The planned package includes:
+The content-complete package includes:
 
 - master course package;
 - student coursebook;
@@ -45,4 +45,8 @@ Required live validation includes:
 
 ## Curriculum handoff requirement
 
-Module 2 is not complete as a learning design unless it hands Module 3 an explicit Data Service boundary. `V_PRODUCT_SNAPSHOT` must return product facts while leaving order eligibility and other business decisions to Module 3 Domain Services.
+The static learning design now hands Module 3 an explicit Data Service boundary. `V_PRODUCT_SNAPSHOT` returns product facts while leaving order eligibility and other business decisions to Module 3 Domain Services.
+
+## Current decision
+
+Content is complete enough for technical/runtime validation. Any change required by IBM i execution must be corrected in source, learner material, instructor material, the validation matrix, and this status before promotion.
