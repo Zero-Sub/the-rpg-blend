@@ -4,17 +4,21 @@ ctl-opt dftactgrp(*no) option(*srcstmt : *nodebugio);
 // The RPG Blend Academy - Coffee Company
 // Module 2: Db2 for i and SQL-Centered Development
 // Data-access demonstration only. Development source: live validation pending.
-// Raw SQL diagnostics remain inside this implementation boundary.
+// Raw SQL diagnostics and persistence-specific Y/N representation remain
+// inside this implementation boundary.
 
 exec sql
    set option commit = *none,
               closqlcsr = *endmod;
 
+// Application-facing snapshot shape intentionally aligns with the facts
+// Module 3 Domain Services consume. The database table/view is free to use
+// different physical SQL types where the Data Service translates them.
 dcl-ds ProductData_t qualified template;
-   productId int(10);
+   productId packed(9 : 0);
    unitPrice packed(9 : 2);
-   quantityAvailable int(10);
-   active char(1);
+   quantityAvailable packed(9 : 0);
+   active ind;
 end-ds;
 
 dcl-ds ProductLookupResult_t qualified template;
@@ -25,10 +29,10 @@ dcl-ds ProductLookupResult_t qualified template;
 end-ds;
 
 dcl-pr LoadProduct likeds(ProductLookupResult_t);
-   productId int(10) const;
+   productId packed(9 : 0) const;
 end-pr;
 
-dcl-s requestedProductId int(10) inz(2001);
+dcl-s requestedProductId packed(9 : 0) inz(2001);
 dcl-ds lookup likeds(ProductLookupResult_t);
 
 lookup = LoadProduct(requestedProductId);
@@ -44,10 +48,17 @@ return;
 
 dcl-proc LoadProduct;
    dcl-pi *n likeds(ProductLookupResult_t);
-      productId int(10) const;
+      productId packed(9 : 0) const;
    end-pi;
 
    dcl-ds result likeds(ProductLookupResult_t);
+
+   // Persistence-facing host variables. These mirror the SQL-facing shape,
+   // then are translated into the application-facing ProductData_t contract.
+   dcl-s dbProductId int(10);
+   dcl-s dbUnitPrice packed(9 : 2);
+   dcl-s dbQuantityAvailable int(10);
+   dcl-s dbActive char(1);
 
    clear result;
 
@@ -56,10 +67,10 @@ dcl-proc LoadProduct;
              UNIT_PRICE,
              QUANTITY_AVAILABLE,
              ACTIVE
-        into :result.product.productId,
-             :result.product.unitPrice,
-             :result.product.quantityAvailable,
-             :result.product.active
+        into :dbProductId,
+             :dbUnitPrice,
+             :dbQuantityAvailable,
+             :dbActive
         from RPGBA_CC.V_PRODUCT_SNAPSHOT
        where PRODUCT_ID = :productId;
 
@@ -68,6 +79,10 @@ dcl-proc LoadProduct;
          result.success = *on;
          result.found = *on;
          result.status = 'FOUND';
+         result.product.productId = dbProductId;
+         result.product.unitPrice = dbUnitPrice;
+         result.product.quantityAvailable = dbQuantityAvailable;
+         result.product.active = (dbActive = 'Y');
       when SQLCOD = 100;
          result.success = *on;
          result.found = *off;
